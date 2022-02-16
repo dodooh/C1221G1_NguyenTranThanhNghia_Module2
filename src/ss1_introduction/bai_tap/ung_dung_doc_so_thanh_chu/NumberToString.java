@@ -6,7 +6,7 @@ public class NumberToString {
 
     public static void main(String[] args) {
         System.out.println("Enter the number: ");
-        Scanner scanner  = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         int number = scanner.nextInt();
         if (number > 999 || number < 0) {
             System.out.println("Out of ability");
@@ -15,41 +15,44 @@ public class NumberToString {
             int tens = (number % 100) / 10;
             int ones = number % 10;
             String result = "";
-            switch (hundreds) {
-                case 1:
-                    result += "one hundred ";
-                    break;
-                case 2:
-                    result += "two hundred ";
-                    break;
-                case 3:
-                    result += "three hundred ";
-                    break;
-                case 4:
-                    result += "four hundred ";
-                    break;
-                case 5:
-                    result += "five hundred ";
-                    break;
-                case 6:
-                    result += "six hundred ";
-                    break;
-                case 7:
-                    result += "seven hundred ";
-                    break;
-                case 8:
-                    result += "eight hundred ";
-                    break;
-                case 9:
-                    result += "nine hundred ";
-                    break;
-                default:
-                    break;
+            if (number == 0) {
+                result = "zero";
+            } else if (hundreds != 0) {
+                switch (hundreds) {
+                    case 1:
+                        result += "one hundred ";
+                        break;
+                    case 2:
+                        result += "two hundred ";
+                        break;
+                    case 3:
+                        result += "three hundred ";
+                        break;
+                    case 4:
+                        result += "four hundred ";
+                        break;
+                    case 5:
+                        result += "five hundred ";
+                        break;
+                    case 6:
+                        result += "six hundred ";
+                        break;
+                    case 7:
+                        result += "seven hundred ";
+                        break;
+                    case 8:
+                        result += "eight hundred ";
+                        break;
+                    case 9:
+                        result += "nine hundred ";
+                        break;
+                    default:
+                        break;
 
-            }
-
-            if (hundreds != 0 && (tens != 0 || ones != 0)) {
-                result += "and ";
+                }
+                if (tens != 0 || ones != 0) {
+                    result += "and ";
+                }
             }
             if (tens == 1) {
                 switch (ones) {
