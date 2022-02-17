@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class SumColumnCalculator {
 
     public static void main(String[] args) {
-//        double[][] arr = {{0.4, 0.6, 0.8, 1.2}, {2.1, 5.6, 3.6, 2.6}, {4.3, 2.4, 3.5, 1.6}};
+//        double[][] arr = {{0.4, 0.6, 0.8, 1.2}, {2.1, 5.6, 3.6, 2.6}, {4.3, 2.4, 3.5, 1.6},{4.3, 2.4, 3.5, 1.6}};
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập số dòng cho ma trận");
         int row = scanner.nextInt();
