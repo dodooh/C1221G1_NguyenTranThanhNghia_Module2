@@ -7,8 +7,8 @@ public class Main {
 
     public static void main(String[] args) {
         // Tạo mảng có 100,000 phần tử ngẫu nhiên
-        final int size = 100000;
-        int[] arr = getRandomArray(size);
+        final int SIZE = 100000;
+        int[] arr = getRandomArray(SIZE);
         System.out.println("Mảng ban đầu là: " + Arrays.toString(arr));
 
         StopWatch sw = new StopWatch();
