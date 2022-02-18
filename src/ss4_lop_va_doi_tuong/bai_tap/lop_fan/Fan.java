@@ -13,8 +13,6 @@ public class Fan {
      * -radius: double      *
      * -color: String       *
      * +Fan()               *
-     * +turnOn()            *
-     * +turnOff()           *
      * +setRadius(double):  *
      * +getRadius(): double *
      * +setColor(String):   *
@@ -22,6 +20,8 @@ public class Fan {
      * +setSpeed(int)       *
      * +getSpeed(): String  *
      * +isOn(): boolean     *
+     * +turnOn()            *
+     * +turnOff()           *
      * +toString(): String  *
      ***********************/
     final int SLOW = 1;
