@@ -24,16 +24,13 @@ public class Fan {
      * +turnOff()           *
      * +toString(): String  *
      ***********************/
-    final int SLOW = 1;
-    final int MEDIUM = 2;
-    final int FAST = 3;
     private int speed;
     private boolean on;
     private double radius;
     private String color;
 
     Fan() {
-        speed = SLOW;
+        speed = 1;
         on = false;
         radius = 5;
         color = "blue";
