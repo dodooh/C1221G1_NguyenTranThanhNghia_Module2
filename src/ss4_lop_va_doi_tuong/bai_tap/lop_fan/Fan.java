@@ -7,11 +7,11 @@ public class Fan {
      * +SLOW: int           *
      * +MEDIUM: int         *
      * +FAST: int           *
-     * ----------           *
      * -speed: int          *
      * -on: boolean         *
      * -radius: double      *
      * -color: String       *
+     *----------------------*
      * +Fan()               *
      * +setRadius(double):  *
      * +getRadius(): double *
