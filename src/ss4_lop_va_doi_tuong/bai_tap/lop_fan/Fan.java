@@ -28,9 +28,11 @@ public class Fan {
     private boolean on;
     private double radius;
     private String color;
-
+    final static int SLOW = 1;		// Fan speed slow
+    final static int MEDIUM = 2;	// Fan speed medium
+    final static int FAST = 3;		// Fan speed fast
     Fan() {
-        speed = 1;
+        speed = SLOW;
         on = false;
         radius = 5;
         color = "blue";
@@ -73,7 +75,7 @@ public class Fan {
     }
     public String toString() {
         return on
-            ? "Fan is on. Speed: " + this.speed + ".Color: " + this.color + ".Radius: " + this.radius
-            : "Fan is off. Color: " + this.color + ".Radius: " + this.radius;
+            ? "Fan is on. Speed: " + this.speed + ".Color: " + this.color + ". Radius: " + this.radius
+            : "Fan is off. Color: " + this.color + ". Radius: " + this.radius;
     }
 }
