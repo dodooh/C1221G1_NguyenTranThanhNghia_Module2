@@ -28,9 +28,9 @@ public class Fan {
     private boolean on;
     private double radius;
     private String color;
-    final static int SLOW = 1;		// Fan speed slow
-    final static int MEDIUM = 2;	// Fan speed medium
-    final static int FAST = 3;		// Fan speed fast
+    public static final int SLOW = 1;		// Fan speed slow
+    public static final int MEDIUM = 2;	// Fan speed medium
+    public static final int FAST = 3;		// Fan speed fast
     Fan() {
         speed = SLOW;
         on = false;
