@@ -8,7 +8,7 @@ public class HienThiCacLoaiHinh {
         int choice = -1;
         final int SIZE = 5;
         Scanner scanner = new Scanner(System.in);
-        while(choice != 0) {
+        while(true) {
             System.out.println("Menu");
             System.out.println("1. Draw the rectangle");
             System.out.println("2. Draw the top-left square triangle");

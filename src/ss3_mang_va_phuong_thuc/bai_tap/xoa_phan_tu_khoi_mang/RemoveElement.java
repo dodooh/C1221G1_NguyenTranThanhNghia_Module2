@@ -11,7 +11,6 @@ public class RemoveElement {
         int X = Integer.parseInt(scanner.nextLine());
         int index = -1;
         for (int i = 0; i < array.length; i++) {
-            ;
             if (array[i] == X) {
                 index = i;
                 break;
