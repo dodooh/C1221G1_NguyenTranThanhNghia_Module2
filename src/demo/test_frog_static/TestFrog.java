@@ -1,4 +1,4 @@
-package demo;
+package demo.test_frog_static;
 class Frog {
     private static int frogCount = 0;
     static int getCount() {
