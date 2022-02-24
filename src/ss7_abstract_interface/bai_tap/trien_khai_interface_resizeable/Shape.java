@@ -1,6 +1,6 @@
 package ss7_abstract_interface.bai_tap.trien_khai_interface_resizeable;
 
-public class Shape {
+public abstract class Shape implements IResizeable{
 
     private String color = "green";
     private boolean filled = true;
@@ -36,4 +36,6 @@ public class Shape {
             + " and "
             + (isFilled() ? "filled" : "not filled");
     }
+
+    public abstract double getArea();
 }

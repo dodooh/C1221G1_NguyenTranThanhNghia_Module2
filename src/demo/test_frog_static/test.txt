@@ -1,19 +1,9 @@
 
-[Bài giảng] Abstract class và Interface
-[Bài giảng] Object Oriented Design
-[Bài đọc] Lớp Object
-[Bài đọc] Phương thức trừu tượng
-[Bài đọc] Lớp trừu tượng
-[Bài đọc] Lớp trừu tượng (Abstract Classes)
-[Bài đọc] Interface
-[Bài đọc] Giao diện (Interfaces)
-[Bài đọc] Giao diện Comparable
-[Bài đọc] Giao diện Cloneable
-[Bài đọc] Interfaces vs. Abstract Classes
-[Bài đọc] Ví dụ Interfaces vs. Abstract Classes
-[Thực hành] Lớp Animal và interface Edible
-[Thực hành] triển khai interface 'Comparable' cho các lớp hình học
-[Thực hành] Triển khai interface 'Comparator' để so sánh cách lớp hình học
-[Bài tập ] Triển khai interface 'Resizeable' cho các lớp hình học
-[Bài tập] triển khai interface 'Colorable' cho các lớp hình học
-[Quiz] Interface and Abstract Class
+[Bài giảng] Clean Code
+[Bài giảng] Refactoring
+[Bài đọc] Clean Code
+[Thực hành] Refactoring - đổi tên biến và tách hằng
+[Thực hành] Refactoring - tách biến
+[Thực hành] Refactoring - tách phương thức
+[Bài tập] Refactoring
+[Quiz] Clean Code

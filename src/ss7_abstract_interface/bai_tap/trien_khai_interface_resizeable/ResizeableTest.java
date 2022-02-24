@@ -7,15 +7,16 @@ public class ResizeableTest {
         Rectangle rectangle = new Rectangle(4, 8);
         Square square = new Square(10);
 
-        int random = 1 + (int) (Math.random() * 100);
-        System.out.println("Random number = " + random);
-        circle.resize(random);
-        System.out.println(circle);
-        rectangle.resize(random);
-        System.out.println(rectangle);
-        square.resize(random);
-        System.out.println(square);
-        System.out.println(square.getArea());
+        Shape[] shapes = new Shape[]{circle, rectangle, square};
+
+        for (Shape shape : shapes) {
+            System.out.println("Area Before Resize :");
+            System.out.println(shape.getArea());
+            double random = 1.0 + Math.random() * 100;
+            shape.resize(random);
+            System.out.println("Area After Resize :");
+            System.out.println(shape.getArea());
+        }
 
     }
 }
