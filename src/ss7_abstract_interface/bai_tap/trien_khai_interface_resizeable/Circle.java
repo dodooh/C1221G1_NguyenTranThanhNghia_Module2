@@ -1,6 +1,6 @@
 package ss7_abstract_interface.bai_tap.trien_khai_interface_resizeable;
 
-public class Circle extends Shape implements IResizeable{
+public class Circle extends Shape implements IResizeable {
 
     private double radius = 1.0;
 
@@ -42,6 +42,6 @@ public class Circle extends Shape implements IResizeable{
 
     @Override
     public void resize(double percent) {
-        setRadius(getRadius() * (1.0 + percent/100));
+        setRadius(getRadius() * (1.0 + percent / 100));
     }
 }

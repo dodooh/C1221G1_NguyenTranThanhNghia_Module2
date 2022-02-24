@@ -1,6 +1,7 @@
 package ss7_abstract_interface.bai_tap.trien_khai_interface_resizeable;
 
-public class Square extends Rectangle implements IResizeable{
+public class Square extends Rectangle implements IResizeable {
+
     public Square() {
     }
 
@@ -31,6 +32,6 @@ public class Square extends Rectangle implements IResizeable{
 
     @Override
     public void resize(double percent) {
-        setSide(getSide() * (1 + percent/100));
+        setSide(getSide() * (1 + percent / 100));
     }
 }
