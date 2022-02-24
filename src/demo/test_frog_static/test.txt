@@ -1,15 +1,19 @@
 
-[Bài giảng] Kế thừa
-[Bài đọc] Lớp cha (Superclasses) và lớp con (Subclasses)
-[Bài đọc] Sử dụng từ khóa "super"
-[Bài đọc] Ghi đè phương thức
-[Bài đọc] Cài đè (overriding) và nạp chồng (overloading)
-[Bài đọc] Lớp Object và phương thức toString()
-[Bài đọc] Thừa kế
-[Bài đọc] Đa hình
-[Thực hành] Hệ các đối tượng hình học
-[Bài tập] Lớp Circle và lớp Cylinder
-[Bài tập] Lớp Point2D và lớp Point3D
-[Bài tập] Lớp Point và MoveablePoint
-[Quiz] Thừa kế và đa hình
-[**Bài tập] Thiết kế và triển khai lớp Triangle
+[Bài giảng] Abstract class và Interface
+[Bài giảng] Object Oriented Design
+[Bài đọc] Lớp Object
+[Bài đọc] Phương thức trừu tượng
+[Bài đọc] Lớp trừu tượng
+[Bài đọc] Lớp trừu tượng (Abstract Classes)
+[Bài đọc] Interface
+[Bài đọc] Giao diện (Interfaces)
+[Bài đọc] Giao diện Comparable
+[Bài đọc] Giao diện Cloneable
+[Bài đọc] Interfaces vs. Abstract Classes
+[Bài đọc] Ví dụ Interfaces vs. Abstract Classes
+[Thực hành] Lớp Animal và interface Edible
+[Thực hành] triển khai interface 'Comparable' cho các lớp hình học
+[Thực hành] Triển khai interface 'Comparator' để so sánh cách lớp hình học
+[Bài tập ] Triển khai interface 'Resizeable' cho các lớp hình học
+[Bài tập] triển khai interface 'Colorable' cho các lớp hình học
+[Quiz] Interface and Abstract Class
