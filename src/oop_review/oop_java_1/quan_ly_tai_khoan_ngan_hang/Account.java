@@ -4,10 +4,25 @@ import java.util.Scanner;
 
 public class Account {
 
+    private final double LAISUAT = .035d;
     private long accountNumber;
     private String accountName;
     private double balance;
-    private final double LAISUAT = .035d;
+
+    public Account(long accountNumber, String accountName, double balance) {
+        this.accountNumber = accountNumber;
+        this.accountName = accountName;
+        this.balance = balance;
+    }
+
+    public Account(long accountNumber, String accountName) {
+        this.accountNumber = accountNumber;
+        this.accountName = accountName;
+        this.balance = 50;
+    }
+
+    public Account() {
+    }
 
     public long getAccountNumber() {
         return accountNumber;
@@ -31,22 +46,6 @@ public class Account {
 
     public void setBalance(double balance) {
         this.balance = balance;
-    }
-
-
-    public Account(long accountNumber, String accountName, double balance) {
-        this.accountNumber = accountNumber;
-        this.accountName = accountName;
-        this.balance = balance;
-    }
-
-    public Account(long accountNumber, String accountName) {
-        this.accountNumber = accountNumber;
-        this.accountName = accountName;
-        this.balance = 50;
-    }
-
-    public Account() {
     }
 
     // Phương thức nạp tiền
