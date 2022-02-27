@@ -1,33 +1,33 @@
 package oop_review.quan_ly_phuong_tien.services.impl;
 
-import java.util.Scanner;
-import oop_review.quan_ly_phuong_tien.models.HangSanXuat;
-import oop_review.quan_ly_phuong_tien.models.Oto;
-import oop_review.quan_ly_phuong_tien.services.IServices;
-
 import static oop_review.quan_ly_phuong_tien.services.impl.HangSanXuatImpl.hangSanXuats;
 
-public class OtoImpl implements IServices {
+import java.util.Scanner;
+import oop_review.quan_ly_phuong_tien.models.Oto;
+import oop_review.quan_ly_phuong_tien.models.XeMay;
+import oop_review.quan_ly_phuong_tien.services.IServices;
 
-    static Oto[] otos = new Oto[10];
+public class XeMayImpl implements IServices {
+
+    static XeMay[] xeMays = new XeMay[10];
 
     static {
-        otos[0] = new Oto("43A-212.56", hangSanXuats[5], 2019, "Nguyễn Văn A", 5, "Du lịch");
-        otos[1] = new Oto("43B-453.88", hangSanXuats[3], 2020, "Nguyễn Văn B", 45, "Xe khách");
-        otos[2] = new Oto("43B-453.89", hangSanXuats[4], 2020, "Nguyễn Văn C", 16, "Xe khách");
+        xeMays[0] = new XeMay("43-K1-678.56", hangSanXuats[0], 2019, "Nguyễn Văn A", 100);
+        xeMays[1] = new XeMay("43-H1-345.89", hangSanXuats[1], 2019, "Nguyễn Văn B", 150);
+        xeMays[2] = new XeMay("43-AK-765.23", hangSanXuats[0], 2019, "Nguyễn Văn C", 50);
     }
 
     @Override
     public void add() {
         int i = 0;
-        while (otos[i] != null) {
+        while (xeMays[i] != null) {
             i++;
         }
-        otos[i] = getNewOto();
-        System.out.println("Thêm thành công: " + otos[i]);
+        xeMays[i] = getNewXeMay();
+        System.out.println("Thêm thành công: " + xeMays[i]);
     }
 
-    private Oto getNewOto() {
+    private XeMay getNewXeMay() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập biển số xe: ");
         String bienSoXe = scanner.nextLine();
@@ -40,19 +40,17 @@ public class OtoImpl implements IServices {
         int namSanXuat = Integer.parseInt(scanner.nextLine());
         System.out.println("Nhập tên chủ sở hữu: ");
         String chuSoHuu = scanner.nextLine();
-        System.out.println("Nhập số chỗ ngồi: ");
-        int soChoNgoi = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhập kiểu xe: ");
-        String kieuXe = scanner.nextLine();
-        return new Oto(bienSoXe, hangSanXuats[hangSanXuatIndex - 1], namSanXuat, chuSoHuu,
-            soChoNgoi, kieuXe);
+        System.out.println("Nhập công suất cho xe: ");
+        int congSuat = Integer.parseInt(scanner.nextLine());
+        return new XeMay(bienSoXe, hangSanXuats[hangSanXuatIndex - 1], namSanXuat, chuSoHuu,
+            congSuat);
     }
 
     @Override
     public void showList() {
         int i = 0;
-        while (otos[i] != null) {
-            System.out.println(otos[i]);
+        while (xeMays[i] != null) {
+            System.out.println(xeMays[i]);
             i++;
         }
     }
@@ -60,7 +58,7 @@ public class OtoImpl implements IServices {
     @Override
     public void remove(int index) {
         System.out.println("Bạn có đồng ý xóa: ");
-        System.out.println(otos[index]);
+        System.out.println(xeMays[index]);
         System.out.println("1. Yes");
         System.out.println("2. No");
         System.out.println("Bạn chọn: ");
@@ -74,22 +72,20 @@ public class OtoImpl implements IServices {
     }
 
     private void removePhuongTien(int index) {
-        for (int i = index; i < otos.length - 1; i++) {
-            otos[i] = otos[i + 1];
+        for (int i = index; i < xeMays.length - 1; i++) {
+            xeMays[i] = xeMays[i + 1];
         }
     }
 
     @Override
     public int searchByBiemKiemSoat(String bienKiemSoat) {
         int i = 0;
-        while (otos[i] != null) {
-            if (otos[i].getBienKiemSoat().equals(bienKiemSoat)) {
+        while (xeMays[i] != null) {
+            if (xeMays[i].getBienKiemSoat().equals(bienKiemSoat)) {
                 return i;
             }
             i++;
         }
         return -1;
     }
-
-
 }

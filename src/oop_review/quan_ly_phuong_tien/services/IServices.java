@@ -6,5 +6,7 @@ public interface IServices {
 
     void showList();
 
-    void remove();
+    void remove(int index);
+
+    int searchByBiemKiemSoat(String bienKiemSoat);
 }
