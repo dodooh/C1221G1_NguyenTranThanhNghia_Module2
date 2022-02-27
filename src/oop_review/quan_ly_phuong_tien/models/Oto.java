@@ -31,10 +31,7 @@ public class Oto extends PhuongTien {
     @Override
     public String toString() {
         return "Oto{" +
-            "bienKiemSoat='" + super.getBienKiemSoat() + '\'' +
-            ", hangSanXuat='" + super.getHangSanXuat().getTenHangSanXuat() + '\'' +
-            ", namSanXuat=" + super.getNamSanXuat() +
-            ", chuSoHuu='" + super.getChuSoHuu() + '\'' +
+            super.toString() +
             ", soChoNgoi=" + soChoNgoi +
             ", kieuXe='" + kieuXe + '\'' +
             '}';

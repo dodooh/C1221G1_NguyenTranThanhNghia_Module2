@@ -21,10 +21,7 @@ public class XeMay extends PhuongTien {
     @Override
     public String toString() {
         return "XeMay{" +
-            "bienKiemSoat='" + super.getBienKiemSoat() + '\'' +
-            ", hangSanXuat='" + super.getHangSanXuat().getTenHangSanXuat() + '\'' +
-            ", namSanXuat=" + super.getNamSanXuat() +
-            ", chuSoHuu='" + super.getChuSoHuu() + '\'' +
+            super.toString() +
             ", congSuat=" + congSuat +
             '}';
     }

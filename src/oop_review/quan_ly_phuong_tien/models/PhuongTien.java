@@ -2,7 +2,7 @@ package oop_review.quan_ly_phuong_tien.models;
 
 import oop_review.quan_ly_phuong_tien.services.IServices;
 
-public abstract class PhuongTien {
+public class PhuongTien {
 
     private String bienKiemSoat;
     private HangSanXuat hangSanXuat;
@@ -54,5 +54,10 @@ public abstract class PhuongTien {
     }
 
     @Override
-    public abstract String toString();
+    public String toString(){
+        return "bienKiemSoat='" + getBienKiemSoat() + '\'' +
+            ", hangSanXuat='" + getHangSanXuat().getTenHangSanXuat() + '\'' +
+            ", namSanXuat=" + getNamSanXuat() +
+            ", chuSoHuu='" + getChuSoHuu() + '\'';
+    }
 }

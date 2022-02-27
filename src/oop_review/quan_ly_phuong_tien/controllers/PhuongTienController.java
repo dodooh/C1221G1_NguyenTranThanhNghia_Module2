@@ -17,7 +17,7 @@ public class PhuongTienController {
 
         boolean flag = true;
         do {
-            System.out.println(" CHƯƠNG TRÌNH QUẢN LÝ PHƯƠNG TIỆN GIAO THÔNG ");
+            System.out.println("========CHƯƠNG TRÌNH QUẢN LÝ PHƯƠNG TIỆN GIAO THÔNG=========");
             System.out.println("Chọn chức năng: ");
             System.out.println("1. Thêm mới phương tiện.");
             System.out.println("2. Hiển thị phương tiện");

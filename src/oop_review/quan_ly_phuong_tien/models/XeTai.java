@@ -21,10 +21,7 @@ public class XeTai extends PhuongTien {
     @Override
     public String toString() {
         return "XeTai{" +
-            "bienKiemSoat='" + super.getBienKiemSoat() + '\'' +
-            ", hangSanXuat='" + super.getHangSanXuat().getTenHangSanXuat() + '\'' +
-            ", namSanXuat=" + super.getNamSanXuat() +
-            ", chuSoHuu='" + super.getChuSoHuu() + '\'' +
+            super.toString() +
             ", congSuat=" + taiTrong +
             '}';
     }
