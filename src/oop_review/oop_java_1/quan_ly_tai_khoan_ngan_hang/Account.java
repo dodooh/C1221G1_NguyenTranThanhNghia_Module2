@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Account {
 
-    private final double LAISUAT = .035d;
     private long accountNumber;
     private String accountName;
     private double balance;
@@ -50,40 +49,39 @@ public class Account {
 
     // Phương thức nạp tiền
     public void deposit() {
-        double amount = getAmount();
+        double amount;
+        do {
+            System.out.println("Nhập số tiền muốn thực hiện giao dịch: ");
+            amount = new Scanner(System.in).nextDouble();
+            if (amount <= 0) {
+                System.out.println("Không hợp lệ. Nhập lại!");
+            } else {
+                break;
+            }
+        } while (true);
         this.setBalance(this.getBalance() + amount);
     }
 
     // Phương thức rút tiền
     public void withdraw() {
-        double amount = getAmount();
-        this.setBalance(this.getBalance() - amount);
+        double amount;
+        double PHI_RUT_TIEN = 3000;
+        do {
+            System.out.println("Nhập số tiền muốn thực hiện giao dịch: ");
+            amount = new Scanner(System.in).nextDouble();
+            if (amount <= 0) {
+                System.out.println("Không hợp lệ. Nhập lại!");
+            } else if (amount > (balance + PHI_RUT_TIEN)) {
+                System.out.println("Số tiền trong tài khoản không đủ để thực hiện.");
+            } else {
+                break;
+            }
+        } while (true);
+        this.setBalance(this.getBalance() - (amount + PHI_RUT_TIEN));
     }
 
     // Phương thức chuyển tiền
     public void transferTo(Account receiveAccount) {
-        double amount = getAmount();
-        this.setBalance(this.getBalance() - amount);
-        receiveAccount.setBalance(receiveAccount.getBalance() + amount);
-    }
-
-    // Phương thức cập nhật đáo hạn
-    public void updateBalance() {
-        this.setBalance(this.getBalance() * (1 + LAISUAT));
-    }
-
-    @Override
-    public String toString() {
-        return "Account{" +
-            "accountNumber=" + accountNumber +
-            ", accountName='" + accountName + '\'' +
-            ", balance=$" + String.format("%,.0f", balance) +
-            '}';
-    }
-
-    // Trả về số tiền muốn thực hiện giao dịch
-    // Yêu cầu nhập lại khi <= 0 hoặc > balance
-    private double getAmount() {
         double amount;
         do {
             System.out.println("Nhập số tiền muốn thực hiện giao dịch: ");
@@ -96,6 +94,23 @@ public class Account {
                 break;
             }
         } while (true);
-        return amount;
+        this.setBalance(this.getBalance() - amount);
+        receiveAccount.setBalance(receiveAccount.getBalance() + amount);
     }
+
+    // Phương thức cập nhật đáo hạn
+    public void updateBalance() {
+        double LAI_SUAT = .035d;
+        this.setBalance(this.getBalance() * (1 + LAI_SUAT));
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+            "accountNumber=" + accountNumber +
+            ", accountName='" + accountName + '\'' +
+            ", balance=$" + String.format("%,.0f", balance) +
+            '}';
+    }
+
 }
