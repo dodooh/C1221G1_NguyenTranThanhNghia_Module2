@@ -3,6 +3,7 @@ package ss10_arraylist.thuc_hanh.trien_khai_lop_list_don_gian;
 import java.util.Arrays;
 
 public class MyList<E> {
+
     private static final int DEFAULT_CAPACITY = 10;
     private int size = 0;
     private Object[] elements;
@@ -24,8 +25,8 @@ public class MyList<E> {
     }
 
     public E get(int i) {
-        if (i>= size || i <0) {
-            throw new IndexOutOfBoundsException("Index: " + i + ", Size " + i );
+        if (i >= size || i < 0) {
+            throw new IndexOutOfBoundsException("Index: " + i + ", Size " + i);
         }
         return (E) elements[i];
     }
