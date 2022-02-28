@@ -49,16 +49,12 @@ public class Account {
 
     // Phương thức nạp tiền
     public void deposit() {
+        double MAXIMUM_DEPOSIT = 50000000;
         double amount;
         do {
             System.out.println("Nhập số tiền muốn thực hiện giao dịch: ");
             amount = new Scanner(System.in).nextDouble();
-            if (amount <= 0) {
-                System.out.println("Không hợp lệ. Nhập lại!");
-            } else {
-                break;
-            }
-        } while (true);
+        } while (!isValidAmount(amount, MAXIMUM_DEPOSIT));
         this.setBalance(this.getBalance() + amount);
     }
 
@@ -69,14 +65,7 @@ public class Account {
         do {
             System.out.println("Nhập số tiền muốn thực hiện giao dịch: ");
             amount = new Scanner(System.in).nextDouble();
-            if (amount <= 0) {
-                System.out.println("Không hợp lệ. Nhập lại!");
-            } else if (amount > (balance + PHI_RUT_TIEN)) {
-                System.out.println("Số tiền trong tài khoản không đủ để thực hiện.");
-            } else {
-                break;
-            }
-        } while (true);
+        } while (!isValidAmount(amount, balance + PHI_RUT_TIEN));
         this.setBalance(this.getBalance() - (amount + PHI_RUT_TIEN));
     }
 
@@ -86,14 +75,7 @@ public class Account {
         do {
             System.out.println("Nhập số tiền muốn thực hiện giao dịch: ");
             amount = new Scanner(System.in).nextDouble();
-            if (amount <= 0) {
-                System.out.println("Không hợp lệ. Nhập lại!");
-            } else if (amount > balance) {
-                System.out.println("Số tiền trong tài khoản không đủ để thực hiện.");
-            } else {
-                break;
-            }
-        } while (true);
+        } while (!isValidAmount(amount, balance));
         this.setBalance(this.getBalance() - amount);
         receiveAccount.setBalance(receiveAccount.getBalance() + amount);
     }
@@ -113,4 +95,16 @@ public class Account {
             '}';
     }
 
+
+    private boolean isValidAmount(double amount, double compareNumber) {
+        boolean flag = true;
+        if (amount <= 0) {
+            System.out.println("Không hợp lệ. Nhập lại!");
+            flag = false;
+        } else if (amount > compareNumber) {
+            System.out.println("Số tiền trong tài khoản không đủ để thực hiện.");
+            flag = false;
+        }
+        return flag;
+    }
 }
