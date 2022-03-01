@@ -54,7 +54,7 @@ public class Account {
         do {
             System.out.println("Nhập số tiền muốn thực hiện giao dịch: ");
             amount = new Scanner(System.in).nextDouble();
-        } while (!isValidAmount(amount, MAXIMUM_DEPOSIT));
+        } while (isNotValidAmount(amount, MAXIMUM_DEPOSIT));
         this.setBalance(this.getBalance() + amount);
     }
 
@@ -65,7 +65,7 @@ public class Account {
         do {
             System.out.println("Nhập số tiền muốn thực hiện giao dịch: ");
             amount = new Scanner(System.in).nextDouble();
-        } while (!isValidAmount(amount, balance + PHI_RUT_TIEN));
+        } while (isNotValidAmount(amount, balance + PHI_RUT_TIEN));
         this.setBalance(this.getBalance() - (amount + PHI_RUT_TIEN));
     }
 
@@ -75,7 +75,7 @@ public class Account {
         do {
             System.out.println("Nhập số tiền muốn thực hiện giao dịch: ");
             amount = new Scanner(System.in).nextDouble();
-        } while (!isValidAmount(amount, balance));
+        } while (isNotValidAmount(amount, balance));
         this.setBalance(this.getBalance() - amount);
         receiveAccount.setBalance(receiveAccount.getBalance() + amount);
     }
@@ -96,15 +96,15 @@ public class Account {
     }
 
 
-    private boolean isValidAmount(double amount, double compareNumber) {
+    private boolean isNotValidAmount(double amount, double comparedAmount) {
         boolean flag = true;
         if (amount <= 0) {
             System.out.println("Không hợp lệ. Nhập lại!");
             flag = false;
-        } else if (amount > compareNumber) {
+        } else if (amount > comparedAmount) {
             System.out.println("Số tiền trong tài khoản không đủ để thực hiện.");
             flag = false;
         }
-        return flag;
+        return !flag;
     }
 }
