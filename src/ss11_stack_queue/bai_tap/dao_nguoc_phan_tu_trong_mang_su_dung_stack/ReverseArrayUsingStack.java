@@ -3,7 +3,7 @@ package ss11_stack_queue.bai_tap.dao_nguoc_phan_tu_trong_mang_su_dung_stack;
 import java.util.Arrays;
 import java.util.Stack;
 
-public class ReverseArray {
+public class ReverseArrayUsingStack {
 
     public static void main(String[] args) {
         // Đảo ngược mảng số
