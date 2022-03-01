@@ -7,7 +7,7 @@ public class ReverseArray {
 
     public static void main(String[] args) {
         // Đảo ngược mảng số
-        Integer[] intArray = {1,4,6,2,3,5,7,8,0};
+        Integer[] intArray = {1, 4, 6, 2, 3, 5, 7, 8, 0};
         System.out.println("Number array truoc khi dao nguoc: " + Arrays.toString(intArray));
         reverseArrayUsingStack(intArray);
         System.out.println("Number array sau khi dao nguoc: " + Arrays.toString(intArray));
@@ -21,13 +21,18 @@ public class ReverseArray {
         System.out.println("String sau khi dao nguoc: " + sentence);
 
     }
+
     private static <T> void reverseArrayUsingStack(T[] array) {
         Stack<T> stack = new Stack<>();
         for (T j : array) {
             stack.push(j);
         }
-        for (int i = 0; i < array.length; i++) {
-            array[i] = stack.pop();
+//        for (int i = 0; i < array.length; i++) {
+//            array[i] = stack.pop();
+//        }
+        int i = 0;
+        while (!stack.isEmpty()) {
+            array[i++] = stack.pop();
         }
     }
 }
