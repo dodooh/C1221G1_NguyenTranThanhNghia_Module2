@@ -4,7 +4,7 @@ public class QueueTest {
 
     public static void main(String[] args) {
 
-        Queue queue = new Queue(3,5,6,9);
+        Queue queue = new Queue(3, 5, 6, 9);
 
         System.out.println("Khởi tạo Queue");
         queue.displayQueue();

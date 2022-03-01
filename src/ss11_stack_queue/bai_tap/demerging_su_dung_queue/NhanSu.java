@@ -11,6 +11,13 @@ public class NhanSu {
     private Date namSinh;
     private String diaChi;
 
+    public NhanSu(String hoTen, String gioiTinh, Date namSinh, String diaChi) {
+        this.hoTen = hoTen;
+        this.gioiTinh = gioiTinh;
+        this.namSinh = namSinh;
+        this.diaChi = diaChi;
+    }
+
     public String getHoTen() {
         return hoTen;
     }
@@ -40,13 +47,6 @@ public class NhanSu {
     }
 
     public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
-    }
-
-    public NhanSu(String hoTen, String gioiTinh, Date namSinh, String diaChi) {
-        this.hoTen = hoTen;
-        this.gioiTinh = gioiTinh;
-        this.namSinh = namSinh;
         this.diaChi = diaChi;
     }
 

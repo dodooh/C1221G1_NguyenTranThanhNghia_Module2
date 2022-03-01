@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Queue;
 
-public class Demerging {
+public class DemergingTest {
 
     public static void main(String[] args) {
         NhanSu[] nhanSus = new NhanSu[]{
@@ -22,7 +22,7 @@ public class Demerging {
 
         System.out.println("Mảng sau khi sortByDate: ");
         SortByDate sortImpl = new SortByDate();
-        Arrays.sort(nhanSus,sortImpl);
+        Arrays.sort(nhanSus, sortImpl);
         displayArray(nhanSus);
 
         System.out.println("Mảng sau khi sortByDate và sortByGioiTinh");
