@@ -1,6 +1,7 @@
 package ss11_stack_queue.thuc_hanh.trien_khai_stack_dua_tren_linkedlist;
 
 public class GenericStackClient {
+
     private static void stackOfIStrings() {
         MyGenericStack<String> stack = new MyGenericStack<>();
         stack.push("Five");

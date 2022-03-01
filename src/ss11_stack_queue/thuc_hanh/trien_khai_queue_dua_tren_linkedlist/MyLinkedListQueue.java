@@ -21,12 +21,14 @@ public class MyLinkedListQueue<T> {
     }
 
     public Node<T> dequeue() {
-        if (this.front == null)
+        if (this.front == null) {
             return null;
+        }
         Node<T> temp = this.front;
         this.front = this.front.next;
-        if (this.front == null)
+        if (this.front == null) {
             this.rear = null;
+        }
         return temp;
     }
 }

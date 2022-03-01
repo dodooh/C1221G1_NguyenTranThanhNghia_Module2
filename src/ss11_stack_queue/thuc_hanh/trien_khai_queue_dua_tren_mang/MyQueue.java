@@ -12,12 +12,15 @@ public class MyQueue {
         this.capacity = queueSize;
         queueArr = new int[this.capacity];
     }
-    public boolean isQueueFull(){
+
+    public boolean isQueueFull() {
         return currentSize == capacity;
     }
-    public boolean isQueueEmpty(){
+
+    public boolean isQueueEmpty() {
         return currentSize == 0;
     }
+
     public void enqueue(int item) {
         if (isQueueFull()) {
             System.out.println("Overflow ! Unable to add element: " + item);
@@ -31,6 +34,7 @@ public class MyQueue {
             System.out.println("Element " + item + " is pushed to Queue !");
         }
     }
+
     public void dequeue() {
         if (isQueueEmpty()) {
             System.out.println("Underflow ! Unable to remove element from Queue");
