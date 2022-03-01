@@ -1,9 +1,0 @@
-
-[Bài giảng] Clean Code
-[Bài giảng] Refactoring
-[Bài đọc] Clean Code
-[Thực hành] Refactoring - đổi tên biến và tách hằng
-[Thực hành] Refactoring - tách biến
-[Thực hành] Refactoring - tách phương thức
-[Bài tập] Refactoring
-[Quiz] Clean Code
