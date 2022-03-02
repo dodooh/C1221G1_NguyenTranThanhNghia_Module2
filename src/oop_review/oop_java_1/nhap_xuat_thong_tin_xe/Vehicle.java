@@ -3,9 +3,10 @@ package oop_review.oop_java_1.nhap_xuat_thong_tin_xe;
 
 public class Vehicle {
 
-    private final double LOW_TAX = 0.01;
-    private final double MID_TAX = 0.03;
-    private final double HIGH_TAX = 0.05;
+    private final double THUE_THAP = 0.01;
+    private final double THUE_VUA = 0.03;
+    private final double THUE_CAO = 0.05;
+
     private String bienSoXe;
     private int dungTich;
     private long giaXe;
@@ -44,11 +45,11 @@ public class Vehicle {
     }
 
     double tinhThue() {
-        double rate = LOW_TAX;
+        double rate = THUE_THAP;
         if (dungTich > 200) {
-            rate = HIGH_TAX;
+            rate = THUE_CAO;
         } else if (dungTich >= 100) {
-            rate = MID_TAX;
+            rate = THUE_VUA;
         }
         return rate * giaXe;
     }
