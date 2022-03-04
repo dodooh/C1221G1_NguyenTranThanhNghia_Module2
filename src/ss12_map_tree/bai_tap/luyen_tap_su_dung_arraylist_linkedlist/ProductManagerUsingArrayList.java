@@ -149,7 +149,7 @@ public class ProductManagerUsingArrayList {
     void findByName(String productName){
         ArrayList<Product> productsSameName = new ArrayList<>();
         for (Product product: products ) {
-            if(product.getProductName().contains(productName)) {
+            if(product.getProductName().toLowerCase().contains(productName.toLowerCase())) {
                 productsSameName.add(product);
             }
         }
