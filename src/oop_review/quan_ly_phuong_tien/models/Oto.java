@@ -5,6 +5,11 @@ public class Oto extends PhuongTien {
     private int soChoNgoi;
     private String kieuXe;
 
+    public Oto(PhuongTien phuongTien,int soChoNgoi, String kieuXe ){
+        super(phuongTien);
+        this.soChoNgoi = soChoNgoi;
+        this.kieuXe = kieuXe;
+    }
     public Oto(String bienKiemSoat, HangSanXuat hangSanXuat, int namSanXuat, String chuSoHuu,
         int soChoNgoi, String kieuXe) {
         super(bienKiemSoat, hangSanXuat, namSanXuat, chuSoHuu);

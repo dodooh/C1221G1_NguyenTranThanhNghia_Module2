@@ -4,6 +4,11 @@ public class XeTai extends PhuongTien {
 
     private int taiTrong;
 
+    public XeTai(PhuongTien phuongTien,int taiTrong ){
+        super(phuongTien);
+        this.taiTrong = taiTrong;
+    }
+
     public XeTai(String bienKiemSoat, HangSanXuat hangSanXuat, int namSanXuat,
         String chuSoHuu, int taiTrong) {
         super(bienKiemSoat, hangSanXuat, namSanXuat, chuSoHuu);
@@ -22,7 +27,7 @@ public class XeTai extends PhuongTien {
     public String toString() {
         return "XeTai{" +
             super.toString() +
-            ", congSuat=" + taiTrong +
+            ", taiTrong=" + taiTrong +
             '}';
     }
 }

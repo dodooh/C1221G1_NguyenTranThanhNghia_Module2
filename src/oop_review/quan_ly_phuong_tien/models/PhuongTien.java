@@ -13,6 +13,13 @@ public class PhuongTien {
 
     }
 
+    protected PhuongTien(PhuongTien origin) {
+        this.bienKiemSoat = origin.bienKiemSoat;
+        this.hangSanXuat = origin.hangSanXuat;
+        this.namSanXuat = origin.namSanXuat;
+        this.chuSoHuu = origin.chuSoHuu;
+    }
+
     public PhuongTien(String bienKiemSoat, HangSanXuat hangSanXuat, int namSanXuat,
         String chuSoHuu) {
         this.bienKiemSoat = bienKiemSoat;

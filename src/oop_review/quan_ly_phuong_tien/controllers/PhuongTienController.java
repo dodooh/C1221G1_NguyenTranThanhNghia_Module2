@@ -88,15 +88,15 @@ public class PhuongTienController {
     private void removePhuongTien() {
         System.out.println("Nhập biển số xe muốn xóa: ");
         String bienKiemSoat = scanner.nextLine();
-        int indexOfXeTai = xeTaiService.searchByBiemKiemSoat(bienKiemSoat);
-        int indexOfXeMay = xeMayService.searchByBiemKiemSoat(bienKiemSoat);
-        int indexOfOto = otoService.searchByBiemKiemSoat(bienKiemSoat);
-        if (indexOfXeTai != -1) {
-            xeTaiService.remove(indexOfXeTai);
-        } else if (indexOfXeMay != -1) {
-            xeMayService.remove(indexOfXeMay);
-        } else if (indexOfOto != -1) {
-            otoService.remove(indexOfOto);
+        int indexInOtos = otoService.searchByBiemKiemSoat(bienKiemSoat);
+        int indexInXeMays = xeMayService.searchByBiemKiemSoat(bienKiemSoat);
+        int indexInXeTais = xeTaiService.searchByBiemKiemSoat(bienKiemSoat);
+        if (indexInOtos != -1) {
+            otoService.remove(indexInOtos);
+        } else if (indexInXeMays != -1) {
+            xeMayService.remove(indexInXeMays);
+        } else if (indexInXeTais != -1) {
+            xeTaiService.remove(indexInXeTais);
         } else {
             System.out.println("Không tìm thấy biển kiểm soát trong hệ thống!");
         }
