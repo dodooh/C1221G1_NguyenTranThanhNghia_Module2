@@ -2,7 +2,7 @@ package oop_review.quan_ly_phuong_tien.services.impl;
 
 import oop_review.quan_ly_phuong_tien.models.HangSanXuat;
 
-public class HangSanXuatImpl {
+public class HangSanXuatServiceImpl {
 
     public static final HangSanXuat[] hangSanXuats = new HangSanXuat[7];
 

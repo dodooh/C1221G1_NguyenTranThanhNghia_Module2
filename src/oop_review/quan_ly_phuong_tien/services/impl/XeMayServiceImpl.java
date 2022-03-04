@@ -1,13 +1,12 @@
 package oop_review.quan_ly_phuong_tien.services.impl;
 
-import static oop_review.quan_ly_phuong_tien.services.impl.HangSanXuatImpl.hangSanXuats;
+import static oop_review.quan_ly_phuong_tien.services.impl.HangSanXuatServiceImpl.hangSanXuats;
 
 import java.util.Scanner;
-import oop_review.quan_ly_phuong_tien.models.Oto;
 import oop_review.quan_ly_phuong_tien.models.XeMay;
 import oop_review.quan_ly_phuong_tien.services.IServices;
 
-public class XeMayImpl implements IServices {
+public class XeMayServiceImpl implements IServices {
 
     static XeMay[] xeMays = new XeMay[10];
 

@@ -2,16 +2,16 @@ package oop_review.quan_ly_phuong_tien.controllers;
 
 import java.util.Scanner;
 import oop_review.quan_ly_phuong_tien.services.IServices;
-import oop_review.quan_ly_phuong_tien.services.impl.OtoImpl;
-import oop_review.quan_ly_phuong_tien.services.impl.XaTaiImpl;
-import oop_review.quan_ly_phuong_tien.services.impl.XeMayImpl;
+import oop_review.quan_ly_phuong_tien.services.impl.OtoServiceImpl;
+import oop_review.quan_ly_phuong_tien.services.impl.XaTaiServiceImpl;
+import oop_review.quan_ly_phuong_tien.services.impl.XeMayServiceImpl;
 
 public class PhuongTienController {
 
     Scanner scanner = new Scanner(System.in);
-    IServices otoService = new OtoImpl();
-    IServices xeMayService = new XeMayImpl();
-    IServices xeTaiService = new XaTaiImpl();
+    IServices otoService = new OtoServiceImpl();
+    IServices xeMayService = new XeMayServiceImpl();
+    IServices xeTaiService = new XaTaiServiceImpl();
 
     public void showMainMenu() {
 

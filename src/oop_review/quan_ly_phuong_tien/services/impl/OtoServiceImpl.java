@@ -1,13 +1,12 @@
 package oop_review.quan_ly_phuong_tien.services.impl;
 
 import java.util.Scanner;
-import oop_review.quan_ly_phuong_tien.models.HangSanXuat;
 import oop_review.quan_ly_phuong_tien.models.Oto;
 import oop_review.quan_ly_phuong_tien.services.IServices;
 
-import static oop_review.quan_ly_phuong_tien.services.impl.HangSanXuatImpl.hangSanXuats;
+import static oop_review.quan_ly_phuong_tien.services.impl.HangSanXuatServiceImpl.hangSanXuats;
 
-public class OtoImpl implements IServices {
+public class OtoServiceImpl implements IServices {
 
     static Oto[] otos = new Oto[10];
 
