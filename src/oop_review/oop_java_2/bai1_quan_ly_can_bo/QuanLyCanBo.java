@@ -1,6 +1,5 @@
 package oop_review.oop_java_2.bai1_quan_ly_can_bo;
 
-import static oop_review.quan_ly_phuong_tien.services.impl.HangSanXuatImpl.hangSanXuats;
 
 import java.util.Arrays;
 import java.util.Scanner;
