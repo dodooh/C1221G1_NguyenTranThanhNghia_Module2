@@ -3,6 +3,7 @@ package ss15_exception.thuc_hanh.su_dung_lop_arrayindexoutofboundsexception;
 import java.util.Scanner;
 
 public class TestArray {
+
     public static void main(String[] args) {
         ArrayExample arrExample = new ArrayExample();
         Integer[] arr = arrExample.createRandom();

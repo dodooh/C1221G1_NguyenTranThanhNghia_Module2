@@ -1,42 +1,34 @@
 package ss15_exception.bai_tap.su_dung_lop_illegaltriangleexception;
 
+import java.util.Scanner;
+
 public class TriangleTest {
 
     public static void main(String[] args) {
-        // Bắt exception dùng hàm khởi tạo;
-        System.out.println("Khởi tạo Triangle với 1 cạnh âm");
-        try {
-            Triangle triangle1 =new Triangle(4.5, -1, 6);
-            System.out.println(triangle1); // KHÔNG ĐƯỢC THỰC THI
-        } catch (IllegalTriangleException e) {
-            System.out.println(e.getMessage());
-        }
-
-        System.out.println();
-        System.out.println("Khởi tạo Triangle với 1 cạnh = 0");
-        try {
-            Triangle triangle2 =new Triangle(4.5, 1, 0);
-            System.out.println(triangle2);  // KHÔNG ĐƯỢC THỰC THI
-        } catch (IllegalTriangleException e) {
-            System.out.println(e.getMessage());
-        }
-
-        System.out.println();
-        System.out.println("Khởi tạo Triangle với độ dài 1 cạnh lớn hơn tổng độ dài 2 cạnh còn lại");
-        try {
-            Triangle triangle3 =new Triangle(4.5, 4.5, 10);
-            System.out.println(triangle3);  // KHÔNG ĐƯỢC THỰC THI
-        } catch (IllegalTriangleException e) {
-            System.out.println(e.getMessage());
-        }
-
-        System.out.println();
-        System.out.println("Khởi tạo Triangle hợp lệ");
-        try {
-            Triangle triangle4 = new Triangle(2, 2, 2);
-            System.out.println(triangle4);
-        } catch (IllegalTriangleException e) {
-            System.out.println(e.getMessage());
-        }
+        Scanner scanner = new Scanner(System.in);
+        boolean flag;
+        do {
+            flag = false;
+            try {
+                System.out.print("side1 = ");
+                double side1 = Double.parseDouble(scanner.nextLine());
+                System.out.print("side2 = ");
+                double side2 = Double.parseDouble(scanner.nextLine());
+                System.out.print("side3 = ");
+                double side3 = Double.parseDouble(scanner.nextLine());
+                Shape triangle = new Triangle(side1, side2, side3);
+                System.out.println(triangle);
+                System.out.printf("Area = %.2f\n", triangle.getArea());
+                System.out.printf("Perimeter = %.2f\n", triangle.getPerimeter());
+            } catch (IllegalTriangleException e) {
+                System.out.println(e.getMessage());
+                System.out.println("Nhập lại!!");
+                flag = true;
+            } catch (NumberFormatException e) {
+                System.out.println("Input must be Number!");
+                e.printStackTrace();
+                flag = true;
+            }
+        } while (flag);
     }
 }

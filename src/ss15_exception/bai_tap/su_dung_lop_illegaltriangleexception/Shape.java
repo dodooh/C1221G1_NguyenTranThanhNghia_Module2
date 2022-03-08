@@ -1,6 +1,6 @@
 package ss15_exception.bai_tap.su_dung_lop_illegaltriangleexception;
 
-public class Shape {
+public abstract class Shape {
 
     private String color = "red";
     private boolean filled = true;
@@ -29,6 +29,8 @@ public class Shape {
         this.filled = filled;
     }
 
+    public abstract double getArea();
+    public abstract double getPerimeter();
     @Override
     public String toString() {
         return "A Shape with color of "

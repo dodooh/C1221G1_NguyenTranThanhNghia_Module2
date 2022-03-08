@@ -3,6 +3,7 @@ package ss15_exception.thuc_hanh.debug_ung_dung_java;
 import java.util.Scanner;
 
 public class LinearEquationResolver {
+
     public static void main(String[] args) {
         System.out.println("Linear Equation Resolver");
         System.out.println("Given a equation as 'a * x + b = 0', please enter constants:");
