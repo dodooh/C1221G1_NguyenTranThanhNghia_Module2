@@ -67,8 +67,8 @@ public class Triangle extends Shape {
     @Override
     public String toString() {
         return "Triangle{" +
-            "side1=" + side1 +
             ", side2=" + side2 +
+            "side1=" + side1 +
             ", side3=" + side3 +
             ", color=" + super.getColor() +
             ", filled=" + super.isFilled() +
