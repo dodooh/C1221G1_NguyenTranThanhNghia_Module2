@@ -1,0 +1,2 @@
+Viết một chương trình cho phép người dùng sao chép các tập tin.
+Người sử dụng cần phải cung cấp một tập tin nguồn (source file) và một tập tin đích (target file).
