@@ -10,9 +10,8 @@ import java.util.List;
 
 public class ReadFileCSV {
 
-    private static String FILEPATH = "src/ss16_text_file/bai_tap/doc_file_csv/data.csv";
-
     public static void main(String[] args) {
+        String FILEPATH = "src/ss16_text_file/bai_tap/doc_file_csv/data.csv";
         List<Nation> nationList = getNationListFromFile(FILEPATH);
         for (Nation nation  : nationList) {
             System.out.println(nation);
