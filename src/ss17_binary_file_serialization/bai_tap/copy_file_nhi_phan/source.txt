@@ -1,0 +1,39 @@
+
+[OPTIONAL] [BÀI TẬP] COPY FILE NHỊ PHÂN
+MỤC ĐÍCH
+Luyện tập đọc/ghi file nhị phân với các lớp được dẫn xuất từ InputStream/OutputStream
+
+MÔ TẢ BÀI TOÁN
+Viết một chương trình cho phép người dùng sao chép các tập tin. Người sử dụng cần phải cung cấp một tập tin nguồn (source file) và một tập tin đích (target file).
+
+Chương trình sao chép tệp nguồn vào tệp tin đích và hiển thị số byte trong tệp. Chương trình nên cảnh báo người dùng nếu tệp nguồn không tồn tại hoặc nếu tập tin đích đã tồn tại.
+
+Để sao chép nội dung từ tệp tin nguồn đến tệp tin đích, bạn nên sử dụng luồng đầu vào để đọc byte từ tệp nguồn và luồng đầu ra để gửi byte đến tệp tin đích, bất kể nội dung của tệp.
+
+HƯỚNG DẪN NỘP BÀI:
+up bài tập lên github
+
+paste link github vào phần nộp bài
+
+SUBMISSION STATUS
+Submission status	No attempt
+Grading status	Not graded
+Last modified	-
+Submission comments
+Comments (0)
+You have not made a submission yet.
+Jump to...
+Jump to...
+CHƯƠNG TRÌNH
+Career
+Premium
+Accelerator
+TÀI NGUYÊN
+Blog
+Tạp chí Lập trình
+AgileBreakfast
+FOLLOW US
+
+
+CodeGym@2018. All rights reserved.
+You are logged in as Nguyễn Trần Thanh Nghĩa (Log out)
