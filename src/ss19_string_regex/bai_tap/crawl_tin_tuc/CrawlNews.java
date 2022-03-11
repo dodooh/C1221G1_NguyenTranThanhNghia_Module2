@@ -21,10 +21,13 @@ public class CrawlNews {
 //            System.out.println(content);
             Pattern p = Pattern.compile("<h3 class=\"article-title\"> <a .{0,500}\">(.{0,300})</a> </h3>");
             Matcher m = p.matcher(content);
-            System.out.println("Result");
+            System.out.println("Các bài viết cào được từ: https://dantri.com.vn/THE-GIOI.HTM");
+            int count = 0;
             while (m.find()) {
                 System.out.println(m.group(1).replaceAll("&quot;","\"")); // escape HTML entity
+                count++;
             }
+            System.out.println("Tổng cộng: " + count + " bài.");
         } catch (IOException e) {
             e.printStackTrace();
         }
