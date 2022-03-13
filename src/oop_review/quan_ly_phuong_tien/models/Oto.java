@@ -1,17 +1,16 @@
 package oop_review.quan_ly_phuong_tien.models;
 
 public class Oto extends PhuongTien {
+    public enum KieuXe {
+        XE_KHACH,
+        XE_DU_LICH
+    }
 
     private int soChoNgoi;
-    private String kieuXe;
+    private KieuXe kieuXe;
 
-    public Oto(PhuongTien phuongTien,int soChoNgoi, String kieuXe ){
-        super(phuongTien);
-        this.soChoNgoi = soChoNgoi;
-        this.kieuXe = kieuXe;
-    }
     public Oto(String bienKiemSoat, HangSanXuat hangSanXuat, int namSanXuat, String chuSoHuu,
-        int soChoNgoi, String kieuXe) {
+        int soChoNgoi, KieuXe kieuXe) {
         super(bienKiemSoat, hangSanXuat, namSanXuat, chuSoHuu);
         this.soChoNgoi = soChoNgoi;
         this.kieuXe = kieuXe;
@@ -25,11 +24,11 @@ public class Oto extends PhuongTien {
         this.soChoNgoi = soChoNgoi;
     }
 
-    public String getKieuXe() {
+    public KieuXe getKieuXe() {
         return kieuXe;
     }
 
-    public void setKieuXe(String kieuXe) {
+    public void setKieuXe(KieuXe kieuXe) {
         this.kieuXe = kieuXe;
     }
 
@@ -40,5 +39,10 @@ public class Oto extends PhuongTien {
             ", soChoNgoi=" + soChoNgoi +
             ", kieuXe='" + kieuXe + '\'' +
             '}';
+    }
+    @Override
+    public String getCSVFormat() {
+        return getBienKiemSoat() + "," + getHangSanXuat().getTenHangSanXuat() + "," + getNamSanXuat()
+            + "," + getChuSoHuu() + "," + getSoChoNgoi() + "," + getKieuXe().name();
     }
 }

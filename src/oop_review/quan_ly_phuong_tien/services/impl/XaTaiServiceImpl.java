@@ -1,29 +1,31 @@
 package oop_review.quan_ly_phuong_tien.services.impl;
 
-import static oop_review.quan_ly_phuong_tien.services.impl.HangSanXuatServiceImpl.hangSanXuats;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.List;
 import oop_review.quan_ly_phuong_tien.models.PhuongTien;
-import oop_review.quan_ly_phuong_tien.models.XeTai;
 import oop_review.quan_ly_phuong_tien.services.IServices;
+import static oop_review.quan_ly_phuong_tien.utils.ReadAndWriteFile.writePhuongTienListToCSV;
+import static oop_review.quan_ly_phuong_tien.utils.ReadAndWriteFile.readXeTaiListFromFile;
 
 public class XaTaiServiceImpl extends PhuongTienServiceImpl implements IServices {
-
-    static ArrayList<PhuongTien> xeTais = new ArrayList<>();
+    static private final String XE_TAI_CSV_FILE = "src/oop_review/quan_ly_phuong_tien/data/xeTai.csv";
+    static List<PhuongTien> xeTais = new ArrayList<>();
 
     static {
-        xeTais.add(new XeTai("43C-012.34", hangSanXuats[3], 2019, "Nguyễn Văn A", 3));
-        xeTais.add(new XeTai("43C-47.678", hangSanXuats[2], 2020, "Nguyễn Văn B", 9));
-        xeTais.add(new XeTai("43C-45.235", hangSanXuats[6], 2021, "Nguyễn Văn C", 12));
+        xeTais = readXeTaiListFromFile(XE_TAI_CSV_FILE);
     }
 
     @Override
-    public void add() {
-        super.add();
-        System.out.println("Nhập tải trọng cho xe: ");
-        int taiTrong = Integer.parseInt(scanner.nextLine());
-        xeTais.add(new XeTai(super.phuongTien,taiTrong));
+    public PhuongTien get(int index) {
+        return xeTais.get(index);
+    }
+
+    @Override
+    public void add(PhuongTien newPhuongTien) {
+        xeTais.add(newPhuongTien);
+        writePhuongTienListToCSV(xeTais,XE_TAI_CSV_FILE,false);
+        System.out.println("Thêm thành công: " + newPhuongTien);
     }
 
     @Override
@@ -32,12 +34,14 @@ public class XaTaiServiceImpl extends PhuongTienServiceImpl implements IServices
     }
 
     @Override
-    public void remove(int index) {
-        remove(xeTais,index);
+    public void remove(PhuongTien phuongTien) {
+        remove(xeTais, phuongTien);
+        writePhuongTienListToCSV(xeTais,XE_TAI_CSV_FILE,false);
+        System.out.println("Xóa Thành Công!!");
     }
 
     @Override
-    public int searchByBiemKiemSoat(String bienKiemSoat) {
-        return searchByBiemKiemSoat(xeTais,bienKiemSoat);
+    public int searchByBienKiemSoat(String bienKiemSoat) {
+        return searchByBienKiemSoat(xeTais, bienKiemSoat);
     }
 }

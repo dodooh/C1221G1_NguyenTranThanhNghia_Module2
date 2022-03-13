@@ -1,22 +1,24 @@
 package oop_review.quan_ly_phuong_tien.services;
 
 import java.util.ArrayList;
-import oop_review.oop_java_1.nhap_xuat_thong_tin_xe.Vehicle;
+import java.util.List;
 import oop_review.quan_ly_phuong_tien.models.PhuongTien;
 
 public interface IServices {
 
-    void add();
+    void add(PhuongTien newPhuongTien);
 
-    void showList(ArrayList<PhuongTien> list); // triển khai ở lớp abstract
+    PhuongTien get(int index);
+
+    void showList(List<PhuongTien> list); // triển khai ở lớp abstract
 
     void showList(); // triển khai ở lớp con
 
-    void remove(int index);// triển khai ở lớp con
+    void remove(PhuongTien phuongTien);// triển khai ở lớp con
 
-    void remove(ArrayList<PhuongTien> list, int index); // triển khai ở lớp abstract
+    void remove(List<PhuongTien> list, PhuongTien phuongTien); // triển khai ở lớp abstract
 
-    int searchByBiemKiemSoat(String bienKiemSoat);// triển khai ở lớp con
+    int searchByBienKiemSoat(String bienKiemSoat);// triển khai ở lớp con
 
-    int searchByBiemKiemSoat(ArrayList<PhuongTien> list, String bienKiemSoat);// triển khai ở lớp abstract
+//    int searchByBienKiemSoat(ArrayList<PhuongTien> list, String bienKiemSoat);// triển khai ở lớp abstract
 }

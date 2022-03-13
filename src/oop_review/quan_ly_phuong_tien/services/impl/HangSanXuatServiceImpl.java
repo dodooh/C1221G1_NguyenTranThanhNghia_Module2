@@ -15,4 +15,13 @@ public class HangSanXuatServiceImpl {
         hangSanXuats[5] = new HangSanXuat("HSX-006", "Toyota", "Nhật Bản");
         hangSanXuats[6] = new HangSanXuat("HSX-007", "Hino", "Nhật Bản");
     }
+
+    public static HangSanXuat findByName(String name) {
+        for(HangSanXuat hangSanXuat : hangSanXuats) {
+            if (hangSanXuat.getTenHangSanXuat().equals(name)) {
+                return hangSanXuat;
+            }
+        }
+        return null;
+    }
 }

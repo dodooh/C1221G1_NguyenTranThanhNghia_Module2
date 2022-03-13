@@ -1,32 +1,34 @@
 package oop_review.quan_ly_phuong_tien.services.impl;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
-import oop_review.quan_ly_phuong_tien.models.Oto;
 import oop_review.quan_ly_phuong_tien.models.PhuongTien;
 import oop_review.quan_ly_phuong_tien.services.IServices;
+import oop_review.quan_ly_phuong_tien.utils.ReadAndWriteFile;
 
 import static oop_review.quan_ly_phuong_tien.services.impl.HangSanXuatServiceImpl.hangSanXuats;
+import static oop_review.quan_ly_phuong_tien.utils.ReadAndWriteFile.writePhuongTienListToCSV;
+import static oop_review.quan_ly_phuong_tien.utils.ReadAndWriteFile.readOtoListFromFile;
 
 public class OtoServiceImpl extends PhuongTienServiceImpl implements IServices {
-
-    static Scanner scanner = new Scanner(System.in);
-    static ArrayList<PhuongTien> otos = new ArrayList<>();
+    static private final String OTO_CSV_FILE = "src/oop_review/quan_ly_phuong_tien/data/oto.csv";
+    static List<PhuongTien> otos = new ArrayList<>();
 
     static {
-        otos.add( new Oto("43A-212.56", hangSanXuats[5], 2019, "Nguyễn Văn A", 5, "Du lịch"));
-        otos.add( new Oto("43B-453.88", hangSanXuats[3], 2020, "Nguyễn Văn B", 45, "Xe khách"));
-        otos.add( new Oto("43B-453.89", hangSanXuats[4], 2020, "Nguyễn Văn C", 16, "Xe khách"));
+        otos = readOtoListFromFile(OTO_CSV_FILE);
     }
 
     @Override
-    public void add() {
-        super.add();
-        System.out.println("Nhập số chỗ ngồi: ");
-        int soChoNgoi = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhập kiểu xe: ");
-        String kieuXe = scanner.nextLine();
-        otos.add(new Oto(super.phuongTien,soChoNgoi,kieuXe));
+    public void add(PhuongTien newPhuongTien) {
+        otos.add(newPhuongTien);
+        writePhuongTienListToCSV(otos,OTO_CSV_FILE,false);
+        System.out.println("Thêm thành công: " + newPhuongTien);
+    }
+
+    @Override
+    public PhuongTien get(int index) {
+        return otos.get(index);
     }
 
     @Override
@@ -35,14 +37,15 @@ public class OtoServiceImpl extends PhuongTienServiceImpl implements IServices {
     }
 
     @Override
-    public void remove(int index) {
-        remove(otos,index);
-
+    public void remove(PhuongTien phuongTien) {
+        remove(otos, phuongTien);
+        writePhuongTienListToCSV(otos,OTO_CSV_FILE,false);
+        System.out.println("Xóa thành công!!");
     }
 
     @Override
-    public int searchByBiemKiemSoat(String bienKiemSoat) {
-        return searchByBiemKiemSoat(otos,bienKiemSoat);
+    public int searchByBienKiemSoat(String bienKiemSoat) {
+        return searchByBienKiemSoat(otos, bienKiemSoat);
     }
 
 

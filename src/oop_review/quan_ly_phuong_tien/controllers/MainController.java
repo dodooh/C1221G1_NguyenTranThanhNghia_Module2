@@ -1,21 +1,27 @@
 package oop_review.quan_ly_phuong_tien.controllers;
 
 import java.util.Scanner;
+import oop_review.quan_ly_phuong_tien.controllers.impl.OtoControllerImpl;
+import oop_review.quan_ly_phuong_tien.controllers.impl.XeMayControllerImpl;
+import oop_review.quan_ly_phuong_tien.controllers.impl.XeTaiControllerImpl;
+import oop_review.quan_ly_phuong_tien.models.PhuongTien;
 import oop_review.quan_ly_phuong_tien.services.IServices;
 import oop_review.quan_ly_phuong_tien.services.impl.OtoServiceImpl;
 import oop_review.quan_ly_phuong_tien.services.impl.XaTaiServiceImpl;
 import oop_review.quan_ly_phuong_tien.services.impl.XeMayServiceImpl;
+import oop_review.quan_ly_phuong_tien.utils.NotFoundVehicelException;
 
-public class PhuongTienController {
+public class MainController {
 
-    Scanner scanner = new Scanner(System.in);
+    public static Scanner scanner = new Scanner(System.in);
     IServices otoService = new OtoServiceImpl();
     IServices xeMayService = new XeMayServiceImpl();
     IServices xeTaiService = new XaTaiServiceImpl();
+    IController xeMayController = new XeMayControllerImpl();
+    IController otoController = new OtoControllerImpl();
+    IController xeTaiController = new XeTaiControllerImpl();
 
     public void showMainMenu() {
-
-        boolean flag = true;
         do {
             System.out.println("========CHƯƠNG TRÌNH QUẢN LÝ PHƯƠNG TIỆN GIAO THÔNG=========");
             System.out.println("Chọn chức năng: ");
@@ -33,12 +39,17 @@ public class PhuongTienController {
                     showDisplayList();
                     break;
                 case 3:
-                    removePhuongTien();
+                    try {
+                        removePhuongTien();
+                    } catch (NotFoundVehicelException e) {
+                        e.getMessage();
+                    }
                     break;
                 default:
-                    flag = false;
+                    System.out.println("Thoát chương trình");
+                    System.exit(0);
             }
-        } while (flag);
+        } while (true);
     }
 
     // HIển thị menu hiển thị danh sách
@@ -74,31 +85,41 @@ public class PhuongTienController {
         int choice = Integer.parseInt(scanner.nextLine());
         switch (choice) {
             case 1:
-                xeTaiService.add();
+                xeTaiService.add(xeTaiController.inputPhuongTien());
                 break;
             case 2:
-                otoService.add();
+                otoService.add(otoController.inputPhuongTien());
                 break;
             case 3:
-                xeMayService.add();
+                xeMayService.add(xeMayController.inputPhuongTien());
                 break;
         }
     }
 
-    private void removePhuongTien() {
+    private void removePhuongTien() throws NotFoundVehicelException {
         System.out.println("Nhập biển số xe muốn xóa: ");
         String bienKiemSoat = scanner.nextLine();
-        int indexInOtos = otoService.searchByBiemKiemSoat(bienKiemSoat);
-        int indexInXeMays = xeMayService.searchByBiemKiemSoat(bienKiemSoat);
-        int indexInXeTais = xeTaiService.searchByBiemKiemSoat(bienKiemSoat);
+        PhuongTien phuongTien = null;
+        int indexInOtos = otoService.searchByBienKiemSoat(bienKiemSoat);
+        int indexInXeMays = xeMayService.searchByBienKiemSoat(bienKiemSoat);
+        int indexInXeTais = xeTaiService.searchByBienKiemSoat(bienKiemSoat);
         if (indexInOtos != -1) {
-            otoService.remove(indexInOtos);
+            phuongTien = otoService.get(indexInOtos);
+            if (otoController.askToRemove(phuongTien)) {
+                otoService.remove(phuongTien);
+            }
         } else if (indexInXeMays != -1) {
-            xeMayService.remove(indexInXeMays);
+            phuongTien = xeMayService.get(indexInXeMays);
+            if (xeMayController.askToRemove(phuongTien)) {
+                xeMayService.remove(phuongTien);
+            }
         } else if (indexInXeTais != -1) {
-            xeTaiService.remove(indexInXeTais);
+            phuongTien = xeTaiService.get(indexInXeTais);
+            if (xeTaiController.askToRemove(phuongTien)) {
+                xeTaiService.remove(phuongTien);
+            }
         } else {
-            System.out.println("Không tìm thấy biển kiểm soát trong hệ thống!");
+            throw new NotFoundVehicelException();
         }
     }
 }

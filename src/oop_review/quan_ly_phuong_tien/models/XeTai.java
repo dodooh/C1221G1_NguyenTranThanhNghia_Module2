@@ -4,10 +4,6 @@ public class XeTai extends PhuongTien {
 
     private int taiTrong;
 
-    public XeTai(PhuongTien phuongTien,int taiTrong ){
-        super(phuongTien);
-        this.taiTrong = taiTrong;
-    }
 
     public XeTai(String bienKiemSoat, HangSanXuat hangSanXuat, int namSanXuat,
         String chuSoHuu, int taiTrong) {
@@ -29,5 +25,10 @@ public class XeTai extends PhuongTien {
             super.toString() +
             ", taiTrong=" + taiTrong +
             '}';
+    }
+    @Override
+    public String getCSVFormat() {
+        return getBienKiemSoat() + "," + getHangSanXuat().getTenHangSanXuat() + "," + getNamSanXuat()
+            + "," + getChuSoHuu() + "," + getTaiTrong();
     }
 }

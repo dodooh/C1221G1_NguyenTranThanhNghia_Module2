@@ -3,10 +3,7 @@ package oop_review.quan_ly_phuong_tien.models;
 public class XeMay extends PhuongTien {
 
     private int congSuat;
-    public XeMay(PhuongTien phuongTien,int congSuat ){
-        super(phuongTien);
-        this.congSuat = congSuat;
-    }
+
 
     public XeMay(String bienKiemSoat, HangSanXuat hangSanXuat, int namSanXuat,
         String chuSoHuu, int congSuat) {
@@ -28,5 +25,11 @@ public class XeMay extends PhuongTien {
             super.toString() +
             ", congSuat=" + congSuat +
             '}';
+    }
+
+    @Override
+    public String getCSVFormat() {
+        return getBienKiemSoat() + "," + getHangSanXuat().getTenHangSanXuat() + "," + getNamSanXuat()
+            + "," + getChuSoHuu() + "," + getCongSuat();
     }
 }
