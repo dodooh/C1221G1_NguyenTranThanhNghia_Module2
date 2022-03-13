@@ -45,7 +45,7 @@ public class OtoControllerImpl extends PhuongTienControllerImpl {
     protected String getBienKiemSoatFromInput() {
         String bienSoXe;
         do {
-            System.out.println("Nhập biển số xe ô tô: 'XXY-XXX.XX (X : 0÷9 , Y=A nếu xe du lịch, Y=B  nếu xe khách)'");
+            System.out.println("Nhập biển số xe ô tô: 'XXY-XXX.XX (X : 0÷9 , Y=A nếu xe du lịch, Y=B nếu xe khách)'");
             bienSoXe = scanner.nextLine();
             if (!Validator.isValidOto(bienSoXe, kieuXe)) {
                 System.err.println("Biển số xe ô tô không hợp lệ");
@@ -62,7 +62,7 @@ public class OtoControllerImpl extends PhuongTienControllerImpl {
             System.out.print("Nhập số chỗ ngồi cho xe: ");
             soChoNgoi = scanner.nextLine();
             if (!Validator.isValidNumber(soChoNgoi)) {
-                System.err.println("Tải trọng không hợp lệ");
+                System.err.println("Số chỗ ngồi không hợp lệ");
             } else {
                 break;
             }

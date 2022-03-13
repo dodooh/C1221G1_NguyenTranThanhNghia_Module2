@@ -7,7 +7,6 @@ import oop_review.quan_ly_phuong_tien.services.IServices;
 
 public abstract class PhuongTienServiceImpl implements IServices {
 
-
     @Override
     public void showList(List<PhuongTien> list) {
         for (PhuongTien vehicle : list) {

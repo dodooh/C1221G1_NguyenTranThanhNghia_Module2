@@ -1,6 +1,6 @@
 package oop_review.quan_ly_phuong_tien.utils;
 
-public class NotFoundVehicelException extends Exception{
+public class NotFoundVehicleException extends Exception {
 
     @Override
     public String getMessage() {

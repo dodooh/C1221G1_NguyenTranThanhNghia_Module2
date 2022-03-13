@@ -26,6 +26,7 @@ public class XeTai extends PhuongTien {
             ", taiTrong=" + taiTrong +
             '}';
     }
+
     @Override
     public String getCSVFormat() {
         return getBienKiemSoat() + "," + getHangSanXuat().getTenHangSanXuat() + "," + getNamSanXuat()

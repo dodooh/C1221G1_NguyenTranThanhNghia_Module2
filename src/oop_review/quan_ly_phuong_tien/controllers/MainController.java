@@ -9,7 +9,7 @@ import oop_review.quan_ly_phuong_tien.services.IServices;
 import oop_review.quan_ly_phuong_tien.services.impl.OtoServiceImpl;
 import oop_review.quan_ly_phuong_tien.services.impl.XaTaiServiceImpl;
 import oop_review.quan_ly_phuong_tien.services.impl.XeMayServiceImpl;
-import oop_review.quan_ly_phuong_tien.utils.NotFoundVehicelException;
+import oop_review.quan_ly_phuong_tien.utils.NotFoundVehicleException;
 
 public class MainController {
 
@@ -41,8 +41,8 @@ public class MainController {
                 case 3:
                     try {
                         removePhuongTien();
-                    } catch (NotFoundVehicelException e) {
-                        e.getMessage();
+                    } catch (NotFoundVehicleException e) {
+                        System.err.println(e.getMessage());
                     }
                     break;
                 default:
@@ -96,7 +96,7 @@ public class MainController {
         }
     }
 
-    private void removePhuongTien() throws NotFoundVehicelException {
+    private void removePhuongTien() throws NotFoundVehicleException {
         System.out.println("Nhập biển số xe muốn xóa: ");
         String bienKiemSoat = scanner.nextLine();
         PhuongTien phuongTien = null;
@@ -119,7 +119,7 @@ public class MainController {
                 xeTaiService.remove(phuongTien);
             }
         } else {
-            throw new NotFoundVehicelException();
+            throw new NotFoundVehicleException();
         }
     }
 }

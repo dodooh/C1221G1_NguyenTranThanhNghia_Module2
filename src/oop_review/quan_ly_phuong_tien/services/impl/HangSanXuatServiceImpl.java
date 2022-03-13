@@ -17,7 +17,7 @@ public class HangSanXuatServiceImpl {
     }
 
     public static HangSanXuat findByName(String name) {
-        for(HangSanXuat hangSanXuat : hangSanXuats) {
+        for (HangSanXuat hangSanXuat : hangSanXuats) {
             if (hangSanXuat.getTenHangSanXuat().equals(name)) {
                 return hangSanXuat;
             }

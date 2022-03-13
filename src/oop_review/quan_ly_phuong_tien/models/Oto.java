@@ -1,14 +1,9 @@
 package oop_review.quan_ly_phuong_tien.models;
 
 public class Oto extends PhuongTien {
-    public enum KieuXe {
-        XE_KHACH,
-        XE_DU_LICH
-    }
 
     private int soChoNgoi;
     private KieuXe kieuXe;
-
     public Oto(String bienKiemSoat, HangSanXuat hangSanXuat, int namSanXuat, String chuSoHuu,
         int soChoNgoi, KieuXe kieuXe) {
         super(bienKiemSoat, hangSanXuat, namSanXuat, chuSoHuu);
@@ -40,9 +35,15 @@ public class Oto extends PhuongTien {
             ", kieuXe='" + kieuXe + '\'' +
             '}';
     }
+
     @Override
     public String getCSVFormat() {
         return getBienKiemSoat() + "," + getHangSanXuat().getTenHangSanXuat() + "," + getNamSanXuat()
             + "," + getChuSoHuu() + "," + getSoChoNgoi() + "," + getKieuXe().name();
+    }
+
+    public enum KieuXe {
+        XE_KHACH,
+        XE_DU_LICH
     }
 }

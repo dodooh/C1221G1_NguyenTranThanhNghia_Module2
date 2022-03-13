@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 import oop_review.quan_ly_phuong_tien.models.PhuongTien;
 import oop_review.quan_ly_phuong_tien.services.IServices;
+
 import static oop_review.quan_ly_phuong_tien.utils.ReadAndWriteFile.writePhuongTienListToCSV;
 import static oop_review.quan_ly_phuong_tien.utils.ReadAndWriteFile.readXeTaiListFromFile;
 
 public class XaTaiServiceImpl extends PhuongTienServiceImpl implements IServices {
+
     static private final String XE_TAI_CSV_FILE = "src/oop_review/quan_ly_phuong_tien/data/xeTai.csv";
     static List<PhuongTien> xeTais = new ArrayList<>();
 
@@ -24,7 +26,7 @@ public class XaTaiServiceImpl extends PhuongTienServiceImpl implements IServices
     @Override
     public void add(PhuongTien newPhuongTien) {
         xeTais.add(newPhuongTien);
-        writePhuongTienListToCSV(xeTais,XE_TAI_CSV_FILE,false);
+        writePhuongTienListToCSV(xeTais, XE_TAI_CSV_FILE, false);
         System.out.println("Thêm thành công: " + newPhuongTien);
     }
 
@@ -36,7 +38,7 @@ public class XaTaiServiceImpl extends PhuongTienServiceImpl implements IServices
     @Override
     public void remove(PhuongTien phuongTien) {
         remove(xeTais, phuongTien);
-        writePhuongTienListToCSV(xeTais,XE_TAI_CSV_FILE,false);
+        writePhuongTienListToCSV(xeTais, XE_TAI_CSV_FILE, false);
         System.out.println("Xóa Thành Công!!");
     }
 
