@@ -9,7 +9,7 @@ import oop_review.quan_ly_phuong_tien.services.IServices;
 import static oop_review.quan_ly_phuong_tien.utils.ReadAndWriteFile.writePhuongTienListToCSV;
 import static oop_review.quan_ly_phuong_tien.utils.ReadAndWriteFile.readXeTaiListFromFile;
 
-public class XaTaiServiceImpl extends PhuongTienServiceImpl implements IServices {
+public class XeTaiServiceImpl extends PhuongTienServiceImpl implements IServices {
 
     static private final String XE_TAI_CSV_FILE = "src/oop_review/quan_ly_phuong_tien/data/xeTai.csv";
     static List<PhuongTien> xeTais = new ArrayList<>();

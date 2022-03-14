@@ -55,11 +55,11 @@ public abstract class PhuongTienControllerImpl implements IController {
 
     protected HangSanXuat getHangSanXuatFromInput() {
         System.out.print("Chọn Hãng Sản Xuất");
-        for (int j = 0; j < hangSanXuats.length; j++) {
-            System.out.printf("[%d] - %s\n", j + 1, hangSanXuats[j].getTenHangSanXuat());
+        for (int j = 0; j < hangSanXuats.size(); j++) {
+            System.out.printf("[%d] - %s\n", j + 1, hangSanXuats.get(j).getTenHangSanXuat());
         }
         int hangSanXuatIndex = Integer.parseInt(scanner.nextLine());
-        return hangSanXuats[hangSanXuatIndex - 1];
+        return hangSanXuats.get(hangSanXuatIndex - 1);
     }
 
     protected abstract String getBienKiemSoatFromInput();

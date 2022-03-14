@@ -84,6 +84,19 @@ public class ReadAndWriteFile {
         return resultList;
     }
 
+    public static List<HangSanXuat> readHangSanXuatListFromFile(String filePath) {
+        List<HangSanXuat> resultList = new ArrayList<>();
+        List<String> stringList = readStringListFromFile(filePath);
+        for (String line : stringList) {
+            String[] field = line.split(",");
+            String maHangSanXuat = field[0];
+            String tenHangSanXuat = field[1];
+            String tenQuocGia = field[2];
+            resultList.add(new HangSanXuat(maHangSanXuat, tenHangSanXuat, tenQuocGia));
+        }
+        return resultList;
+    }
+
     private static List<String> readStringListFromFile(String filePath) {
         List<String> stringList = new ArrayList<>();
         File file = new File(filePath);

@@ -14,8 +14,8 @@ public class OtoControllerImpl extends PhuongTienControllerImpl {
     @Override
     public PhuongTien inputPhuongTien() {
         String chuSoHuu = getChuSoHuuFromInput();
-        int namSanXuat = getNamSanXuatFromInput();
         HangSanXuat hangSanXuat = getHangSanXuatFromInput();
+        int namSanXuat = getNamSanXuatFromInput();
         kieuXe = getKieuXeFromInput();
         int soChoNgoi = getSoChoNgoiFromInput();
         String bienKiemSoat = getBienKiemSoatFromInput();

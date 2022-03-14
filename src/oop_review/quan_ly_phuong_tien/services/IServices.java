@@ -10,8 +10,6 @@ public interface IServices {
 
     PhuongTien get(int index);
 
-    void showList(List<PhuongTien> list); // triển khai ở lớp abstract
-
     void showList(); // triển khai ở lớp con
 
     void remove(PhuongTien phuongTien);// triển khai ở lớp con

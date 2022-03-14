@@ -7,7 +7,7 @@ import oop_review.quan_ly_phuong_tien.controllers.impl.XeTaiControllerImpl;
 import oop_review.quan_ly_phuong_tien.models.PhuongTien;
 import oop_review.quan_ly_phuong_tien.services.IServices;
 import oop_review.quan_ly_phuong_tien.services.impl.OtoServiceImpl;
-import oop_review.quan_ly_phuong_tien.services.impl.XaTaiServiceImpl;
+import oop_review.quan_ly_phuong_tien.services.impl.XeTaiServiceImpl;
 import oop_review.quan_ly_phuong_tien.services.impl.XeMayServiceImpl;
 import oop_review.quan_ly_phuong_tien.utils.NotFoundVehicleException;
 
@@ -16,7 +16,7 @@ public class MainController {
     public static Scanner scanner = new Scanner(System.in);
     IServices otoService = new OtoServiceImpl();
     IServices xeMayService = new XeMayServiceImpl();
-    IServices xeTaiService = new XaTaiServiceImpl();
+    IServices xeTaiService = new XeTaiServiceImpl();
     IController xeMayController = new XeMayControllerImpl();
     IController otoController = new OtoControllerImpl();
     IController xeTaiController = new XeTaiControllerImpl();
