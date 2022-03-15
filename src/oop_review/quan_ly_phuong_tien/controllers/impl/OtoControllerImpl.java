@@ -31,14 +31,18 @@ public class OtoControllerImpl extends PhuongTienControllerImpl {
 
     private Oto.KieuXe getKieuXeFromInput() {
         // Hard code
-        System.out.println("[1] - Xe khach\n[2] - Xe Du Lich");
+        int i = 1;
+        for(Oto.KieuXe kieuXe : Oto.KieuXe.values()) {
+            System.out.printf("[%d] - %s\n",i++,kieuXe);
+        }
         System.out.print("Bạn chọn: ");
         int choice = Integer.parseInt(scanner.nextLine());
-        if (choice == 1) {
-            return Oto.KieuXe.XE_KHACH;
-        } else {
-            return Oto.KieuXe.XE_DU_LICH;
-        }
+        return Oto.KieuXe.values()[choice-1];
+//        if (choice == 1) {
+//            return Oto.KieuXe.XE_KHACH;
+//        } else {
+//            return Oto.KieuXe.XE_DU_LICH;
+//        }
     }
 
     @Override

@@ -2,6 +2,7 @@ package oop_review.quan_ly_phuong_tien.services.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import oop_review.quan_ly_phuong_tien.models.Oto;
 import oop_review.quan_ly_phuong_tien.models.PhuongTien;
 import oop_review.quan_ly_phuong_tien.services.IServices;
 import static oop_review.quan_ly_phuong_tien.utils.ReadAndWriteFile.writePhuongTienListToCSV;
@@ -38,6 +39,12 @@ public class OtoServiceImpl extends PhuongTienServiceImpl implements IServices {
         remove(otos, phuongTien);
         writePhuongTienListToCSV(otos, OTO_CSV_FILE, false);
         System.out.println("Xóa thành công!!");
+    }
+
+    private void displaySoCho() {
+        for(PhuongTien oto : otos) {
+            System.out.println(((Oto) oto).getSoChoNgoi());
+        }
     }
 
     @Override
