@@ -1,6 +1,7 @@
 package case_study.furama_resort.models;
 
-public class House extends Facility{
+public class House extends Facility {
+
     private int roomStar;
     private int numberOfFloor;
 
@@ -29,5 +30,13 @@ public class House extends Facility{
 
     public void setNumberOfFloor(int numberOfFloor) {
         this.numberOfFloor = numberOfFloor;
+    }
+
+    @Override
+    public String toString() {
+        return "House{" +
+            "roomStar=" + roomStar +
+            ", numberOfFloor=" + numberOfFloor +
+            '}';
     }
 }

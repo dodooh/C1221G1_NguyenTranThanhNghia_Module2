@@ -1,5 +1,8 @@
 package case_study.furama_resort.services;
 
-public interface IEmployeeService extends IService{
-    void edit();
+import case_study.furama_resort.models.Person;
+import java.util.List;
+
+public interface IEmployeeService extends IPeopleService{
+    List<Person> getEmployeeList();
 }

@@ -4,6 +4,7 @@ import static oop_review.quan_ly_phuong_tien.controllers.MainController.scanner;
 
 import oop_review.quan_ly_phuong_tien.models.HangSanXuat;
 import oop_review.quan_ly_phuong_tien.models.Oto;
+import oop_review.quan_ly_phuong_tien.models.Oto.KieuXe;
 import oop_review.quan_ly_phuong_tien.models.PhuongTien;
 import oop_review.quan_ly_phuong_tien.utils.Validator;
 
@@ -30,19 +31,21 @@ public class OtoControllerImpl extends PhuongTienControllerImpl {
     }
 
     private Oto.KieuXe getKieuXeFromInput() {
-        // Hard code
-        int i = 1;
-        for(Oto.KieuXe kieuXe : Oto.KieuXe.values()) {
-            System.out.printf("[%d] - %s\n",i++,kieuXe);
-        }
-        System.out.print("Bạn chọn: ");
-        int choice = Integer.parseInt(scanner.nextLine());
-        return Oto.KieuXe.values()[choice-1];
-//        if (choice == 1) {
-//            return Oto.KieuXe.XE_KHACH;
-//        } else {
-//            return Oto.KieuXe.XE_DU_LICH;
-//        }
+        int choice;
+        do {
+            int i = 1;
+            for (Oto.KieuXe kieuXe : Oto.KieuXe.values()) {
+                System.out.printf("[%d] - %s\t", i++, kieuXe);
+            }
+            System.out.print("\nBạn chọn: ");
+            choice = Integer.parseInt(scanner.nextLine());
+            if (choice >= 0 && choice < KieuXe.values().length) {
+                break;
+            } else {
+                System.err.println("Khong hop le. Nhap lai");
+            }
+        } while (true);
+        return Oto.KieuXe.values()[choice - 1];
     }
 
     @Override
