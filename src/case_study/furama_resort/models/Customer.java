@@ -1,23 +1,26 @@
 package case_study.furama_resort.models;
 
-public class Customer extends Person{
+import case_study.furama_resort.models.enums.CustomerType;
+
+public class Customer extends Person {
+
     public static final String[] CUSTOMER_LEVEL = {"Diamond", "Platinum", "Gold", "Silver", "Member"};
 
-    private String customerType;
+    private CustomerType customerType;
     private String address;
 
     public Customer(String name, String dayOfBirth, boolean isMale, String nationalID, String phoneNumber, String email, String id,
-        String customerID, String customerType, String address) {
+        CustomerType customerType, String address) {
         super(name, dayOfBirth, isMale, nationalID, phoneNumber, email, id);
         this.customerType = customerType;
         this.address = address;
     }
 
-    public String getCustomerType() {
+    public CustomerType getCustomerType() {
         return customerType;
     }
 
-    public void setCustomerType(String customerType) {
+    public void setCustomerType(CustomerType customerType) {
         this.customerType = customerType;
     }
 

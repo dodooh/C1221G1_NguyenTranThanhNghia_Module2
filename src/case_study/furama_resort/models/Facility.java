@@ -1,6 +1,7 @@
 package case_study.furama_resort.models;
 
 public abstract class Facility {
+
     private String serviceName;
     private int netArea;
     private double totalCost;

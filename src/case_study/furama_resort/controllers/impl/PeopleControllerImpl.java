@@ -4,10 +4,9 @@ import static oop_review.quan_ly_phuong_tien.controllers.MainController.scanner;
 
 import case_study.furama_resort.controllers.IPeopleController;
 import case_study.furama_resort.models.Person;
-import case_study.furama_resort.models.enums.EmployeeLevel;
 import java.util.List;
 
-public abstract class PeopleController implements IPeopleController {
+public abstract class PeopleControllerImpl implements IPeopleController {
 
     protected String getNameFromInput() {
         String name;
@@ -37,7 +36,7 @@ public abstract class PeopleController implements IPeopleController {
         return dayOfBirth;
     }
 
-    protected boolean getSexFromInput() {
+    protected boolean getGenderFromInput() {
         int input;
         do {
             System.out.println("[1] - Male");
@@ -104,14 +103,15 @@ public abstract class PeopleController implements IPeopleController {
         return id;
     }
 
-    public void display(List<Person> list, String typeOfPerson) {
+    public void display(List<Person> list) {
         if (list != null && list.size() != 0) {
             int index = 0;
             for (Person item : list) {
                 System.out.printf("[%d] = %s", index++, item);
+                System.out.println();
             }
         } else {
-            System.err.println(typeOfPerson + " data fail.");
+            System.err.println("Data not found.");
         }
 
     }

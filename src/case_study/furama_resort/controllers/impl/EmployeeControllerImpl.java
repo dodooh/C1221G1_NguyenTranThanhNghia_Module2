@@ -2,6 +2,7 @@ package case_study.furama_resort.controllers.impl;
 
 import static oop_review.quan_ly_phuong_tien.controllers.MainController.scanner;
 
+import case_study.furama_resort.controllers.IEmployeeController;
 import case_study.furama_resort.models.Employee;
 import case_study.furama_resort.models.Person;
 import case_study.furama_resort.models.enums.EmployeeLevel;
@@ -10,7 +11,8 @@ import case_study.furama_resort.services.IEmployeeService;
 import case_study.furama_resort.services.impl.EmployeeServiceImpl;
 import case_study.furama_resort.utils.EnumUtils;
 
-public class EmployeeController extends PeopleController {
+public class EmployeeControllerImpl extends PeopleControllerImpl implements IEmployeeController {
+
     IEmployeeService employeeService = new EmployeeServiceImpl();
 
     private EmployeeLevel getEmployeeLevelFromInput() {
@@ -44,9 +46,9 @@ public class EmployeeController extends PeopleController {
     public void create() {
         String name = getNameFromInput();
         String dayOfBirth = getDayOfBirthFromInput();
-        boolean isMale = getSexFromInput();
+        boolean isMale = getGenderFromInput();
         String nationalID = getNationalIDFromInput();
-        String phoneNumber  = getPhoneNumberFromInput();
+        String phoneNumber = getPhoneNumberFromInput();
         String email = getEmailFromInput();
         String ID = getIDFromInput();
         EmployeeLevel level = getEmployeeLevelFromInput();
@@ -67,7 +69,7 @@ public class EmployeeController extends PeopleController {
 
     @Override
     public void display() {
-        display(employeeService.getEmployeeList(), "Employee");
+        super.display(EmployeeServiceImpl.employeeList);
     }
 
     @Override
@@ -75,24 +77,24 @@ public class EmployeeController extends PeopleController {
         System.out.println("----------EDITING MODE-----------");
         this.display();
         System.out.print("\nEnter Index of Employee to Edit: ");
-        int index = Integer.parseInt(scanner.nextLine());
-        Person object = employeeService.getEmployeeList().get(index);
-        editing(object);
-        employeeService.edit(index,object);
+        int index = Integer.parseInt(scanner.nextLine());  // Chua validator
+        Person objectToEdit = EmployeeServiceImpl.employeeList.get(index);
+        editing(objectToEdit);
+        employeeService.edit(index, objectToEdit);
     }
 
     private void editing(Person object) {
         System.out.println(object);
-        String menu = "[1] name,\n"
-            + "[2] - dayOfBirth,\n"
-            + "[3] - isMale            ,\n"
-            + "[4] - nationalID,\n"
-            + "[5] - phoneNumber,\n"
-            + "[6] - email,\n"
+        String menu = "[1] Name,\n"
+            + "[2] - Day Of Birth,\n"
+            + "[3] - Gender,\n"
+            + "[4] - National ID,\n"
+            + "[5] - Phone Number,\n"
+            + "[6] - Email,\n"
             + "[7] - ID,\n"
-            + "[8] - level,\n"
-            + "[9] - position,\n"
-            + "[10]- salary";
+            + "[8] - Level,\n"
+            + "[9] - Position,\n"
+            + "[10]- Salary";
         do {
             System.out.println(menu);
             System.out.print("Your choice: ");
@@ -107,7 +109,7 @@ public class EmployeeController extends PeopleController {
                     object.setDayOfBirth(newDOB);
                     break;
                 case 3:
-                    boolean newGender = getSexFromInput();
+                    boolean newGender = getGenderFromInput();
                     object.setMale(newGender);
                     break;
                 case 4:
@@ -138,6 +140,8 @@ public class EmployeeController extends PeopleController {
                     double salary = getSalaryFromInput();
                     ((Employee) object).setSalary(salary);
                     break;
+                default:
+                    System.err.println("Invalid input");
             }
             System.out.print("Keep Editting?(y/n) ");
             String s = scanner.nextLine();

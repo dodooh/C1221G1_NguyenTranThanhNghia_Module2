@@ -8,6 +8,14 @@ public class Contract {
     private double totalCost;
     private String customerID;
 
+    public Contract(int contractNumber, String bookingID, double deposit, double totalCost, String customerID) {
+        this.contractNumber = contractNumber;
+        this.bookingID = bookingID;
+        this.deposit = deposit;
+        this.totalCost = totalCost;
+        this.customerID = customerID;
+    }
+
     public int getContractNumber() {
         return contractNumber;
     }
@@ -45,14 +53,6 @@ public class Contract {
     }
 
     public void setCustomerID(String customerID) {
-        this.customerID = customerID;
-    }
-
-    public Contract(int contractNumber, String bookingID, double deposit, double totalCost, String customerID) {
-        this.contractNumber = contractNumber;
-        this.bookingID = bookingID;
-        this.deposit = deposit;
-        this.totalCost = totalCost;
         this.customerID = customerID;
     }
 

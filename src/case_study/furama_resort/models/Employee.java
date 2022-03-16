@@ -1,7 +1,6 @@
 package case_study.furama_resort.models;
 
 
-
 import case_study.furama_resort.models.enums.EmployeeLevel;
 import case_study.furama_resort.models.enums.EmployeePosition;
 

@@ -1,11 +1,14 @@
 package case_study.furama_resort.controllers;
 
-import case_study.furama_resort.controllers.impl.EmployeeController;
+import case_study.furama_resort.controllers.impl.CustomerControllerImpl;
+import case_study.furama_resort.controllers.impl.EmployeeControllerImpl;
 import java.util.Scanner;
 
 public class FuramaController {
-    EmployeeController employeeController = new EmployeeController();
+
     private final Scanner scanner = new Scanner(System.in);
+    IEmployeeController employeeController = new EmployeeControllerImpl();
+    ICustomerController customerController = new CustomerControllerImpl();
 
     public void displayMainMenu() {
         do {
@@ -83,10 +86,13 @@ public class FuramaController {
             int chooseMenu = Integer.parseInt(scanner.nextLine());
             switch (chooseMenu) {
                 case 1:
+                    customerController.display();
                     break;
                 case 2:
+                    customerController.create();
                     break;
                 case 3:
+                    customerController.edit();
                     break;
                 default:
                     flag = false;
@@ -146,6 +152,7 @@ public class FuramaController {
             }
         } while (flag);
     }
+
     private void showPromotionManagementMenu() {
 
         boolean flag = true;

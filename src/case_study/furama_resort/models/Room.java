@@ -1,6 +1,7 @@
 package case_study.furama_resort.models;
 
-public class Room extends Facility{
+public class Room extends Facility {
+
     private String freeServices;
 
     public Room(String freeServices) {
