@@ -1,16 +1,13 @@
-package case_study.furama_resort.controllers.impl;
+package case_study.furama_resort.controllers.people_controllers.impl;
 
 import static oop_review.quan_ly_phuong_tien.controllers.MainController.scanner;
 
-import case_study.furama_resort.controllers.ICustomerController;
-import case_study.furama_resort.models.Customer;
-import case_study.furama_resort.models.Employee;
-import case_study.furama_resort.models.Person;
+import case_study.furama_resort.controllers.people_controllers.ICustomerController;
+import case_study.furama_resort.models.people_models.Customer;
+import case_study.furama_resort.models.people_models.Person;
 import case_study.furama_resort.models.enums.CustomerType;
-import case_study.furama_resort.models.enums.EmployeeLevel;
-import case_study.furama_resort.models.enums.EmployeePosition;
-import case_study.furama_resort.services.ICustomerService;
-import case_study.furama_resort.services.impl.CustomerServiceImpl;
+import case_study.furama_resort.services.people_services.ICustomerService;
+import case_study.furama_resort.services.people_services.impl.CustomerServiceImpl;
 import case_study.furama_resort.utils.EnumUtils;
 
 public class CustomerControllerImpl extends PeopleControllerImpl implements ICustomerController {
@@ -32,7 +29,7 @@ public class CustomerControllerImpl extends PeopleControllerImpl implements ICus
         String nationalID = getNationalIDFromInput();
         String phoneNumber = getPhoneNumberFromInput();
         String email = getEmailFromInput();
-        String ID = getIDFromInput();
+        String customerID = getIDFromInput();
         CustomerType customerType = getCustomerTypeFromInput();
         String address = getAddressFromInput();
         customerService.add(new Customer(name,
@@ -41,7 +38,7 @@ public class CustomerControllerImpl extends PeopleControllerImpl implements ICus
             nationalID,
             phoneNumber,
             email,
-            ID,
+            customerID,
             customerType,
             address));
     }
@@ -117,8 +114,8 @@ public class CustomerControllerImpl extends PeopleControllerImpl implements ICus
                     object.setEmail(email);
                     break;
                 case 7:
-                    String id = getIDFromInput();
-                    object.setId(id);
+                    String customerID = getIDFromInput();
+                    ((Customer) object).setCustomerID(customerID);
                     break;
                 case 8:
                     CustomerType customerType = getCustomerTypeFromInput();

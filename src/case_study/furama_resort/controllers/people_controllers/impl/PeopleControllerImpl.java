@@ -1,9 +1,9 @@
-package case_study.furama_resort.controllers.impl;
+package case_study.furama_resort.controllers.people_controllers.impl;
 
 import static oop_review.quan_ly_phuong_tien.controllers.MainController.scanner;
 
-import case_study.furama_resort.controllers.IPeopleController;
-import case_study.furama_resort.models.Person;
+import case_study.furama_resort.controllers.people_controllers.IPeopleController;
+import case_study.furama_resort.models.people_models.Person;
 import java.util.List;
 
 public abstract class PeopleControllerImpl implements IPeopleController {

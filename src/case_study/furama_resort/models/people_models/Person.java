@@ -1,4 +1,4 @@
-package case_study.furama_resort.models;
+package case_study.furama_resort.models.people_models;
 
 public abstract class Person {
 
@@ -8,24 +8,14 @@ public abstract class Person {
     private String nationalID;
     private String phoneNumber;
     private String email;
-    private String id;
 
-    public Person(String name, String dayOfBirth, boolean isMale, String nationalID, String phoneNumber, String email, String id) {
+    public Person(String name, String dayOfBirth, boolean isMale, String nationalID, String phoneNumber, String email) {
         this.name = name;
         this.dayOfBirth = dayOfBirth;
         this.isMale = isMale;
         this.nationalID = nationalID;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.id = id;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -83,7 +73,6 @@ public abstract class Person {
             ", isMale=" + isMale +
             ", nationalID='" + nationalID + '\'' +
             ", phoneNumber='" + phoneNumber + '\'' +
-            ", email='" + email + '\'' +
-            ", id='" + id + '\'';
+            ", email='" + email + '\'';
     }
 }

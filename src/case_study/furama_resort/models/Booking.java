@@ -1,5 +1,6 @@
 package case_study.furama_resort.models;
 
+import case_study.furama_resort.models.facitity_models.Facility;
 import java.util.Date;
 
 public class Booking {

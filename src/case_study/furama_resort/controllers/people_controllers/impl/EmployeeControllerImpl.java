@@ -1,14 +1,14 @@
-package case_study.furama_resort.controllers.impl;
+package case_study.furama_resort.controllers.people_controllers.impl;
 
 import static oop_review.quan_ly_phuong_tien.controllers.MainController.scanner;
 
-import case_study.furama_resort.controllers.IEmployeeController;
-import case_study.furama_resort.models.Employee;
-import case_study.furama_resort.models.Person;
+import case_study.furama_resort.controllers.people_controllers.IEmployeeController;
+import case_study.furama_resort.models.people_models.Employee;
+import case_study.furama_resort.models.people_models.Person;
 import case_study.furama_resort.models.enums.EmployeeLevel;
 import case_study.furama_resort.models.enums.EmployeePosition;
-import case_study.furama_resort.services.IEmployeeService;
-import case_study.furama_resort.services.impl.EmployeeServiceImpl;
+import case_study.furama_resort.services.people_services.IEmployeeService;
+import case_study.furama_resort.services.people_services.impl.EmployeeServiceImpl;
 import case_study.furama_resort.utils.EnumUtils;
 
 public class EmployeeControllerImpl extends PeopleControllerImpl implements IEmployeeController {
@@ -50,7 +50,7 @@ public class EmployeeControllerImpl extends PeopleControllerImpl implements IEmp
         String nationalID = getNationalIDFromInput();
         String phoneNumber = getPhoneNumberFromInput();
         String email = getEmailFromInput();
-        String ID = getIDFromInput();
+        String employeeID = getIDFromInput();
         EmployeeLevel level = getEmployeeLevelFromInput();
         EmployeePosition position = getEmployeePositionFromInput();
         double salary = getSalaryFromInput();
@@ -61,7 +61,7 @@ public class EmployeeControllerImpl extends PeopleControllerImpl implements IEmp
             nationalID,
             phoneNumber,
             email,
-            ID,
+            employeeID,
             level,
             position,
             salary));
@@ -125,8 +125,8 @@ public class EmployeeControllerImpl extends PeopleControllerImpl implements IEmp
                     object.setEmail(email);
                     break;
                 case 7:
-                    String id = getIDFromInput();
-                    object.setId(id);
+                    String employeeID = getIDFromInput();
+                    ((Employee) object).setEmployeeID(employeeID);
                     break;
                 case 8:
                     EmployeeLevel level = getEmployeeLevelFromInput();

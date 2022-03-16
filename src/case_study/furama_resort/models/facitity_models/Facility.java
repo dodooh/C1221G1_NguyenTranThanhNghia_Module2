@@ -1,7 +1,10 @@
-package case_study.furama_resort.models;
+package case_study.furama_resort.models.facitity_models;
+
+import java.util.Objects;
 
 public abstract class Facility {
 
+    private String serviceID;
     private String serviceName;
     private int netArea;
     private double totalCost;
@@ -11,12 +14,21 @@ public abstract class Facility {
     public Facility() {
     }
 
-    public Facility(String serviceName, int netArea, double totalCost, int numberOfPeopleAllowed, String typeRent) {
+    public Facility(String serviceID, String serviceName, int netArea, double totalCost, int numberOfPeopleAllowed, String typeRent) {
+        this.serviceID = serviceID;
         this.serviceName = serviceName;
         this.netArea = netArea;
         this.totalCost = totalCost;
         this.numberOfPeopleAllowed = numberOfPeopleAllowed;
         this.typeRent = typeRent;
+    }
+
+    public String getServiceID() {
+        return serviceID;
+    }
+
+    public void setServiceID(String serviceID) {
+        this.serviceID = serviceID;
     }
 
     public String getServiceName() {
@@ -61,12 +73,29 @@ public abstract class Facility {
 
     @Override
     public String toString() {
-        return "Facility{" +
-            "serviceName='" + serviceName + '\'' +
-            ", netArea=" + netArea +
-            ", totalCost=" + totalCost +
-            ", numberOfPeopleAllowed=" + numberOfPeopleAllowed +
-            ", typeRent='" + typeRent + '\'' +
-            '}';
+        return
+            ", serviceID='" + serviceID + '\'' +
+                ", serviceName='" + serviceName + '\'' +
+                ", netArea=" + netArea +
+                ", totalCost=" + totalCost +
+                ", numberOfPeopleAllowed=" + numberOfPeopleAllowed +
+                ", typeRent='" + typeRent + '\'';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Facility facility = (Facility) o;
+        return serviceID.equals(facility.serviceID);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(serviceID);
     }
 }

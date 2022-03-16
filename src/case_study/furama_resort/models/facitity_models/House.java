@@ -1,17 +1,13 @@
-package case_study.furama_resort.models;
+package case_study.furama_resort.models.facitity_models;
 
 public class House extends Facility {
 
     private int roomStar;
     private int numberOfFloor;
 
-    public House(int roomStar, int numberOfFloor) {
-        this.roomStar = roomStar;
-        this.numberOfFloor = numberOfFloor;
-    }
-
-    public House(String serviceName, int netArea, double totalCost, int numberOfPeopleAllowed, String typeRent, int roomStar, int numberOfFloor) {
-        super(serviceName, netArea, totalCost, numberOfPeopleAllowed, typeRent);
+    public House(String serviceID, String serviceName, int netArea, double totalCost, int numberOfPeopleAllowed, String typeRent, int roomStar,
+        int numberOfFloor) {
+        super(serviceID, serviceName, netArea, totalCost, numberOfPeopleAllowed, typeRent);
         this.roomStar = roomStar;
         this.numberOfFloor = numberOfFloor;
     }
@@ -35,6 +31,7 @@ public class House extends Facility {
     @Override
     public String toString() {
         return "House{" +
+            super.toString() +
             "roomStar=" + roomStar +
             ", numberOfFloor=" + numberOfFloor +
             '}';

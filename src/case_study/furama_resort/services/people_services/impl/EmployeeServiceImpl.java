@@ -1,10 +1,10 @@
-package case_study.furama_resort.services.impl;
+package case_study.furama_resort.services.people_services.impl;
 
-import case_study.furama_resort.models.Employee;
-import case_study.furama_resort.models.Person;
+import case_study.furama_resort.models.people_models.Employee;
+import case_study.furama_resort.models.people_models.Person;
 import case_study.furama_resort.models.enums.EmployeeLevel;
 import case_study.furama_resort.models.enums.EmployeePosition;
-import case_study.furama_resort.services.IEmployeeService;
+import case_study.furama_resort.services.people_services.IEmployeeService;
 import java.util.ArrayList;
 import java.util.List;
 

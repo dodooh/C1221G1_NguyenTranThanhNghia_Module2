@@ -1,7 +1,11 @@
 package case_study.furama_resort.controllers;
 
-import case_study.furama_resort.controllers.impl.CustomerControllerImpl;
-import case_study.furama_resort.controllers.impl.EmployeeControllerImpl;
+import case_study.furama_resort.controllers.facility_controllers.IFacilityController;
+import case_study.furama_resort.controllers.people_controllers.impl.CustomerControllerImpl;
+import case_study.furama_resort.controllers.people_controllers.impl.EmployeeControllerImpl;
+import case_study.furama_resort.controllers.facility_controllers.impl.FacilityControllerImpl;
+import case_study.furama_resort.controllers.people_controllers.ICustomerController;
+import case_study.furama_resort.controllers.people_controllers.IEmployeeController;
 import java.util.Scanner;
 
 public class FuramaController {
@@ -9,7 +13,7 @@ public class FuramaController {
     private final Scanner scanner = new Scanner(System.in);
     IEmployeeController employeeController = new EmployeeControllerImpl();
     ICustomerController customerController = new CustomerControllerImpl();
-
+    IFacilityController facilityController = (IFacilityController) new FacilityControllerImpl();
     public void displayMainMenu() {
         do {
             System.out.println("===========Main Menu:===========\n" +
@@ -114,6 +118,7 @@ public class FuramaController {
                 case 1:
                     break;
                 case 2:
+                    facilityController.create();
                     break;
                 case 3:
                     break;
