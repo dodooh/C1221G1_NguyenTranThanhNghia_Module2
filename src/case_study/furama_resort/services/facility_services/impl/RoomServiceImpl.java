@@ -5,17 +5,13 @@ import case_study.furama_resort.services.facility_services.IFacilityService;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VillaServiceImpl implements IFacilityService {
+public class RoomServiceImpl implements IFacilityService {
 
-    public static List<Facility> villaList = new ArrayList<>();
-
-    static {
-
-    }
+    public static List<Facility> roomList = new ArrayList<>();
 
     @Override
     public void displayList(List<Facility> list) {
-        System.out.println("=======VILLA LIST=======");
+        System.out.println("=======ROOM LIST=======");
         if (list != null && list.size() != 0) {
             int index = 0;
             for (Facility item : list) {
@@ -23,13 +19,14 @@ public class VillaServiceImpl implements IFacilityService {
                 System.out.println();
             }
         } else {
-            System.out.println("Villa List not found.");
+            System.out.println("Room List not found.");
         }
     }
 
     @Override
-    public void add(Facility newVilla) {
-        villaList.add(newVilla);
+    public void add(Facility newRoom) {
+        roomList.add(newRoom);
+
         System.out.println("Add successfully!");
     }
 }

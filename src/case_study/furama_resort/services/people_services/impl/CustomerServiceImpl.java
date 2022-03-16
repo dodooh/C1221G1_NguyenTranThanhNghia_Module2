@@ -28,6 +28,19 @@ public class CustomerServiceImpl implements ICustomerService {
 
 
     @Override
+    public void displayList(List<Person> list) {
+        if (list != null && list.size() != 0) {
+            int index = 0;
+            for (Person item : list) {
+                System.out.printf("[%d] = %s", index++, item);
+                System.out.println();
+            }
+        } else {
+            System.err.println("Customer List not found.");
+        }
+    }
+
+    @Override
     public void add(Person person) {
         customerList.add(person);
         System.out.println(person);
