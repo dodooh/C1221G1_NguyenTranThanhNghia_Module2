@@ -1,12 +1,13 @@
 package case_study.furama_resort.models.facitity_models;
 
+import case_study.furama_resort.models.CSVable;
 import java.util.Objects;
 
-public abstract class Facility {
+public abstract class Facility implements CSVable {
 
     private String serviceID;
     private String serviceName;
-    private int netArea;
+    private double netArea;
     private double totalCost;
     private int numberOfPeopleAllowed;
     private String typeRent;
@@ -14,7 +15,7 @@ public abstract class Facility {
     public Facility() {
     }
 
-    public Facility(String serviceID, String serviceName, int netArea, double totalCost, int numberOfPeopleAllowed, String typeRent) {
+    public Facility(String serviceID, String serviceName, double netArea, double totalCost, int numberOfPeopleAllowed, String typeRent) {
         this.serviceID = serviceID;
         this.serviceName = serviceName;
         this.netArea = netArea;
@@ -39,11 +40,11 @@ public abstract class Facility {
         this.serviceName = serviceName;
     }
 
-    public int getNetArea() {
+    public double getNetArea() {
         return netArea;
     }
 
-    public void setNetArea(int netArea) {
+    public void setNetArea(double netArea) {
         this.netArea = netArea;
     }
 
@@ -80,6 +81,10 @@ public abstract class Facility {
                 ", totalCost=" + totalCost +
                 ", numberOfPeopleAllowed=" + numberOfPeopleAllowed +
                 ", typeRent='" + typeRent + '\'';
+    }
+
+    public String toCSVFormat() {
+        return serviceID + "," + serviceName + "," + netArea + "," + totalCost + "," + numberOfPeopleAllowed + "," + typeRent;
     }
 
     @Override

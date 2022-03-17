@@ -3,10 +3,10 @@ package case_study.furama_resort.models.facitity_models;
 public class Villa extends Facility {
 
     private int roomStar;
-    private int poolArea;
+    private double poolArea;
     private int numberOfFloor;
 
-    public Villa(String serviceID, String serviceName, int netArea, double totalCost, int numberOfPeopleAllowed, String typeRent, int roomStar,
+    public Villa(String serviceID, String serviceName, double netArea, double totalCost, int numberOfPeopleAllowed, String typeRent, int roomStar,
         int poolArea, int numberOfFloor) {
         super(serviceID, serviceName, netArea, totalCost, numberOfPeopleAllowed, typeRent);
         this.roomStar = roomStar;
@@ -22,11 +22,11 @@ public class Villa extends Facility {
         this.roomStar = roomStar;
     }
 
-    public int getPoolArea() {
+    public double getPoolArea() {
         return poolArea;
     }
 
-    public void setPoolArea(int poolArea) {
+    public void setPoolArea(double poolArea) {
         this.poolArea = poolArea;
     }
 
@@ -46,5 +46,10 @@ public class Villa extends Facility {
             ", poolArea=" + poolArea +
             ", numberOfFloor=" + numberOfFloor +
             '}';
+    }
+
+    @Override
+    public String toCSVFormat() {
+        return super.toCSVFormat() + ","  + roomStar + "," + poolArea + "," + numberOfFloor;
     }
 }

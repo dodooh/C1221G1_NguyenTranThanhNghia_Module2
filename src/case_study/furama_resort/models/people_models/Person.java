@@ -1,6 +1,8 @@
 package case_study.furama_resort.models.people_models;
 
-public abstract class Person {
+import case_study.furama_resort.models.CSVable;
+
+public abstract class Person implements CSVable {
 
     private String name;
     private String dayOfBirth;
@@ -74,5 +76,10 @@ public abstract class Person {
             ", nationalID='" + nationalID + '\'' +
             ", phoneNumber='" + phoneNumber + '\'' +
             ", email='" + email + '\'';
+    }
+
+    @Override
+    public String toCSVFormat() {
+        return name + "," + dayOfBirth + "," + isMale + "," + nationalID + "," + phoneNumber + "," + email;
     }
 }

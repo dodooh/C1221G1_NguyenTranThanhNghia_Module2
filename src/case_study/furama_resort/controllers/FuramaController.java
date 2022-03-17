@@ -1,6 +1,5 @@
 package case_study.furama_resort.controllers;
 
-import case_study.furama_resort.controllers.facility_controllers.IFacilityController;
 import case_study.furama_resort.controllers.facility_controllers.impl.FacilityControllerImpl;
 import case_study.furama_resort.controllers.people_controllers.IPeopleController;
 import case_study.furama_resort.controllers.people_controllers.impl.CustomerControllerImpl;
@@ -12,7 +11,8 @@ public class FuramaController {
     private final Scanner scanner = new Scanner(System.in);
     IPeopleController employeeController = new EmployeeControllerImpl();
     IPeopleController customerController = new CustomerControllerImpl();
-    IFacilityController facilityController = new FacilityControllerImpl();
+    FacilityControllerImpl facilityController = new FacilityControllerImpl();
+
     public void displayMainMenu() {
         do {
             System.out.println("===========Main Menu:===========\n" +
@@ -121,6 +121,7 @@ public class FuramaController {
                     facilityController.create();
                     break;
                 case 3:
+                    facilityController.showMantainanceList();
                     break;
                 default:
                     flag = false;

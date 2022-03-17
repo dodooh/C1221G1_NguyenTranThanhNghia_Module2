@@ -7,11 +7,14 @@ import java.util.List;
 
 public class HouseServiceImpl implements IFacilityService {
 
+    private static final String HOUSE_FILE_PATH = "src/case_study/furama_resort/data/house.csv";
     public static List<Facility> houseList = new ArrayList<>();
 
     static {
-//        houseList.add(new House("D23","House1"))
+        //ReadWriteCSVFile.writeListToCSV(houseList, HOUSE_FILE_PATH);
+
     }
+
 
     @Override
     public void displayList(List<Facility> list) {
@@ -23,7 +26,7 @@ public class HouseServiceImpl implements IFacilityService {
                 System.out.println();
             }
         } else {
-            System.out.println("House List not found.");
+            System.out.println("!!!House List not found.");
         }
     }
 

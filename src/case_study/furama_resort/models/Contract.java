@@ -1,6 +1,6 @@
 package case_study.furama_resort.models;
 
-public class Contract {
+public class Contract implements CSVable {
 
     private int contractNumber;
     private String bookingID;
@@ -65,5 +65,10 @@ public class Contract {
             ", totalCost=" + totalCost +
             ", customerID='" + customerID + '\'' +
             '}';
+    }
+
+    @Override
+    public String toCSVFormat() {
+        return contractNumber + "," + bookingID + "," + deposit + "," + totalCost + "," + customerID;
     }
 }

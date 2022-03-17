@@ -19,7 +19,6 @@ import oop_review.quan_ly_phuong_tien.services.impl.HangSanXuatServiceImpl;
 public class ReadAndWriteFile {
 
     public static void writePhuongTienListToCSV(List<PhuongTien> list, String filePath, Boolean append) {
-
         File file = new File(filePath);
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;

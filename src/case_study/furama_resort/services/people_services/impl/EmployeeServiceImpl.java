@@ -1,27 +1,22 @@
 package case_study.furama_resort.services.people_services.impl;
 
-import case_study.furama_resort.models.people_models.Employee;
 import case_study.furama_resort.models.people_models.Person;
-import case_study.furama_resort.models.enums.EmployeeLevel;
-import case_study.furama_resort.models.enums.EmployeePosition;
 import case_study.furama_resort.services.people_services.IEmployeeService;
+import case_study.furama_resort.utils.ReadWriteCSVFile;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class EmployeeServiceImpl implements IEmployeeService {
 
-    public static List<Person> employeeList;
-
+    private static final String EMPLOYEE_FILE_PATH = "src/case_study/furama_resort/data/employee.csv";
+    public static List<Person> employeeList = new LinkedList<>();
 
     static {
-        employeeList = new ArrayList<>(10);
-        employeeList.add(new Employee("Nguyen", "20/01/1997", true, "200862169",
-            "0935151766", "abc@gmail.com", "A101",
-            EmployeeLevel.SAU_DAI_HOC, EmployeePosition.GIAM_DOC, 2500));
-        employeeList.add(new Employee("Tran", "01/01/1997", true, "122323445",
-            "093512342", "asdbc@gmail.com", "A151",
-            EmployeeLevel.CAO_DANG, EmployeePosition.LE_TAN, 1500));
+        employeeList = ReadWriteCSVFile.readEmployeeListFromCSVFile(EMPLOYEE_FILE_PATH);
+
     }
+
 
     public void edit(int index, Person person) {
         employeeList.set(index, person);
@@ -29,6 +24,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     @Override
     public void displayList(List<Person> list) {
+        System.out.println("=========EMPLOYEE LIST==========");
         if (list != null && list.size() != 0) {
             int index = 0;
             for (Person item : list) {
@@ -36,7 +32,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
                 System.out.println();
             }
         } else {
-            System.err.println("Employee List not found.");
+            System.out.println("!!!Employee List not found.");
         }
     }
 

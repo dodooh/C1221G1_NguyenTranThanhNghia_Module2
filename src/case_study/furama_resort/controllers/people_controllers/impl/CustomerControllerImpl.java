@@ -1,6 +1,6 @@
 package case_study.furama_resort.controllers.people_controllers.impl;
 
-import static case_study.furama_resort.utils.ValidatorInput.askUserToInputField;
+import static case_study.furama_resort.utils.ReadInputFromKeyBoard.askUserToInputValidData;
 import static oop_review.quan_ly_phuong_tien.controllers.MainController.scanner;
 
 import case_study.furama_resort.controllers.people_controllers.IPeopleController;
@@ -10,7 +10,7 @@ import case_study.furama_resort.models.enums.CustomerType;
 import case_study.furama_resort.services.people_services.ICustomerService;
 import case_study.furama_resort.services.people_services.impl.CustomerServiceImpl;
 import case_study.furama_resort.utils.EnumUtils;
-import case_study.furama_resort.utils.ValidatorInput;
+import case_study.furama_resort.utils.ValidatorInputLibrary;
 
 public class CustomerControllerImpl implements IPeopleController {
 
@@ -25,15 +25,15 @@ public class CustomerControllerImpl implements IPeopleController {
 
     @Override
     public void create() {
-        String name = askUserToInputField("Name", ValidatorInput.IS_NOT_AN_EMPTY_STRING);
-        String dayOfBirth = askUserToInputField("Day Of Birth", ValidatorInput.IS_NOT_AN_EMPTY_STRING);
-        boolean isMale = 1 == Integer.parseInt(askUserToInputField("Gender", ValidatorInput.IS_NOT_AN_EMPTY_STRING));
-        String nationalID = askUserToInputField("National ID", ValidatorInput.IS_NOT_AN_EMPTY_STRING);
-        String phoneNumber = askUserToInputField("Phone Number", ValidatorInput.IS_NOT_AN_EMPTY_STRING);
-        String email = askUserToInputField("Email", ValidatorInput.IS_NOT_AN_EMPTY_STRING);
-        String customerID = askUserToInputField("Customer ID", ValidatorInput.IS_NOT_AN_EMPTY_STRING);
+        String name = askUserToInputValidData("Name", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
+        String dayOfBirth = askUserToInputValidData("Day Of Birth", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
+        boolean isMale = 1 == Integer.parseInt(askUserToInputValidData("Gender", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER));
+        String nationalID = askUserToInputValidData("National ID", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
+        String phoneNumber = askUserToInputValidData("Phone Number", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
+        String email = askUserToInputValidData("Email", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
+        String customerID = askUserToInputValidData("Customer ID", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
         CustomerType customerType = getCustomerTypeFromInput();
-        String address = askUserToInputField("Address ID", ValidatorInput.IS_NOT_AN_EMPTY_STRING);
+        String address = askUserToInputValidData("Address ID", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
         customerService.add(new Customer(name,
             dayOfBirth,
             isMale,
@@ -47,7 +47,8 @@ public class CustomerControllerImpl implements IPeopleController {
 
     @Override
     public void display() {
-        customerService.displayList(CustomerServiceImpl.customerList);    }
+        customerService.displayList(CustomerServiceImpl.customerList);
+    }
 
     @Override
     public void edit() {
@@ -77,27 +78,27 @@ public class CustomerControllerImpl implements IPeopleController {
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
-                    String newName = askUserToInputField("New Name", ValidatorInput.IS_NOT_AN_EMPTY_STRING);
+                    String newName = askUserToInputValidData("New Name", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
                     object.setName(newName);
                     break;
                 case 2:
-                    String newDOB = askUserToInputField("New Day Of Birth", ValidatorInput.IS_NOT_AN_EMPTY_STRING);
+                    String newDOB = askUserToInputValidData("New Day Of Birth", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
                     object.setDayOfBirth(newDOB);
                     break;
                 case 3:
-                    boolean newGender = 1 == Integer.parseInt(askUserToInputField("New Gender", ValidatorInput.IS_NOT_AN_EMPTY_STRING));
+                    boolean newGender = 1 == Integer.parseInt(askUserToInputValidData("New Gender", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER));
                     object.setMale(newGender);
                     break;
                 case 4:
-                    String nationalID = askUserToInputField("New National ID", ValidatorInput.IS_NOT_AN_EMPTY_STRING);
+                    String nationalID = askUserToInputValidData("New National ID", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
                     object.setNationalID(nationalID);
                     break;
                 case 5:
-                    String phoneNumber = askUserToInputField("New Phone Number", ValidatorInput.IS_NOT_AN_EMPTY_STRING);
+                    String phoneNumber = askUserToInputValidData("New Phone Number", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
                     object.setPhoneNumber(phoneNumber);
                     break;
                 case 6:
-                    String email = askUserToInputField("New Email", ValidatorInput.IS_NOT_AN_EMPTY_STRING);
+                    String email = askUserToInputValidData("New Email", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
                     object.setEmail(email);
                     break;
                 case 8:
@@ -105,7 +106,7 @@ public class CustomerControllerImpl implements IPeopleController {
                     ((Customer) object).setCustomerType(customerType);
                     break;
                 case 9:
-                    String address = askUserToInputField("Address ID", ValidatorInput.IS_NOT_AN_EMPTY_STRING);
+                    String address = askUserToInputValidData("Address ID", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
                     ((Customer) object).setAddress(address);
                     break;
                 default:

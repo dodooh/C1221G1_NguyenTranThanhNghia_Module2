@@ -1,7 +1,8 @@
 package case_study.furama_resort.controllers.people_controllers.impl;
 
-import static case_study.furama_resort.utils.ValidatorInput.askUserToInputField;
+import static case_study.furama_resort.utils.ReadInputFromKeyBoard.askUserToInputValidData;
 import static oop_review.quan_ly_phuong_tien.controllers.MainController.scanner;
+
 import case_study.furama_resort.controllers.people_controllers.IPeopleController;
 import case_study.furama_resort.models.people_models.Employee;
 import case_study.furama_resort.models.people_models.Person;
@@ -10,7 +11,7 @@ import case_study.furama_resort.models.enums.EmployeePosition;
 import case_study.furama_resort.services.people_services.IEmployeeService;
 import case_study.furama_resort.services.people_services.impl.EmployeeServiceImpl;
 import case_study.furama_resort.utils.EnumUtils;
-import case_study.furama_resort.utils.ValidatorInput;
+import case_study.furama_resort.utils.ValidatorInputLibrary;
 
 public class EmployeeControllerImpl implements IPeopleController {
 
@@ -31,16 +32,16 @@ public class EmployeeControllerImpl implements IPeopleController {
     }
 
     public void create() {
-        String name = askUserToInputField("Name", ValidatorInput.IS_NOT_AN_EMPTY_STRING);
-        String dayOfBirth = askUserToInputField("Day Of Birth", ValidatorInput.IS_NOT_AN_EMPTY_STRING);
-        boolean isMale = 1 == Integer.parseInt(askUserToInputField("Gender", ValidatorInput.IS_NOT_AN_EMPTY_STRING));
-        String nationalID = askUserToInputField("National ID", ValidatorInput.IS_NOT_AN_EMPTY_STRING);
-        String phoneNumber = askUserToInputField("Phone Number", ValidatorInput.IS_NOT_AN_EMPTY_STRING);
-        String email = askUserToInputField("Email", ValidatorInput.IS_NOT_AN_EMPTY_STRING);
-        String employeeID = askUserToInputField("Employee ID", ValidatorInput.IS_NOT_AN_EMPTY_STRING);
+        String name = askUserToInputValidData("Name", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
+        String dayOfBirth = askUserToInputValidData("Day Of Birth", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
+        boolean isMale = 1 == Integer.parseInt(askUserToInputValidData("Gender", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER));
+        String nationalID = askUserToInputValidData("National ID", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
+        String phoneNumber = askUserToInputValidData("Phone Number", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
+        String email = askUserToInputValidData("Email", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
+        String employeeID = askUserToInputValidData("Employee ID", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
         EmployeeLevel level = getEmployeeLevelFromInput();
         EmployeePosition position = getEmployeePositionFromInput();
-        double salary = Double.parseDouble(askUserToInputField("Salary", ValidatorInput.IS_NOT_AN_EMPTY_STRING));
+        double salary = Double.parseDouble(askUserToInputValidData("Salary", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER));
         employeeService.add(new Employee(
             name,
             dayOfBirth,
@@ -88,31 +89,31 @@ public class EmployeeControllerImpl implements IPeopleController {
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
-                    String newName = askUserToInputField("New Name", ValidatorInput.IS_NOT_AN_EMPTY_STRING);
+                    String newName = askUserToInputValidData("New Name", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
                     object.setName(newName);
                     break;
                 case 2:
-                    String newDOB = askUserToInputField("New Day Of Birth", ValidatorInput.IS_NOT_AN_EMPTY_STRING);
+                    String newDOB = askUserToInputValidData("New Day Of Birth", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
                     object.setDayOfBirth(newDOB);
                     break;
                 case 3:
-                    boolean newGender = 1 == Integer.parseInt(askUserToInputField("New Gender", ValidatorInput.IS_NOT_AN_EMPTY_STRING));
+                    boolean newGender = 1 == Integer.parseInt(askUserToInputValidData("New Gender", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER));
                     object.setMale(newGender);
                     break;
                 case 4:
-                    String nationalID = askUserToInputField("New National ID", ValidatorInput.IS_NOT_AN_EMPTY_STRING);
+                    String nationalID = askUserToInputValidData("New National ID", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
                     object.setNationalID(nationalID);
                     break;
                 case 5:
-                    String phoneNumber = askUserToInputField("New Phone Number", ValidatorInput.IS_NOT_AN_EMPTY_STRING);
+                    String phoneNumber = askUserToInputValidData("New Phone Number", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
                     object.setPhoneNumber(phoneNumber);
                     break;
                 case 6:
-                    String email = askUserToInputField("New Email", ValidatorInput.IS_NOT_AN_EMPTY_STRING);
+                    String email = askUserToInputValidData("New Email", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
                     object.setEmail(email);
                     break;
                 case 7:
-                    String employeeID = askUserToInputField("New Employee ID", ValidatorInput.IS_NOT_AN_EMPTY_STRING);
+                    String employeeID = askUserToInputValidData("New Employee ID", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
                     ((Employee) object).setEmployeeID(employeeID);
                     break;
                 case 8:
@@ -124,7 +125,7 @@ public class EmployeeControllerImpl implements IPeopleController {
                     ((Employee) object).setPosition(position);
                     break;
                 case 10:
-                    double salary = Double.parseDouble(askUserToInputField("New Salary", ValidatorInput.IS_NOT_AN_EMPTY_STRING));
+                    double salary = Double.parseDouble(askUserToInputValidData("New Salary", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER));
                     ((Employee) object).setSalary(salary);
                     break;
                 default:

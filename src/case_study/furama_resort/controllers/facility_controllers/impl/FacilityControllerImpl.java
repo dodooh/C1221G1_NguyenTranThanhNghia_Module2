@@ -3,10 +3,10 @@ package case_study.furama_resort.controllers.facility_controllers.impl;
 import static oop_review.quan_ly_phuong_tien.controllers.MainController.scanner;
 
 import case_study.furama_resort.controllers.facility_controllers.IFacilityController;
-import case_study.furama_resort.services.facility_services.IFacilityService;
 import case_study.furama_resort.services.facility_services.impl.FacilityServiceImpl;
 
-public class FacilityControllerImpl implements IFacilityController{
+public class FacilityControllerImpl implements IFacilityController {
+
     FacilityServiceImpl facilityService = new FacilityServiceImpl();
     IFacilityController houseController = new HouseControllerImpl();
     IFacilityController villaController = new VillaControllerImpl();
@@ -48,5 +48,6 @@ public class FacilityControllerImpl implements IFacilityController{
     }
 
     public void showMantainanceList() {
+        facilityService.displayMaintenanceList();
     }
 }

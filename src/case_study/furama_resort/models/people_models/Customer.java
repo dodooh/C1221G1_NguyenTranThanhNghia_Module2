@@ -49,4 +49,9 @@ public class Customer extends Person {
             ", address='" + address + '\'' +
             '}';
     }
+
+    @Override
+    public String toCSVFormat() {
+        return super.toCSVFormat() + ","  + customerID + "," + customerType + "," + address;
+    }
 }
