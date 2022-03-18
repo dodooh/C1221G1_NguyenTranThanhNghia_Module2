@@ -171,7 +171,7 @@ public class FuramaController {
 
         do {
             System.out.println("===========Booking Management===========\n" +
-                "1.\tAdd new facility\n" +
+                "1.\tAdd new booking\n" +
                 "2.\tDisplay list booking\n" +
                 "3.\tCreate new contracts\n" +
                 "4.\tDisplay list contracts\n" +
@@ -184,6 +184,7 @@ public class FuramaController {
                         bookingController.create();
                         break;
                     case 2:
+                        bookingController.display();
                         break;
                     case 3:
                         break;

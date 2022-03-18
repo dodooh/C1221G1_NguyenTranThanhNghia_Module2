@@ -7,6 +7,5 @@ public class EnumUtils {
         for (T item : clazz.getEnumConstants()) {
             System.out.printf("[%d] - %s\t", i++, item);
         }
-        System.out.print("\nYour choice:");
     }
 }

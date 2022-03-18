@@ -1,5 +1,6 @@
 package case_study.furama_resort.utils;
 
+import case_study.furama_resort.models.Booking;
 import case_study.furama_resort.models.CSVable;
 import case_study.furama_resort.models.enums.CustomerType;
 import case_study.furama_resort.models.enums.EmployeeLevel;
@@ -11,6 +12,11 @@ import case_study.furama_resort.models.Villa;
 import case_study.furama_resort.models.Customer;
 import case_study.furama_resort.models.Employee;
 import case_study.furama_resort.models.Person;
+import case_study.furama_resort.services.IFacilityService;
+import case_study.furama_resort.services.impl.CustomerServiceImpl;
+import case_study.furama_resort.services.impl.HouseServiceImpl;
+import case_study.furama_resort.services.impl.RoomServiceImpl;
+import case_study.furama_resort.services.impl.VillaServiceImpl;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -18,9 +24,14 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class ReadWriteCSVFile {
 
@@ -40,6 +51,53 @@ public class ReadWriteCSVFile {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static <T> void writeSetToCSV(Set<T> set, String filePath) {
+        File file = new File(filePath);
+        FileWriter fileWriter = null;
+        BufferedWriter bufferedWriter = null;
+        try {
+            fileWriter = new FileWriter(file);
+            bufferedWriter = new BufferedWriter(fileWriter);
+            for (T s : set) {
+                bufferedWriter.write(((CSVable) s).toCSVFormat());
+                bufferedWriter.newLine();
+            }
+            bufferedWriter.close();
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static Set<Booking> readBookingSetFromCSVFile(String filePath) throws ParseException, FacilityUnknownException {
+        Set<Booking> resultSet = new TreeSet<>();
+        List<String> stringList = readStringListFromCSVFile(filePath);
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        CustomerServiceImpl customerService = CustomerServiceImpl.getInstance();
+        IFacilityService roomService = RoomServiceImpl.getInstance();
+        IFacilityService houseService = HouseServiceImpl.getInstance();
+        IFacilityService villaService = VillaServiceImpl.getInstance();
+        for(String line : stringList) {
+            String[] field = line.split(",");
+            String bookingID = field[0];
+            Date startDate = formatter.parse(field[1]);
+            Date endDate = formatter.parse(field[2]);
+            Customer customer = customerService.getCustomerByID(field[3]);
+            Facility facility;
+            if (roomService.getFacilityByID(field[4]) != null) {
+                facility = roomService.getFacilityByID(field[4]);
+            } else if (houseService.getFacilityByID(field[4]) != null) {
+                facility = houseService.getFacilityByID(field[4]);
+            } else if (villaService.getFacilityByID(field[4]) != null) {
+                facility = villaService.getFacilityByID(field[4]);
+            } else {
+                throw new FacilityUnknownException();
+            }
+            resultSet.add(new Booking(bookingID,startDate,endDate,customer,facility));
+        }
+        return resultSet;
     }
 
     public static List<Person> readCustomerListFromCSVFile(String filePath) {

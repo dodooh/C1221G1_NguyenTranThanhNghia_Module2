@@ -1,24 +1,23 @@
 package case_study.furama_resort.models;
 
-import case_study.furama_resort.models.facitity_models.Facility;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
-public class Booking implements CSVable {
+public class Booking implements CSVable, Comparable<Booking> {
 
     private String bookingID;
     private Date startDate;
     private Date endDate;
-    private String customerID;
-    private String serviceName;
+    private Customer customer;
     private Facility facilityType;
-
-    public Booking(String bookingID, Date startDate, Date endDate, String customerID, String serviceName,
+    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    public Booking(String bookingID, Date startDate, Date endDate, Customer customer,
         Facility facilityType) {
         this.bookingID = bookingID;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.customerID = customerID;
-        this.serviceName = serviceName;
+        this.customer = customer;
         this.facilityType = facilityType;
     }
 
@@ -46,20 +45,12 @@ public class Booking implements CSVable {
         this.endDate = endDate;
     }
 
-    public String getCustomerID() {
-        return customerID;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerID(String customerID) {
-        this.customerID = customerID;
-    }
-
-    public String getServiceName() {
-        return serviceName;
-    }
-
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public Facility getFacilityType() {
@@ -74,16 +65,43 @@ public class Booking implements CSVable {
     public String toString() {
         return "Booking{" +
             "bookingID='" + bookingID + '\'' +
-            ", startDate=" + startDate +
-            ", endDate=" + endDate +
-            ", customerID='" + customerID + '\'' +
-            ", serviceName='" + serviceName + '\'' +
-            ", facilityType=" + facilityType +
+            ", startDate=" + simpleDateFormat.format(startDate) +
+            ", endDate=" + simpleDateFormat.format(endDate) +
+            ", customer='" + customer.getCustomerID() + '\'' +
+            ", facilityType=" + facilityType.getServiceID() +
             '}';
     }
 
+    // TO CSV
     @Override
     public String toCSVFormat() {
-        return bookingID + "," + startDate + "," + endDate + "," + customerID + "," + serviceName + "," + facilityType;
+        return bookingID + "," + simpleDateFormat.format(startDate) + "," + simpleDateFormat.format(endDate) + "," + customer.getCustomerID() + "," + facilityType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Booking booking = (Booking) o;
+        return bookingID.equals(booking.bookingID);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(bookingID);
+    }
+
+
+    @Override
+    public int compareTo(Booking o) {
+        if (startDate.compareTo(o.startDate) == 0) {
+            return endDate.compareTo(o.endDate);
+        } else {
+            return startDate.compareTo(o.startDate);
+        }
     }
 }
