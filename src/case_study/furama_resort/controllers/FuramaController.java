@@ -1,17 +1,21 @@
 package case_study.furama_resort.controllers;
 
-import case_study.furama_resort.controllers.facility_controllers.impl.FacilityControllerImpl;
-import case_study.furama_resort.controllers.people_controllers.IPeopleController;
-import case_study.furama_resort.controllers.people_controllers.impl.CustomerControllerImpl;
-import case_study.furama_resort.controllers.people_controllers.impl.EmployeeControllerImpl;
+import case_study.furama_resort.controllers.impl.BookingControllerImpl;
+import case_study.furama_resort.controllers.impl.FacilityControllerImpl;
+import case_study.furama_resort.controllers.impl.CustomerControllerImpl;
+import case_study.furama_resort.controllers.impl.EmployeeControllerImpl;
+import case_study.furama_resort.services.IBookingService;
+import case_study.furama_resort.services.impl.BookingServiceImpl;
 import java.util.Scanner;
 
 public class FuramaController {
 
     private final Scanner scanner = new Scanner(System.in);
-    IPeopleController employeeController = new EmployeeControllerImpl();
-    IPeopleController customerController = new CustomerControllerImpl();
-    FacilityControllerImpl facilityController = new FacilityControllerImpl();
+    IPeopleController employeeController = EmployeeControllerImpl.getInstance();
+    IPeopleController customerController = CustomerControllerImpl.getInstance();
+    FacilityControllerImpl facilityController = FacilityControllerImpl.getInstance();
+    IBookingController bookingController = new BookingControllerImpl();
+    private int chooseMenu;
 
     public void displayMainMenu() {
         do {
@@ -21,31 +25,35 @@ public class FuramaController {
                 "3.\tFacility Management \n" +
                 "4.\tBooking Management\n" +
                 "5.\tPromotion Management\n" +
-                "6.\tExit");
-            System.out.print("Choose a function: ");
-            int chooseMenu = Integer.parseInt(scanner.nextLine());
-            switch (chooseMenu) {
-                case 1:
-                    showEmployeeManagementMenu();
-                    break;
-                case 2:
-                    showCustomerManagementMenu();
-                    break;
-                case 3:
-                    showFacilityManagementMenu();
-                    break;
-                case 4:
-                    showBookingManagementMenu();
-                    break;
-                case 5:
-                    showPromotionManagementMenu();
-                    break;
-                case 0:
-                    System.out.println("Exit Program");
-                    System.exit(1);
-                default:
-                    System.err.println("Invalid Input");
-                    break;
+                "0.\tExit");
+            try {
+                System.out.print("Your choice: ");
+                chooseMenu = Integer.parseInt(scanner.nextLine());
+                switch (chooseMenu) {
+                    case 1:
+                        showEmployeeManagementMenu();
+                        break;
+                    case 2:
+                        showCustomerManagementMenu();
+                        break;
+                    case 3:
+                        showFacilityManagementMenu();
+                        break;
+                    case 4:
+                        showBookingManagementMenu();
+                        break;
+                    case 5:
+                        showPromotionManagementMenu();
+                        break;
+                    case 0:
+                        System.out.println("Exit Program");
+                        System.exit(1);
+                    default:
+                        System.err.println("Please Enter Exactly Number!!!");
+                        break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println(e.getMessage());
             }
 
         } while (true);
@@ -58,21 +66,30 @@ public class FuramaController {
                 "1.\tDisplay list employees\n" +
                 "2.\tAdd new employee\n" +
                 "3.\tEdit employee\n" +
-                "4.\tReturn main menu");
-            System.out.print("Choose a function: ");
-            int chooseMenu = Integer.parseInt(scanner.nextLine());
-            switch (chooseMenu) {
-                case 1:
-                    employeeController.display();
-                    break;
-                case 2:
-                    employeeController.create();
-                    break;
-                case 3:
-                    employeeController.edit();
-                    break;
-                default:
-                    flag = false;
+                "0.\tReturn main menu");
+            try {
+                System.out.print("Your choice");
+                chooseMenu = Integer.parseInt(scanner.nextLine());
+                switch (chooseMenu) {
+                    case 1:
+                        employeeController.display();
+                        break;
+                    case 2:
+                        employeeController.create();
+                        break;
+                    case 3:
+                        employeeController.edit();
+                        break;
+                    case 0:
+                        System.out.println("Back To Main Menu");
+                        flag = false;
+                        break;
+                    default:
+                        System.out.println("Please Enter Exactly Number!!!");
+                        break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println(e.getMessage());
             }
         } while (flag);
     }
@@ -84,24 +101,35 @@ public class FuramaController {
                 "1.\tDisplay list customers\n" +
                 "2.\tAdd new customer\n" +
                 "3.\tEdit customer\n" +
-                "4.\tReturn main menu");
-            System.out.print("Choose a function: ");
-            int chooseMenu = Integer.parseInt(scanner.nextLine());
-            switch (chooseMenu) {
-                case 1:
-                    customerController.display();
-                    break;
-                case 2:
-                    customerController.create();
-                    break;
-                case 3:
-                    customerController.edit();
-                    break;
-                default:
-                    flag = false;
+                "0.\tReturn main menu");
+            try {
+                System.out.print("Your choice");
+                chooseMenu = Integer.parseInt(scanner.nextLine());
+                switch (chooseMenu) {
+                    case 1:
+                        customerController.display();
+                        break;
+                    case 2:
+                        customerController.create();
+                        break;
+                    case 3:
+                        customerController.edit();
+                        break;
+                    case 0:
+                        System.out.println("Back To Main Menu");
+                        flag = false;
+                        break;
+                    default:
+                        System.out.println("Please Enter Exactly Number!!!");
+                        break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println(e.getMessage());
             }
+
         } while (flag);
     }
+
 
     private void showFacilityManagementMenu() {
         boolean flag = true;
@@ -110,22 +138,31 @@ public class FuramaController {
                 "1.\tDisplay list facility\n" +
                 "2.\tAdd new facility\n" +
                 "3.\tDisplay list facility maintenance\n" +
-                "4.\tReturn main menu");
-            System.out.print("Choose a function: ");
-            int chooseMenu = Integer.parseInt(scanner.nextLine());
-            switch (chooseMenu) {
-                case 1:
-                    facilityController.display();
-                    break;
-                case 2:
-                    facilityController.create();
-                    break;
-                case 3:
-                    facilityController.showMantainanceList();
-                    break;
-                default:
-                    flag = false;
+                "0.\tReturn main menu");
+            try {
+                chooseMenu = Integer.parseInt(scanner.nextLine());
+                switch (chooseMenu) {
+                    case 1:
+                        facilityController.display();
+                        break;
+                    case 2:
+                        facilityController.create();
+                        break;
+                    case 3:
+                        facilityController.showMaintenanceList();
+                        break;
+                    case 0:
+                        System.out.println("Back To Main Menu");
+                        flag = false;
+                        break;
+                    default:
+                        System.out.println("Please Enter Exactly Number!!!");
+                        break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println(e.getMessage());
             }
+
         } while (flag);
     }
 
@@ -139,23 +176,33 @@ public class FuramaController {
                 "3.\tCreate new contracts\n" +
                 "4.\tDisplay list contracts\n" +
                 "5.\tEdit contracts\n" +
-                "6.\tReturn main menu");
-            System.out.print("Choose a function: ");
-            int chooseMenu = Integer.parseInt(scanner.nextLine());
-            switch (chooseMenu) {
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                default:
-                    flag = false;
+                "0.\tReturn main menu");
+            try {
+                chooseMenu = Integer.parseInt(scanner.nextLine());
+                switch (chooseMenu) {
+                    case 1:
+                        bookingController.create();
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    case 0:
+                        System.out.println("Back To Main Menu");
+                        flag = false;
+                        break;
+                    default:
+                        System.out.println("Please Enter Exactly Number!!!");
+                        break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println(e.getMessage());
             }
+
         } while (flag);
     }
 
@@ -167,17 +214,27 @@ public class FuramaController {
             System.out.println("===========Promotion Management===========\n" +
                 "1.\tDisplay list customers use service\n" +
                 "2.\tDisplay list customers get voucher\n" +
-                "3.\tReturn main menu");
+                "0.\tReturn main menu");
             System.out.print("Choose a function: ");
-            int chooseMenu = Integer.parseInt(scanner.nextLine());
-            switch (chooseMenu) {
-                case 1:
-                    break;
-                case 2:
-                    break;
-                default:
-                    flag = false;
+            try {
+                chooseMenu = Integer.parseInt(scanner.nextLine());
+                switch (chooseMenu) {
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 0:
+                        System.out.println("Back To Main Menu");
+                        flag = false;
+                        break;
+                    default:
+                        System.out.println("Please Enter Exactly Number!!!");
+                        break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println(e.getMessage());
             }
+
         } while (flag);
     }
 }
