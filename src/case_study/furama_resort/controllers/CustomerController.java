@@ -61,7 +61,8 @@ public class CustomerController {
             try {
                 System.out.print("\nEnter Index of Customer to Edit: ");
                 int index = Integer.parseInt(scanner.nextLine()); // Chua validator
-                Person objectToEdit = CustomerServiceImpl.customerList.get(index);
+                Person objectToEdit = new Customer(
+                    (Customer) CustomerServiceImpl.customerList.get(index)); // Clone object
                 editing(objectToEdit);
                 System.out.println("New Employee:");
                 System.out.println(objectToEdit);
@@ -101,7 +102,7 @@ public class CustomerController {
                     object.setName(newName);
                     break;
                 case 2:
-                    String newDOB = inputValidData(" New Day Of Birth (dd/mm/yyyy)",
+                    String newDOB = inputValidData("New Day Of Birth (dd/mm/yyyy)",
                         ValidatorInputLibrary.BIRTHDAY_FORMAT);
                     object.setDayOfBirth(newDOB);
                     break;

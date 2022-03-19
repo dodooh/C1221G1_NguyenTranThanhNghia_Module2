@@ -17,6 +17,18 @@ public class Customer extends Person {
         this.address = address;
     }
 
+    public Customer(Customer anotherCustomer) {
+        this.setName(anotherCustomer.getName());
+        this.setDayOfBirth(anotherCustomer.getDayOfBirth());
+        this.setMale(anotherCustomer.isMale());
+        this.setNationalID(anotherCustomer.getNationalID());
+        this.setPhoneNumber(anotherCustomer.getPhoneNumber());
+        this.setEmail(anotherCustomer.getEmail());
+        this.customerID = anotherCustomer.getCustomerID();
+        this.customerType = anotherCustomer.getCustomerType();
+        this.address = anotherCustomer.getAddress();
+    }
+
     public String getCustomerID() {
         return customerID;
     }

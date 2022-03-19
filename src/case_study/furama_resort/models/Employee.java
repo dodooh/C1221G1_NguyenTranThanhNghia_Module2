@@ -21,6 +21,19 @@ public class Employee extends Person {
         this.salary = salary;
     }
 
+    public Employee(Employee anotherEmployee) {
+        this.setName(anotherEmployee.getName());
+        this.setDayOfBirth(anotherEmployee.getDayOfBirth());
+        this.setMale(anotherEmployee.isMale());
+        this.setNationalID(anotherEmployee.getNationalID());
+        this.setPhoneNumber(anotherEmployee.getPhoneNumber());
+        this.setEmail(anotherEmployee.getEmail());
+        this.employeeID = anotherEmployee.getEmployeeID();
+        this.level = anotherEmployee.getLevel();
+        this.position = anotherEmployee.getPosition();
+        this.salary = anotherEmployee.getSalary();
+    }
+
     public String getEmployeeID() {
         return employeeID;
     }

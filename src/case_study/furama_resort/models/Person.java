@@ -11,6 +11,9 @@ public abstract class Person implements CSVable {
     private String phoneNumber;
     private String email;
 
+    public Person() {
+    }
+
     public Person(String name, String dayOfBirth, boolean isMale, String nationalID, String phoneNumber, String email) {
         this.name = name;
         this.dayOfBirth = dayOfBirth;

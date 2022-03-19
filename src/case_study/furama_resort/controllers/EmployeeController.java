@@ -98,7 +98,7 @@ public class EmployeeController {
             try {
                 System.out.print("\nEnter Index of Employee to Edit: ");
                 int index = Integer.parseInt(scanner.nextLine()); // Chua validator
-                Person objectToEdit = EmployeeServiceImpl.employeeList.get(index);
+                Person objectToEdit = new Employee((Employee) EmployeeServiceImpl.employeeList.get(index)); // Clone
                 editing(objectToEdit);
                 System.out.println("New Employee:");
                 System.out.println(objectToEdit);
