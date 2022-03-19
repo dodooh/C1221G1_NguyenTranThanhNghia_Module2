@@ -11,7 +11,8 @@ public class Employee extends Person {
     private EmployeePosition position;
     private double salary;
 
-    public Employee(String name, String dayOfBirth, boolean isMale, String nationalID, String phoneNumber, String email, String employeeID,
+    public Employee(String name, String dayOfBirth, boolean isMale, String nationalID, String phoneNumber, String email,
+        String employeeID,
         EmployeeLevel level, EmployeePosition position, double salary) {
         super(name, dayOfBirth, isMale, nationalID, phoneNumber, email);
         this.employeeID = employeeID;
@@ -59,12 +60,13 @@ public class Employee extends Person {
             super.toString() +
             ", level=" + level +
             ", position=" + position +
-            ", salary=" + String.format("%.0f", salary) +
+            ", salary=" + String.format("%,.0f", salary) +
             '}';
     }
 
     @Override
     public String toCSVFormat() {
-        return super.toCSVFormat() + "," + employeeID + "," + level + "," + position + "," + String.format("%.0f", salary);
+        return super.toCSVFormat() + "," + employeeID + "," + level + "," + position + "," + String.format("%.0f",
+            salary);
     }
 }

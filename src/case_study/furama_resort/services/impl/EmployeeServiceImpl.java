@@ -30,9 +30,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     public void edit(int index, Person person) {
         employeeList.set(index, person);
-        ReadWriteCSVFile.writeListToCSV(employeeList, EMPLOYEE_FILE_PATH);
+        ReadWriteCSVFile.writeListToCSVFile(employeeList, EMPLOYEE_FILE_PATH);
         System.out.println(person);
-        System.out.println("Edit Successfully");
+        System.out.println("✓Edit Successfully");
     }
 
     @Override
@@ -41,7 +41,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
         if (employeeList != null && employeeList.size() != 0) {
             int index = 0;
             for (Person item : employeeList) {
-                System.out.printf("[%d] = %s", index++, item);
+                System.out.printf("[%d] - %s", index++, item);
                 System.out.println();
             }
         } else {
@@ -52,9 +52,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @Override
     public void add(Person person) {
         employeeList.add(person);
-        ReadWriteCSVFile.writeListToCSV(employeeList, EMPLOYEE_FILE_PATH);
+        ReadWriteCSVFile.writeListToCSVFile(employeeList, EMPLOYEE_FILE_PATH);
         System.out.println(person);
-        System.out.println("Add Successfully!!");
+        System.out.println("✓Add Successfully!!");
     }
 
 }

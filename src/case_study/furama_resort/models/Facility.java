@@ -14,7 +14,8 @@ public abstract class Facility implements CSVable {
     public Facility() {
     }
 
-    public Facility(String serviceID, String serviceName, double netArea, double totalCost, int numberOfPeopleAllowed, String typeRent) {
+    public Facility(String serviceID, String serviceName, double netArea, double totalCost, int numberOfPeopleAllowed,
+        String typeRent) {
         this.serviceID = serviceID;
         this.serviceName = serviceName;
         this.netArea = netArea;
@@ -77,14 +78,15 @@ public abstract class Facility implements CSVable {
             "serviceID='" + serviceID + '\'' +
                 ", serviceName='" + serviceName + '\'' +
                 ", netArea=" + netArea +
-                ", totalCost=" + totalCost +
+                ", totalCost=" + String.format("%,.0f", totalCost) +
                 ", numberOfPeopleAllowed=" + numberOfPeopleAllowed +
                 ", typeRent='" + typeRent + '\'';
     }
 
     @Override
     public String toCSVFormat() {
-        return serviceID + "," + serviceName + "," + netArea + "," + totalCost + "," + numberOfPeopleAllowed + "," + typeRent;
+        return serviceID + "," + serviceName + "," + netArea + "," + totalCost + "," + numberOfPeopleAllowed + ","
+            + typeRent;
     }
 
     @Override

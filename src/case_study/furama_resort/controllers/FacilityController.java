@@ -3,15 +3,15 @@ package case_study.furama_resort.controllers;
 import static case_study.furama_resort.controllers.FuramaController.INVALID_INDEX_WARNING;
 import static oop_review.quan_ly_phuong_tien.controllers.MainController.scanner;
 
-import case_study.furama_resort.services.impl.FacilityBookingServiceImpl;
+import case_study.furama_resort.services.impl.FacilityMaintenanceServiceImpl;
 
 public class FacilityController {
 
     private static FacilityController instance;
-    FacilityBookingServiceImpl facilityService = new FacilityBookingServiceImpl();
-    HouseController houseController = new HouseController();
-    VillaController villaController = new VillaController();
-    RoomController roomController = new RoomController();
+    private final FacilityMaintenanceServiceImpl facilityService = FacilityMaintenanceServiceImpl.getInstance();
+    private final HouseController houseController = new HouseController();
+    private final VillaController villaController = new VillaController();
+    private final RoomController roomController = new RoomController();
 
     private FacilityController() {
     }

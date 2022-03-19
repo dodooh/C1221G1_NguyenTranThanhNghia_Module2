@@ -6,7 +6,7 @@ public class ValidatorInputLibrary {
     public static final String STANDARD_NAME = "^[A-Z][a-z]+( [A-Z0-9][a-z0-9]+)*$";
     public static final String REAL_NUMBER_LARGER_THAN_30 = "^([3-9]\\d|\\d{3,})(.\\d{1,3})?$";
     public static final String REAL_POSITIVE_NUMBER = "^\\d+\\.?\\d*";
-    public static final String INTEGER_POSITIVE_NUMBER = "^[1-9]\\d*$";
+    public static final String INTEGER_POSITIVE_NUMBER = "\\+?\\d+$";
     public static final String PHONE_NUMBER = "^0\\d{9}$";
     public static final String EMAIL_FORMAT = "^[A-Za-z]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$";
     public static final String ONE_NUMBER = "^\\d$";
@@ -18,9 +18,5 @@ public class ValidatorInputLibrary {
     public static final String CUSTOMER_ID_FORMAT = "^C\\d{4}$";
     public static final String EMPLOYEE_ID_FORMAT = "^E\\d{4}$";
     public static final String NATIONAL_ID_FORMAT = "^\\d{10,14}$";
-
-    static boolean isMatch(String input, String regex) {
-        return input.matches(regex);
-    }
 
 }

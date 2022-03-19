@@ -8,7 +8,8 @@ public class Customer extends Person {
     private CustomerType customerType;
     private String address;
 
-    public Customer(String name, String dayOfBirth, boolean isMale, String nationalID, String phoneNumber, String email, String customerID,
+    public Customer(String name, String dayOfBirth, boolean isMale, String nationalID, String phoneNumber, String email,
+        String customerID,
         CustomerType customerType, String address) {
         super(name, dayOfBirth, isMale, nationalID, phoneNumber, email);
         this.customerID = customerID;

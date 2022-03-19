@@ -4,13 +4,14 @@ import java.util.Scanner;
 
 public class FuramaController {
 
+    public static final String INVALID_INDEX_WARNING = "!!!ENTER A VALID INDEX PLEASE!!!";
     private final Scanner scanner = new Scanner(System.in);
     EmployeeController employeeController = EmployeeController.getInstance();
     CustomerController customerController = CustomerController.getInstance();
     FacilityController facilityController = FacilityController.getInstance();
     BookingController bookingController = BookingController.getInstance();
+    ContractController contractController = ContractController.getInstance();
     private int chooseMenu;
-    public static final String INVALID_INDEX_WARNING = "!!!ENTER A VALID INDEX PLEASE!!!";
 
     public void displayMainMenu() {
         do {
@@ -183,10 +184,13 @@ public class FuramaController {
                         bookingController.display();
                         break;
                     case 3:
+                        contractController.create();
                         break;
                     case 4:
+                        contractController.display();
                         break;
                     case 5:
+                        contractController.edit();
                         break;
                     case 0:
                         System.out.println("Back To Main Menu");

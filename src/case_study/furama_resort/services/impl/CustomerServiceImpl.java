@@ -28,6 +28,7 @@ public class CustomerServiceImpl implements ICustomerService {
         return instance;
     }
 
+    @Override
     public Customer getCustomerByID(String id) {
         for (Person customer : customerList) {
             if (((Customer) customer).getCustomerID().equals(id)) {
@@ -39,8 +40,8 @@ public class CustomerServiceImpl implements ICustomerService {
 
     public void edit(int index, Person person) {
         customerList.set(index, person);
-        ReadWriteCSVFile.writeListToCSV(customerList, CUSTOMER_FILE_PATH);
-        System.out.println("Edit Successfully");
+        ReadWriteCSVFile.writeListToCSVFile(customerList, CUSTOMER_FILE_PATH);
+        System.out.println("✓Edit Successfully");
     }
 
     @Override
@@ -49,7 +50,7 @@ public class CustomerServiceImpl implements ICustomerService {
         if (customerList != null && customerList.size() != 0) {
             int index = 0;
             for (Person item : customerList) {
-                System.out.printf("[%d] = %s", index++, item);
+                System.out.printf("[%d] - %s", index++, item);
                 System.out.println();
             }
         } else {
@@ -60,8 +61,8 @@ public class CustomerServiceImpl implements ICustomerService {
     @Override
     public void add(Person person) {
         customerList.add(person);
-        ReadWriteCSVFile.writeListToCSV(customerList, CUSTOMER_FILE_PATH);
+        ReadWriteCSVFile.writeListToCSVFile(customerList, CUSTOMER_FILE_PATH);
         System.out.println(person);
-        System.out.println("Add Successfully!!");
+        System.out.println("✓Add Successfully!!");
     }
 }

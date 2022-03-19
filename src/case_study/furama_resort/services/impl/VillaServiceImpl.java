@@ -33,7 +33,7 @@ public class VillaServiceImpl implements IFacilityService {
         if (villaList != null && villaList.size() != 0) {
             int index = 0;
             for (Facility item : villaList) {
-                System.out.printf("[%d] = %s", index++, item);
+                System.out.printf("[%d] - %s", index++, item);
                 System.out.println();
             }
         } else {
@@ -44,9 +44,9 @@ public class VillaServiceImpl implements IFacilityService {
     @Override
     public void add(Facility newVilla) {
         villaList.add(newVilla);
-        ReadWriteCSVFile.writeListToCSV(villaList, VILLA_FILE_PATH);
+        ReadWriteCSVFile.writeListToCSVFile(villaList, VILLA_FILE_PATH);
         System.out.println(newVilla);
-        System.out.println("Add successfully!");
+        System.out.println("✓Add successfully!");
     }
 
     @Override

@@ -33,7 +33,7 @@ public class RoomServiceImpl implements IFacilityService {
         if (roomList != null && roomList.size() != 0) {
             int index = 0;
             for (Facility item : roomList) {
-                System.out.printf("[%d] = %s", index++, item);
+                System.out.printf("[%d] - %s", index++, item);
                 System.out.println();
             }
         } else {
@@ -44,9 +44,9 @@ public class RoomServiceImpl implements IFacilityService {
     @Override
     public void add(Facility newRoom) {
         roomList.add(newRoom);
-        ReadWriteCSVFile.writeListToCSV(roomList, ROOM_FILE_PATH);
+        ReadWriteCSVFile.writeListToCSVFile(roomList, ROOM_FILE_PATH);
         System.out.println(newRoom);
-        System.out.println("Add successfully!");
+        System.out.println("✓Add successfully!");
     }
 
     @Override

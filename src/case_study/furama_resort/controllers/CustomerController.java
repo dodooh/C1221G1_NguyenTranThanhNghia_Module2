@@ -31,7 +31,8 @@ public class CustomerController {
     public void create() {
         String name = inputValidData("Name", ValidatorInputLibrary.STANDARD_NAME);
         String dayOfBirth = inputValidData("Day Of Birth (dd/mm/yyyy)", ValidatorInputLibrary.BIRTHDAY_FORMAT);
-        boolean isMale = 1 == Integer.parseInt(inputValidData("Gender (1. Male, 2.Female)", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER));
+        boolean isMale = 1 == Integer.parseInt(
+            inputValidData("Gender (1. Male, 2.Female)", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER));
         String nationalID = inputValidData("National ID (10-14 numbers)", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
         String phoneNumber = inputValidData("Phone Number (0xxxxxxxxx)", ValidatorInputLibrary.PHONE_NUMBER);
         String email = inputValidData("Email (abczyx@gmail.com)", ValidatorInputLibrary.EMAIL_FORMAT);
@@ -100,7 +101,8 @@ public class CustomerController {
                     object.setName(newName);
                     break;
                 case 2:
-                    String newDOB = inputValidData(" New Day Of Birth (dd/mm/yyyy)", ValidatorInputLibrary.BIRTHDAY_FORMAT);
+                    String newDOB = inputValidData(" New Day Of Birth (dd/mm/yyyy)",
+                        ValidatorInputLibrary.BIRTHDAY_FORMAT);
                     object.setDayOfBirth(newDOB);
                     break;
                 case 3:
@@ -109,11 +111,13 @@ public class CustomerController {
                     object.setMale(newGender);
                     break;
                 case 4:
-                    String nationalID = inputValidData("New National ID (10-14 numbers)", ValidatorInputLibrary.NATIONAL_ID_FORMAT);
+                    String nationalID = inputValidData("New National ID (10-14 numbers)",
+                        ValidatorInputLibrary.NATIONAL_ID_FORMAT);
                     object.setNationalID(nationalID);
                     break;
                 case 5:
-                    String phoneNumber = inputValidData("New Phone Number (0xxxxxxxxx)", ValidatorInputLibrary.PHONE_NUMBER);
+                    String phoneNumber = inputValidData("New Phone Number (0xxxxxxxxx)",
+                        ValidatorInputLibrary.PHONE_NUMBER);
                     object.setPhoneNumber(phoneNumber);
                     break;
                 case 6:

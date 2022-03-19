@@ -1,9 +1,6 @@
 package case_study.furama_resort.services.impl;
 
-import case_study.furama_resort.models.Customer;
 import case_study.furama_resort.models.Facility;
-import case_study.furama_resort.models.House;
-import case_study.furama_resort.models.Person;
 import case_study.furama_resort.services.IFacilityService;
 import case_study.furama_resort.utils.ReadWriteCSVFile;
 import java.util.ArrayList;
@@ -35,7 +32,7 @@ public class HouseServiceImpl implements IFacilityService {
         if (houseList != null && houseList.size() != 0) {
             int index = 0;
             for (Facility item : houseList) {
-                System.out.printf("[%d] = %s", index++, item);
+                System.out.printf("[%d] - %s", index++, item);
                 System.out.println();
             }
         } else {
@@ -46,9 +43,9 @@ public class HouseServiceImpl implements IFacilityService {
     @Override
     public void add(Facility newHouse) {
         houseList.add(newHouse);
-        ReadWriteCSVFile.writeListToCSV(houseList, HOUSE_FILE_PATH);
+        ReadWriteCSVFile.writeListToCSVFile(houseList, HOUSE_FILE_PATH);
         System.out.println(newHouse);
-        System.out.println("Add successfully!");
+        System.out.println("✓Add successfully!");
     }
 
     @Override

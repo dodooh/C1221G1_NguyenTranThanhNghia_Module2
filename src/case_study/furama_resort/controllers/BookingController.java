@@ -10,8 +10,6 @@ import case_study.furama_resort.models.Booking;
 import case_study.furama_resort.models.Facility;
 import case_study.furama_resort.models.Customer;
 import case_study.furama_resort.models.Person;
-import case_study.furama_resort.models.enums.CustomerType;
-import case_study.furama_resort.models.enums.EmployeeLevel;
 import case_study.furama_resort.services.IBookingService;
 import case_study.furama_resort.services.impl.BookingServiceImpl;
 import case_study.furama_resort.services.impl.CustomerServiceImpl;
@@ -25,9 +23,9 @@ import java.util.List;
 public class BookingController {
 
     private static BookingController instance;
-    CustomerController customerController = CustomerController.getInstance();
-    FacilityController facilityController = FacilityController.getInstance();
-    IBookingService bookingService = BookingServiceImpl.getInstance();
+    private final CustomerController customerController = CustomerController.getInstance();
+    private final FacilityController facilityController = FacilityController.getInstance();
+    private final IBookingService bookingService = BookingServiceImpl.getInstance();
 
     private BookingController() {
     }
@@ -40,7 +38,7 @@ public class BookingController {
     }
 
     public void create() {
-        String bookingID = inputValidData("Booking ID", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
+        int bookingID = BookingServiceImpl.bookingSet.size() + 1;
         Date startDate = inputValidStartDateTime();
         Date endDate = inputValidEndDateTime(startDate);
         Customer customerID = inputValidCustomerID();
@@ -53,12 +51,12 @@ public class BookingController {
     }
 
     private Facility inputValidFacility() {
-        int choice;
+        int facilityChoice;
         facilityController.display();
         do {
             try {
-                System.out.print("Enter your choice [0]. House\t[1]. Villa\t[2].Room: ");
-                int facilityChoice = Integer.parseInt(scanner.nextLine());
+                facilityChoice = Integer.parseInt(
+                    inputValidData("Your Choice [0]. House\t[1]. Villa\t[2].Room: ", ValidatorInputLibrary.ONE_NUMBER));
                 switch (facilityChoice) {
                     case 0:
                         if (HouseServiceImpl.houseList.size() != 0) {

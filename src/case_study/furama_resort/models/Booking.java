@@ -7,26 +7,26 @@ import java.util.Objects;
 public class Booking implements CSVable, Comparable<Booking> {
 
     private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-    private String bookingID;
+    private int bookingID;
     private Date startDate;
     private Date endDate;
     private Customer customer;
-    private Facility facilityType;
+    private Facility facility;
 
-    public Booking(String bookingID, Date startDate, Date endDate, Customer customer,
+    public Booking(int bookingID, Date startDate, Date endDate, Customer customer,
         Facility facilityType) {
         this.bookingID = bookingID;
         this.startDate = startDate;
         this.endDate = endDate;
         this.customer = customer;
-        this.facilityType = facilityType;
+        this.facility = facilityType;
     }
 
-    public String getBookingID() {
+    public int getBookingID() {
         return bookingID;
     }
 
-    public void setBookingID(String bookingID) {
+    public void setBookingID(int bookingID) {
         this.bookingID = bookingID;
     }
 
@@ -54,12 +54,12 @@ public class Booking implements CSVable, Comparable<Booking> {
         this.customer = customer;
     }
 
-    public Facility getFacilityType() {
-        return facilityType;
+    public Facility getFacility() {
+        return facility;
     }
 
-    public void setFacilityType(Facility facilityType) {
-        this.facilityType = facilityType;
+    public void setFacility(Facility facility) {
+        this.facility = facility;
     }
 
     @Override
@@ -69,15 +69,16 @@ public class Booking implements CSVable, Comparable<Booking> {
             ", startDate=" + simpleDateFormat.format(startDate) +
             ", endDate=" + simpleDateFormat.format(endDate) +
             ", customer='" + customer.getCustomerID() + '\'' +
-            ", facilityType=" + facilityType.getServiceID() +
+            ", facility=" + facility.getServiceID() +
             '}';
     }
 
     // TO CSV
     @Override
     public String toCSVFormat() {
-        return bookingID + "," + simpleDateFormat.format(startDate) + "," + simpleDateFormat.format(endDate) + "," + customer.getCustomerID() + ","
-            + facilityType.getServiceID();
+        return bookingID + "," + simpleDateFormat.format(startDate) + "," + simpleDateFormat.format(endDate) + ","
+            + customer.getCustomerID() + ","
+            + facility.getServiceID();
     }
 
     @Override
@@ -89,7 +90,7 @@ public class Booking implements CSVable, Comparable<Booking> {
             return false;
         }
         Booking booking = (Booking) o;
-        return bookingID.equals(booking.bookingID);
+        return bookingID == booking.bookingID;
     }
 
     @Override

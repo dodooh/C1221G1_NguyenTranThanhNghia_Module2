@@ -18,7 +18,7 @@ public class EmployeeController {
 
     public static final String CONFIRM_CASE = "y";
     private static EmployeeController instance;
-    IEmployeeService employeeService = EmployeeServiceImpl.getInstance();
+    private final IEmployeeService employeeService = EmployeeServiceImpl.getInstance();
 
     private EmployeeController() {
     }
@@ -65,7 +65,8 @@ public class EmployeeController {
     public void create() {
         String name = inputValidData("Name", ValidatorInputLibrary.STANDARD_NAME);
         String dayOfBirth = inputValidData("Day Of Birth (dd/mm/yyyy)", ValidatorInputLibrary.BIRTHDAY_FORMAT);
-        boolean isMale = 1 == Integer.parseInt(inputValidData("Gender (1. Male, 2.Female)", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER));
+        boolean isMale = 1 == Integer.parseInt(
+            inputValidData("Gender (1. Male, 2.Female)", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER));
         String nationalID = inputValidData("National ID (10-14 numbers)", ValidatorInputLibrary.NATIONAL_ID_FORMAT);
         String phoneNumber = inputValidData("Phone Number (0XXXXXXXXX)", ValidatorInputLibrary.PHONE_NUMBER);
         String email = inputValidData("Email (abczyx@gmail.com)", ValidatorInputLibrary.EMAIL_FORMAT);
@@ -137,7 +138,8 @@ public class EmployeeController {
                     object.setName(newName);
                     break;
                 case 2:
-                    String newDOB = inputValidData(" New Day Of Birth (dd/mm/yyyy)", ValidatorInputLibrary.BIRTHDAY_FORMAT);
+                    String newDOB = inputValidData(" New Day Of Birth (dd/mm/yyyy)",
+                        ValidatorInputLibrary.BIRTHDAY_FORMAT);
                     object.setDayOfBirth(newDOB);
                     break;
                 case 3:
@@ -146,11 +148,13 @@ public class EmployeeController {
                     object.setMale(newGender);
                     break;
                 case 4:
-                    String nationalID = inputValidData("New National ID (10-14 numbers)", ValidatorInputLibrary.NATIONAL_ID_FORMAT);
+                    String nationalID = inputValidData("New National ID (10-14 numbers)",
+                        ValidatorInputLibrary.NATIONAL_ID_FORMAT);
                     object.setNationalID(nationalID);
                     break;
                 case 5:
-                    String phoneNumber = inputValidData("New Phone Number (0xxxxxxxxx)", ValidatorInputLibrary.PHONE_NUMBER);
+                    String phoneNumber = inputValidData("New Phone Number (0xxxxxxxxx)",
+                        ValidatorInputLibrary.PHONE_NUMBER);
                     object.setPhoneNumber(phoneNumber);
                     break;
                 case 6:
@@ -166,7 +170,8 @@ public class EmployeeController {
                     ((Employee) object).setPosition(position);
                     break;
                 case 9:
-                    double salary = Double.parseDouble(inputValidData("New Salary", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER));
+                    double salary = Double.parseDouble(
+                        inputValidData("New Salary", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER));
                     ((Employee) object).setSalary(salary);
                     break;
                 default:

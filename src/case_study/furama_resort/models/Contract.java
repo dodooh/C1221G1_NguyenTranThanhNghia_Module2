@@ -3,17 +3,17 @@ package case_study.furama_resort.models;
 public class Contract implements CSVable {
 
     private int contractNumber;
-    private String bookingID;
+    private Booking booking;
     private double deposit;
     private double totalCost;
-    private String customerID;
+    private Customer customer;
 
-    public Contract(int contractNumber, String bookingID, double deposit, double totalCost, String customerID) {
+    public Contract(int contractNumber, Booking booking, double deposit, double totalCost, Customer customer) {
         this.contractNumber = contractNumber;
-        this.bookingID = bookingID;
+        this.booking = booking;
         this.deposit = deposit;
         this.totalCost = totalCost;
-        this.customerID = customerID;
+        this.customer = customer;
     }
 
     public int getContractNumber() {
@@ -24,12 +24,12 @@ public class Contract implements CSVable {
         this.contractNumber = contractNumber;
     }
 
-    public String getBookingID() {
-        return bookingID;
+    public Booking getBooking() {
+        return booking;
     }
 
-    public void setBookingID(String bookingID) {
-        this.bookingID = bookingID;
+    public void setBooking(Booking booking) {
+        this.booking = booking;
     }
 
     public double getDeposit() {
@@ -48,27 +48,24 @@ public class Contract implements CSVable {
         this.totalCost = totalCost;
     }
 
-    public String getCustomerID() {
-        return customerID;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerID(String customerID) {
-        this.customerID = customerID;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     @Override
     public String toString() {
-        return "Contract{" +
-            "contractNumber=" + contractNumber +
-            ", bookingID='" + bookingID + '\'' +
-            ", deposit=" + deposit +
-            ", totalCost=" + totalCost +
-            ", customerID='" + customerID + '\'' +
-            '}';
+        return "Contract{" + "contractNumber=" + contractNumber + ", booking='" + booking.getBookingID() + '\''
+            + ", deposit=" + String.format("%,.0f", deposit) + ", totalCost=" + String.format("%,.0f", totalCost)
+            + ", customer='" + customer.getCustomerID() + '\'' + '}';
     }
 
     @Override
     public String toCSVFormat() {
-        return contractNumber + "," + bookingID + "," + deposit + "," + totalCost + "," + customerID;
+        return contractNumber + "," + booking.getBookingID() + "," + String.format("%.0f", deposit) + ","
+            + String.format("%.0f", totalCost) + "," + customer.getCustomerID();
     }
 }
