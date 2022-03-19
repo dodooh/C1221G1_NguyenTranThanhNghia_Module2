@@ -70,7 +70,7 @@ public abstract class Person implements CSVable {
 
     @Override
     public String toString() {
-        return "name='" + name + '\'' +
+        return ", name='" + name + '\'' +
             ", dayOfBirth='" + dayOfBirth + '\'' +
             ", isMale=" + isMale +
             ", nationalID='" + nationalID + '\'' +

@@ -71,7 +71,7 @@ public class ReadWriteCSVFile {
         }
     }
 
-    public static Set<Booking> readBookingSetFromCSVFile(String filePath) throws ParseException, FacilityUnknownException {
+    public static Set<Booking> readBookingSetFromCSVFile(String filePath) throws ParseException, ParseObjectException {
         Set<Booking> resultSet = new TreeSet<>();
         List<String> stringList = readStringListFromCSVFile(filePath);
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -79,12 +79,17 @@ public class ReadWriteCSVFile {
         IFacilityService roomService = RoomServiceImpl.getInstance();
         IFacilityService houseService = HouseServiceImpl.getInstance();
         IFacilityService villaService = VillaServiceImpl.getInstance();
-        for(String line : stringList) {
+        for (String line : stringList) {
             String[] field = line.split(",");
             String bookingID = field[0];
             Date startDate = formatter.parse(field[1]);
             Date endDate = formatter.parse(field[2]);
-            Customer customer = customerService.getCustomerByID(field[3]);
+            Customer customer;
+            if (customerService.getCustomerByID(field[3]) != null) {
+                customer = customerService.getCustomerByID(field[3]);
+            } else {
+                throw new ParseObjectException("!!!CANT FIND CUSTOMER WITH THIS ID!!!");
+            }
             Facility facility;
             if (roomService.getFacilityByID(field[4]) != null) {
                 facility = roomService.getFacilityByID(field[4]);
@@ -93,9 +98,9 @@ public class ReadWriteCSVFile {
             } else if (villaService.getFacilityByID(field[4]) != null) {
                 facility = villaService.getFacilityByID(field[4]);
             } else {
-                throw new FacilityUnknownException();
+                throw new ParseObjectException("!!!CANT FIND FACILITY WITH THIS ID!!!");
             }
-            resultSet.add(new Booking(bookingID,startDate,endDate,customer,facility));
+            resultSet.add(new Booking(bookingID, startDate, endDate, customer, facility));
         }
         return resultSet;
     }
@@ -244,7 +249,7 @@ public class ReadWriteCSVFile {
             bufferedReader.close();
             fileReader.close();
         } catch (FileNotFoundException e) {
-            System.err.println("File not found!");
+            System.err.println("!!!FILE NOT FOUND!!!");
         } catch (IOException e) {
             e.printStackTrace();
         }

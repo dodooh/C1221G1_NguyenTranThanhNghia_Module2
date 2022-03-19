@@ -10,11 +10,22 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     private static final String EMPLOYEE_FILE_PATH = "src/case_study/furama_resort/data/employee.csv";
     public static List<Person> employeeList = new LinkedList<>();
+    private static EmployeeServiceImpl instance;
 
     static {
         employeeList = new LinkedList<>();
         employeeList = ReadWriteCSVFile.readEmployeeListFromCSVFile(EMPLOYEE_FILE_PATH);
 
+    }
+
+    private EmployeeServiceImpl() {
+    }
+
+    public static EmployeeServiceImpl getInstance() {
+        if (instance == null) {
+            instance = new EmployeeServiceImpl();
+        }
+        return instance;
     }
 
     public void edit(int index, Person person) {
@@ -25,16 +36,16 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     @Override
-    public void displayList(List<Person> list) {
+    public void displayList() {
         System.out.println("=========EMPLOYEE LIST==========");
-        if (list != null && list.size() != 0) {
+        if (employeeList != null && employeeList.size() != 0) {
             int index = 0;
-            for (Person item : list) {
+            for (Person item : employeeList) {
                 System.out.printf("[%d] = %s", index++, item);
                 System.out.println();
             }
         } else {
-            System.out.println("!!!Employee List not found.");
+            System.out.println("!!!EMPLOYEE LIST IS EMPTY!!!");
         }
     }
 

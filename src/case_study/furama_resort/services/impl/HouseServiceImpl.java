@@ -11,7 +11,13 @@ import java.util.List;
 
 public class HouseServiceImpl implements IFacilityService {
 
+    private static final String HOUSE_FILE_PATH = "src/case_study/furama_resort/data/house.csv";
+    public static List<Facility> houseList = new ArrayList<>();
     private static HouseServiceImpl instance;
+
+    static {
+        houseList = ReadWriteCSVFile.readHouseListFromCSVFile(HOUSE_FILE_PATH);
+    }
 
     private HouseServiceImpl() {
     }
@@ -23,24 +29,17 @@ public class HouseServiceImpl implements IFacilityService {
         return instance;
     }
 
-    private static final String HOUSE_FILE_PATH = "src/case_study/furama_resort/data/house.csv";
-    public static List<Facility> houseList = new ArrayList<>();
-
-    static {
-        houseList = ReadWriteCSVFile.readHouseListFromCSVFile(HOUSE_FILE_PATH);
-    }
-
     @Override
-    public void displayList(List<Facility> list) {
+    public void displayList() {
         System.out.println("=======HOUSE LIST=======");
-        if (list != null && list.size() != 0) {
+        if (houseList != null && houseList.size() != 0) {
             int index = 0;
-            for (Facility item : list) {
+            for (Facility item : houseList) {
                 System.out.printf("[%d] = %s", index++, item);
                 System.out.println();
             }
         } else {
-            System.out.println("!!!House List not found.");
+            System.out.println("!!!HOUSE LIST IS EMPTY!!!");
         }
     }
 
@@ -51,9 +50,10 @@ public class HouseServiceImpl implements IFacilityService {
         System.out.println(newHouse);
         System.out.println("Add successfully!");
     }
+
     @Override
     public Facility getFacilityByID(String id) {
-        for (Facility house: houseList) {
+        for (Facility house : houseList) {
             if (house.getServiceID().equals(id)) {
                 return house;
             }

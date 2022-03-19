@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface IService<T> {
 
-    void displayList(List<T> list);
+    void displayList();
 
     void add(T object);
 }

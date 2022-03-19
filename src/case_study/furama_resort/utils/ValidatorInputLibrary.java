@@ -9,12 +9,15 @@ public class ValidatorInputLibrary {
     public static final String INTEGER_POSITIVE_NUMBER = "^[1-9]\\d*$";
     public static final String PHONE_NUMBER = "^0\\d{9}$";
     public static final String EMAIL_FORMAT = "^[A-Za-z]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$";
-    public static final String MENU_CHOICE = "^\\d$";
+    public static final String ONE_NUMBER = "^\\d$";
     public static final String PEOPLE_QUANTITY = "^([1-9]|(1\\d))$";
     public static final String VILLA_SERVICE_ID = "^SVVL-\\d{4}$";
     public static final String HOUSE_SERVICE_ID = "^SVHO-\\d{4}$";
     public static final String ROOM_SERVICE_ID = "^SVRO-\\d{4}$";
     public static final String BIRTHDAY_FORMAT = "^\\d{2}/\\d{2}/\\d{4}$";
+    public static final String CUSTOMER_ID_FORMAT = "^C\\d{4}$";
+    public static final String EMPLOYEE_ID_FORMAT = "^E\\d{4}$";
+    public static final String NATIONAL_ID_FORMAT = "^\\d{10,14}$";
 
     static boolean isMatch(String input, String regex) {
         return input.matches(regex);

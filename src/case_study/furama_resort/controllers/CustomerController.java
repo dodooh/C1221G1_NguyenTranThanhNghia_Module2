@@ -1,9 +1,9 @@
-package case_study.furama_resort.controllers.impl;
+package case_study.furama_resort.controllers;
 
+import static case_study.furama_resort.controllers.FuramaController.INVALID_INDEX_WARNING;
 import static case_study.furama_resort.utils.ReadInputFromKeyBoard.inputValidData;
 import static oop_review.quan_ly_phuong_tien.controllers.MainController.scanner;
 
-import case_study.furama_resort.controllers.IPeopleController;
 import case_study.furama_resort.models.Customer;
 import case_study.furama_resort.models.Person;
 import case_study.furama_resort.models.enums.CustomerType;
@@ -12,32 +12,30 @@ import case_study.furama_resort.services.impl.CustomerServiceImpl;
 import case_study.furama_resort.utils.EnumUtils;
 import case_study.furama_resort.utils.ValidatorInputLibrary;
 
-public class CustomerControllerImpl implements IPeopleController {
+public class CustomerController {
 
-    private static CustomerControllerImpl instance;
+    public static final String CONFIRM_CASE = "y";
+    private static CustomerController instance;
+    ICustomerService customerService = CustomerServiceImpl.getInstance();
 
-    private CustomerControllerImpl() {
+    private CustomerController() {
     }
 
-    public static CustomerControllerImpl getInstance() {
+    public static CustomerController getInstance() {
         if (instance == null) {
-            instance = new CustomerControllerImpl();
+            instance = new CustomerController();
         }
         return instance;
     }
 
-    public static final String EXIT_CASE = "n";
-    ICustomerService customerService = CustomerServiceImpl.getInstance();
-
-    @Override
     public void create() {
         String name = inputValidData("Name", ValidatorInputLibrary.STANDARD_NAME);
         String dayOfBirth = inputValidData("Day Of Birth (dd/mm/yyyy)", ValidatorInputLibrary.BIRTHDAY_FORMAT);
         boolean isMale = 1 == Integer.parseInt(inputValidData("Gender (1. Male, 2.Female)", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER));
-        String nationalID = inputValidData("National ID", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
-        String phoneNumber = inputValidData("Phone Number (0XXXXXXXXX)", ValidatorInputLibrary.PHONE_NUMBER);
+        String nationalID = inputValidData("National ID (10-14 numbers)", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
+        String phoneNumber = inputValidData("Phone Number (0xxxxxxxxx)", ValidatorInputLibrary.PHONE_NUMBER);
         String email = inputValidData("Email (abczyx@gmail.com)", ValidatorInputLibrary.EMAIL_FORMAT);
-        String customerID = inputValidData("Customer ID", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
+        String customerID = inputValidData("Customer ID (Cxxxx)", ValidatorInputLibrary.CUSTOMER_ID_FORMAT);
         CustomerType customerType = getCustomerTypeFromInput();
         String address = inputValidData("Address ID", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
         customerService.add(new Customer(name,
@@ -51,12 +49,10 @@ public class CustomerControllerImpl implements IPeopleController {
             address));
     }
 
-    @Override
     public void display() {
-        customerService.displayList(CustomerServiceImpl.customerList);
+        customerService.displayList();
     }
 
-    @Override
     public void edit() {
         System.out.println("----------CUSTOMER EDITING MODE-----------");
         this.display();
@@ -66,10 +62,17 @@ public class CustomerControllerImpl implements IPeopleController {
                 int index = Integer.parseInt(scanner.nextLine()); // Chua validator
                 Person objectToEdit = CustomerServiceImpl.customerList.get(index);
                 editing(objectToEdit);
-                customerService.edit(index, objectToEdit);
+                System.out.println("New Employee:");
+                System.out.println(objectToEdit);
+                System.out.print("Confirm editing (y/n)? ");
+                if (CONFIRM_CASE.equals(scanner.nextLine())) {
+                    customerService.edit(index, objectToEdit);
+                } else {
+                    System.out.println("Exit editing mode...");
+                }
                 break;
             } catch (IndexOutOfBoundsException e) {
-                System.out.println("!!!Please Enter A Valid Index!!!");
+                System.out.println(INVALID_INDEX_WARNING);
             }
         } while (true);
 
@@ -97,20 +100,20 @@ public class CustomerControllerImpl implements IPeopleController {
                     object.setName(newName);
                     break;
                 case 2:
-                    String newDOB = inputValidData("New Day Of Birth", ValidatorInputLibrary.BIRTHDAY_FORMAT);
+                    String newDOB = inputValidData(" New Day Of Birth (dd/mm/yyyy)", ValidatorInputLibrary.BIRTHDAY_FORMAT);
                     object.setDayOfBirth(newDOB);
                     break;
                 case 3:
                     boolean newGender = 1 == Integer.parseInt(
-                        inputValidData("New Gender (1. Male, 2.Female)", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER));
+                        inputValidData("New Gender (1. Male, 2.Female)", ValidatorInputLibrary.ONE_NUMBER));
                     object.setMale(newGender);
                     break;
                 case 4:
-                    String nationalID = inputValidData("New National ID", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
+                    String nationalID = inputValidData("New National ID (10-14 numbers)", ValidatorInputLibrary.NATIONAL_ID_FORMAT);
                     object.setNationalID(nationalID);
                     break;
                 case 5:
-                    String phoneNumber = inputValidData("New Phone Number", ValidatorInputLibrary.PHONE_NUMBER);
+                    String phoneNumber = inputValidData("New Phone Number (0xxxxxxxxx)", ValidatorInputLibrary.PHONE_NUMBER);
                     object.setPhoneNumber(phoneNumber);
                     break;
                 case 6:
@@ -126,25 +129,25 @@ public class CustomerControllerImpl implements IPeopleController {
                     ((Customer) object).setAddress(address);
                     break;
                 default:
-                    System.out.println("!!!Invalid input!!!");
+                    System.out.println(INVALID_INDEX_WARNING);
             }
-            System.out.print("Keep Editing?(y/n) ");
+            System.out.print("Keep Editing?(y/n)? ");
             String s = scanner.nextLine();
-            if (EXIT_CASE.equalsIgnoreCase(s)) {
+            if (!CONFIRM_CASE.equalsIgnoreCase(s)) {
                 break;
             }
         } while (true);
     }
+
     private CustomerType getCustomerTypeFromInput() {
         int choice;
         System.out.println("Enter Customer Type");
         EnumUtils.displayMenu(CustomerType.class);
+        String title = String.format("Your choice 0-%d:", (CustomerType.values().length - 1));
         do {
-
-            System.out.print("\nYour choice:");
-            choice = Integer.parseInt(scanner.nextLine());
+            choice = Integer.parseInt(inputValidData(title, ValidatorInputLibrary.ONE_NUMBER));
             if (choice < 0 || choice >= CustomerType.values().length) {
-                System.out.println("Invalid choice");
+                System.out.print(INVALID_INDEX_WARNING);
             } else {
                 break;
             }

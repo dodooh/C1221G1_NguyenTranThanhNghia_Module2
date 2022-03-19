@@ -1,11 +1,12 @@
-package case_study.furama_resort.controllers.impl;
+package case_study.furama_resort.controllers;
 
+import static case_study.furama_resort.controllers.FuramaController.INVALID_INDEX_WARNING;
 import static case_study.furama_resort.utils.ReadInputFromKeyBoard.inputValidData;
 import static oop_review.quan_ly_phuong_tien.controllers.MainController.scanner;
 
-import case_study.furama_resort.controllers.IPeopleController;
 import case_study.furama_resort.models.Employee;
 import case_study.furama_resort.models.Person;
+import case_study.furama_resort.models.enums.CustomerType;
 import case_study.furama_resort.models.enums.EmployeeLevel;
 import case_study.furama_resort.models.enums.EmployeePosition;
 import case_study.furama_resort.services.IEmployeeService;
@@ -13,31 +14,31 @@ import case_study.furama_resort.services.impl.EmployeeServiceImpl;
 import case_study.furama_resort.utils.EnumUtils;
 import case_study.furama_resort.utils.ValidatorInputLibrary;
 
-public class EmployeeControllerImpl implements IPeopleController {
-    private static EmployeeControllerImpl instance;
+public class EmployeeController {
 
-    private EmployeeControllerImpl() {
+    public static final String CONFIRM_CASE = "y";
+    private static EmployeeController instance;
+    IEmployeeService employeeService = EmployeeServiceImpl.getInstance();
+
+    private EmployeeController() {
     }
 
-    public static EmployeeControllerImpl getInstance() {
+    public static EmployeeController getInstance() {
         if (instance == null) {
-            instance = new EmployeeControllerImpl();
+            instance = new EmployeeController();
         }
         return instance;
     }
-    public static final String EXIT_CASE = "n";
-    IEmployeeService employeeService = new EmployeeServiceImpl();
 
     private EmployeeLevel getEmployeeLevelFromInput() {
         int choice;
         System.out.println("Enter Employee Level");
         EnumUtils.displayMenu(EmployeeLevel.class);
+        String title = String.format("Your choice 0-%d:", (EmployeeLevel.values().length - 1));
         do {
-
-            System.out.print("\nYour choice:");
-            choice = Integer.parseInt(scanner.nextLine());
+            choice = Integer.parseInt(inputValidData(title, ValidatorInputLibrary.ONE_NUMBER));
             if (choice < 0 || choice >= EmployeeLevel.values().length) {
-                System.out.print("Invalid choice");
+                System.out.print(INVALID_INDEX_WARNING);
             } else {
                 break;
             }
@@ -49,12 +50,11 @@ public class EmployeeControllerImpl implements IPeopleController {
         int choice;
         System.out.println("Enter Employee Position");
         EnumUtils.displayMenu(EmployeePosition.class);
+        String title = String.format("Your choice 0-%d:", (EmployeePosition.values().length - 1));
         do {
-
-            System.out.print("\nYour choice:");
-            choice = Integer.parseInt(scanner.nextLine());
+            choice = Integer.parseInt(inputValidData(title, ValidatorInputLibrary.ONE_NUMBER));
             if (choice < 0 || choice >= EmployeePosition.values().length) {
-                System.out.print("Invalid choice");
+                System.out.print(INVALID_INDEX_WARNING);
             } else {
                 break;
             }
@@ -66,10 +66,10 @@ public class EmployeeControllerImpl implements IPeopleController {
         String name = inputValidData("Name", ValidatorInputLibrary.STANDARD_NAME);
         String dayOfBirth = inputValidData("Day Of Birth (dd/mm/yyyy)", ValidatorInputLibrary.BIRTHDAY_FORMAT);
         boolean isMale = 1 == Integer.parseInt(inputValidData("Gender (1. Male, 2.Female)", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER));
-        String nationalID = inputValidData("National ID", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
+        String nationalID = inputValidData("National ID (10-14 numbers)", ValidatorInputLibrary.NATIONAL_ID_FORMAT);
         String phoneNumber = inputValidData("Phone Number (0XXXXXXXXX)", ValidatorInputLibrary.PHONE_NUMBER);
         String email = inputValidData("Email (abczyx@gmail.com)", ValidatorInputLibrary.EMAIL_FORMAT);
-        String employeeID = inputValidData("Employee ID", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
+        String employeeID = inputValidData("Employee ID (Cxxxx)", ValidatorInputLibrary.EMPLOYEE_ID_FORMAT);
         EmployeeLevel level = getEmployeeLevelFromInput();
         EmployeePosition position = getEmployeePositionFromInput();
         double salary = Double.parseDouble(inputValidData("Salary", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER));
@@ -86,12 +86,10 @@ public class EmployeeControllerImpl implements IPeopleController {
             salary));
     }
 
-    @Override
     public void display() {
-        employeeService.displayList(EmployeeServiceImpl.employeeList);
+        employeeService.displayList();
     }
 
-    @Override
     public void edit() {
         System.out.println("----------EDITING MODE-----------");
         this.display();
@@ -101,10 +99,17 @@ public class EmployeeControllerImpl implements IPeopleController {
                 int index = Integer.parseInt(scanner.nextLine()); // Chua validator
                 Person objectToEdit = EmployeeServiceImpl.employeeList.get(index);
                 editing(objectToEdit);
-                employeeService.edit(index, objectToEdit);
+                System.out.println("New Employee:");
+                System.out.println(objectToEdit);
+                System.out.print("Confirm editing (y/n)? ");
+                if (CONFIRM_CASE.equals(scanner.nextLine())) {
+                    employeeService.edit(index, objectToEdit);
+                } else {
+                    System.out.println("Exit editing mode...");
+                }
                 break;
             } catch (IndexOutOfBoundsException e) {
-                System.out.println("!!!Please Enter A Valid Index!!!");
+                System.out.println(INVALID_INDEX_WARNING);
             }
         } while (true);
     }
@@ -132,19 +137,20 @@ public class EmployeeControllerImpl implements IPeopleController {
                     object.setName(newName);
                     break;
                 case 2:
-                    String newDOB = inputValidData("New Day Of Birth", ValidatorInputLibrary.BIRTHDAY_FORMAT);
+                    String newDOB = inputValidData(" New Day Of Birth (dd/mm/yyyy)", ValidatorInputLibrary.BIRTHDAY_FORMAT);
                     object.setDayOfBirth(newDOB);
                     break;
                 case 3:
-                    boolean newGender = 1 == Integer.parseInt(inputValidData("New Gender (1. Male, 2.Female)", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER));
+                    boolean newGender = 1 == Integer.parseInt(
+                        inputValidData("New Gender (1. Male, 2.Female)", ValidatorInputLibrary.ONE_NUMBER));
                     object.setMale(newGender);
                     break;
                 case 4:
-                    String nationalID = inputValidData("New National ID", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
+                    String nationalID = inputValidData("New National ID (10-14 numbers)", ValidatorInputLibrary.NATIONAL_ID_FORMAT);
                     object.setNationalID(nationalID);
                     break;
                 case 5:
-                    String phoneNumber = inputValidData("New Phone Number", ValidatorInputLibrary.PHONE_NUMBER);
+                    String phoneNumber = inputValidData("New Phone Number (0xxxxxxxxx)", ValidatorInputLibrary.PHONE_NUMBER);
                     object.setPhoneNumber(phoneNumber);
                     break;
                 case 6:
@@ -164,11 +170,11 @@ public class EmployeeControllerImpl implements IPeopleController {
                     ((Employee) object).setSalary(salary);
                     break;
                 default:
-                    System.out.println("!!!Invalid input!!!");
+                    System.out.println(INVALID_INDEX_WARNING);
             }
             System.out.print("Keep Editing?(y/n) ");
             String s = scanner.nextLine();
-            if (EXIT_CASE.equalsIgnoreCase(s)) {
+            if (!CONFIRM_CASE.equalsIgnoreCase(s)) {
                 break;
             }
         } while (true);

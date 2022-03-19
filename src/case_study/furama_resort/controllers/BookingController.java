@@ -1,17 +1,17 @@
-package case_study.furama_resort.controllers.impl;
+package case_study.furama_resort.controllers;
 
+import static case_study.furama_resort.controllers.FuramaController.INVALID_INDEX_WARNING;
 import static case_study.furama_resort.utils.ReadInputFromKeyBoard.inputValidData;
 import static case_study.furama_resort.utils.ReadInputFromKeyBoard.inputValidEndDateTime;
 import static case_study.furama_resort.utils.ReadInputFromKeyBoard.inputValidStartDateTime;
 import static oop_review.quan_ly_phuong_tien.controllers.MainController.scanner;
 
-import case_study.furama_resort.controllers.IBookingController;
-import case_study.furama_resort.controllers.IFacilityController;
-import case_study.furama_resort.controllers.IPeopleController;
 import case_study.furama_resort.models.Booking;
 import case_study.furama_resort.models.Facility;
 import case_study.furama_resort.models.Customer;
 import case_study.furama_resort.models.Person;
+import case_study.furama_resort.models.enums.CustomerType;
+import case_study.furama_resort.models.enums.EmployeeLevel;
 import case_study.furama_resort.services.IBookingService;
 import case_study.furama_resort.services.impl.BookingServiceImpl;
 import case_study.furama_resort.services.impl.CustomerServiceImpl;
@@ -20,15 +20,25 @@ import case_study.furama_resort.services.impl.RoomServiceImpl;
 import case_study.furama_resort.services.impl.VillaServiceImpl;
 import case_study.furama_resort.utils.ValidatorInputLibrary;
 import java.util.Date;
+import java.util.List;
 
-public class BookingControllerImpl implements IBookingController {
+public class BookingController {
 
-    IPeopleController customerController = CustomerControllerImpl.getInstance();
-    IFacilityController facilityController = FacilityControllerImpl.getInstance();
+    private static BookingController instance;
+    CustomerController customerController = CustomerController.getInstance();
+    FacilityController facilityController = FacilityController.getInstance();
     IBookingService bookingService = BookingServiceImpl.getInstance();
 
+    private BookingController() {
+    }
 
-    @Override
+    public static BookingController getInstance() {
+        if (instance == null) {
+            instance = new BookingController();
+        }
+        return instance;
+    }
+
     public void create() {
         String bookingID = inputValidData("Booking ID", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
         Date startDate = inputValidStartDateTime();
@@ -38,9 +48,8 @@ public class BookingControllerImpl implements IBookingController {
         bookingService.add(new Booking(bookingID, startDate, endDate, customerID, facility));
     }
 
-    @Override
     public void display() {
-        bookingService.displaySet(BookingServiceImpl.bookingTreeSet);
+        bookingService.displaySet();
     }
 
     private Facility inputValidFacility() {
@@ -48,50 +57,32 @@ public class BookingControllerImpl implements IBookingController {
         facilityController.display();
         do {
             try {
-                System.out.print("Enter your choice [1]. House\t[2]. Villa\t[3].Room: ");
+                System.out.print("Enter your choice [0]. House\t[1]. Villa\t[2].Room: ");
                 int facilityChoice = Integer.parseInt(scanner.nextLine());
                 switch (facilityChoice) {
-                    case 1:
+                    case 0:
                         if (HouseServiceImpl.houseList.size() != 0) {
-                            System.out.print("Enter the index: ");
-                            choice = Integer.parseInt(scanner.nextLine());
-                            if (choice < 0 || choice >= HouseServiceImpl.houseList.size()) {
-                                System.out.println("!!!ENTER A VALID HOUSE PLEASE!!!");
-                            } else {
-                                return HouseServiceImpl.houseList.get(choice);
-                            }
+                            return getFacilityFromList(HouseServiceImpl.houseList);
                         } else {
                             System.out.println("!!!LIST IS EMPTY!!!");
                         }
                         break;
-                    case 3:
-                        if (RoomServiceImpl.roomList.size() != 0) {
-                            System.out.print("Enter the index: ");
-                            choice = Integer.parseInt(scanner.nextLine());
-                            if (choice < 0 || choice >= RoomServiceImpl.roomList.size()) {
-                                System.out.println("!!!ENTER A VALID ROOM PLEASE!!!");
-                            } else {
-                                return RoomServiceImpl.roomList.get(choice);
-                            }
+                    case 1:
+                        if (VillaServiceImpl.villaList.size() != 0) {
+                            return getFacilityFromList(VillaServiceImpl.villaList);
                         } else {
                             System.out.println("!!!LIST IS EMPTY!!!");
                         }
                         break;
                     case 2:
-                        if (VillaServiceImpl.villaList.size() != 0) {
-                            System.out.print("Enter the index: ");
-                            choice = Integer.parseInt(scanner.nextLine());
-                            if (choice < 0 || choice >= VillaServiceImpl.villaList.size()) {
-                                System.out.println("!!!ENTER A VALID VILLA PLEASE!!!");
-                            } else {
-                                return VillaServiceImpl.villaList.get(choice);
-                            }
+                        if (RoomServiceImpl.roomList.size() != 0) {
+                            return getFacilityFromList(RoomServiceImpl.roomList);
                         } else {
                             System.out.println("!!!LIST IS EMPTY!!!");
                         }
                         break;
                     default:
-                        System.out.println("!!!ENTER A VALID VILLA PLEASE!!!");
+                        System.out.println(INVALID_INDEX_WARNING);
                 }
             } catch (NumberFormatException e) {
                 System.out.println(e.getMessage());
@@ -112,6 +103,19 @@ public class BookingControllerImpl implements IBookingController {
                 }
             }
             System.out.println("!!!Not Found In List!!! Carefully Review");
+        } while (true);
+    }
+
+    private Facility getFacilityFromList(List<Facility> list) {
+        int choice;
+        String title = String.format("Your choice 0-%d:", (list.size() - 1));
+        do {
+            choice = Integer.parseInt(inputValidData(title, ValidatorInputLibrary.INTEGER_POSITIVE_NUMBER));
+            if (choice < 0 || choice >= list.size()) {
+                System.out.println(INVALID_INDEX_WARNING);
+            } else {
+                return list.get(choice);
+            }
         } while (true);
     }
 }

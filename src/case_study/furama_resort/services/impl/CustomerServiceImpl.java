@@ -8,25 +8,28 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class CustomerServiceImpl implements ICustomerService {
-    private static CustomerServiceImpl instance;
-    private CustomerServiceImpl() {
-    }
-    public static CustomerServiceImpl getInstance() {
-        if (instance == null) {
-            instance = new CustomerServiceImpl();
-        }
-        return instance;
-    }
+
     private static final String CUSTOMER_FILE_PATH = "src/case_study/furama_resort/data/customer.csv";
-    public static List<Person> customerList = new LinkedList<>();
+    public static List<Person> customerList;
+    private static CustomerServiceImpl instance;
 
     static {
         customerList = new LinkedList<>();
         customerList = ReadWriteCSVFile.readCustomerListFromCSVFile(CUSTOMER_FILE_PATH);
     }
 
+    private CustomerServiceImpl() {
+    }
+
+    public static CustomerServiceImpl getInstance() {
+        if (instance == null) {
+            instance = new CustomerServiceImpl();
+        }
+        return instance;
+    }
+
     public Customer getCustomerByID(String id) {
-        for (Person customer: customerList) {
+        for (Person customer : customerList) {
             if (((Customer) customer).getCustomerID().equals(id)) {
                 return (Customer) customer;
             }
@@ -40,18 +43,17 @@ public class CustomerServiceImpl implements ICustomerService {
         System.out.println("Edit Successfully");
     }
 
-
     @Override
-    public void displayList(List<Person> list) {
+    public void displayList() {
         System.out.println("=========CUSTOMER LIST==========");
-        if (list != null && list.size() != 0) {
+        if (customerList != null && customerList.size() != 0) {
             int index = 0;
-            for (Person item : list) {
+            for (Person item : customerList) {
                 System.out.printf("[%d] = %s", index++, item);
                 System.out.println();
             }
         } else {
-            System.out.println("!!!Customer List not found.");
+            System.out.println("!!!CUSTOMER LIST IS EMPTY!!!");
         }
     }
 

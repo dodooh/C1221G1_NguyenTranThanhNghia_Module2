@@ -1,21 +1,16 @@
 package case_study.furama_resort.controllers;
 
-import case_study.furama_resort.controllers.impl.BookingControllerImpl;
-import case_study.furama_resort.controllers.impl.FacilityControllerImpl;
-import case_study.furama_resort.controllers.impl.CustomerControllerImpl;
-import case_study.furama_resort.controllers.impl.EmployeeControllerImpl;
-import case_study.furama_resort.services.IBookingService;
-import case_study.furama_resort.services.impl.BookingServiceImpl;
 import java.util.Scanner;
 
 public class FuramaController {
 
     private final Scanner scanner = new Scanner(System.in);
-    IPeopleController employeeController = EmployeeControllerImpl.getInstance();
-    IPeopleController customerController = CustomerControllerImpl.getInstance();
-    FacilityControllerImpl facilityController = FacilityControllerImpl.getInstance();
-    IBookingController bookingController = new BookingControllerImpl();
+    EmployeeController employeeController = EmployeeController.getInstance();
+    CustomerController customerController = CustomerController.getInstance();
+    FacilityController facilityController = FacilityController.getInstance();
+    BookingController bookingController = BookingController.getInstance();
     private int chooseMenu;
+    public static final String INVALID_INDEX_WARNING = "!!!ENTER A VALID INDEX PLEASE!!!";
 
     public void displayMainMenu() {
         do {
@@ -49,13 +44,12 @@ public class FuramaController {
                         System.out.println("Exit Program");
                         System.exit(1);
                     default:
-                        System.err.println("Please Enter Exactly Number!!!");
+                        System.err.println(INVALID_INDEX_WARNING);
                         break;
                 }
             } catch (NumberFormatException e) {
                 System.out.println(e.getMessage());
             }
-
         } while (true);
     }
 
@@ -68,7 +62,7 @@ public class FuramaController {
                 "3.\tEdit employee\n" +
                 "0.\tReturn main menu");
             try {
-                System.out.print("Your choice");
+                System.out.print("Your choice: ");
                 chooseMenu = Integer.parseInt(scanner.nextLine());
                 switch (chooseMenu) {
                     case 1:
@@ -85,7 +79,7 @@ public class FuramaController {
                         flag = false;
                         break;
                     default:
-                        System.out.println("Please Enter Exactly Number!!!");
+                        System.out.println(INVALID_INDEX_WARNING);
                         break;
                 }
             } catch (NumberFormatException e) {
@@ -120,7 +114,7 @@ public class FuramaController {
                         flag = false;
                         break;
                     default:
-                        System.out.println("Please Enter Exactly Number!!!");
+                        System.out.println(INVALID_INDEX_WARNING);
                         break;
                 }
             } catch (NumberFormatException e) {
@@ -140,6 +134,7 @@ public class FuramaController {
                 "3.\tDisplay list facility maintenance\n" +
                 "0.\tReturn main menu");
             try {
+                System.out.print("Your choice: ");
                 chooseMenu = Integer.parseInt(scanner.nextLine());
                 switch (chooseMenu) {
                     case 1:
@@ -156,7 +151,7 @@ public class FuramaController {
                         flag = false;
                         break;
                     default:
-                        System.out.println("Please Enter Exactly Number!!!");
+                        System.out.println(INVALID_INDEX_WARNING);
                         break;
                 }
             } catch (NumberFormatException e) {
@@ -172,12 +167,13 @@ public class FuramaController {
         do {
             System.out.println("===========Booking Management===========\n" +
                 "1.\tAdd new booking\n" +
-                "2.\tDisplay list booking\n" +
+                "2.\tDisplay list bookings\n" +
                 "3.\tCreate new contracts\n" +
                 "4.\tDisplay list contracts\n" +
                 "5.\tEdit contracts\n" +
                 "0.\tReturn main menu");
             try {
+                System.out.print("Your choice: ");
                 chooseMenu = Integer.parseInt(scanner.nextLine());
                 switch (chooseMenu) {
                     case 1:
@@ -197,7 +193,7 @@ public class FuramaController {
                         flag = false;
                         break;
                     default:
-                        System.out.println("Please Enter Exactly Number!!!");
+                        System.out.println(INVALID_INDEX_WARNING);
                         break;
                 }
             } catch (NumberFormatException e) {
@@ -216,8 +212,8 @@ public class FuramaController {
                 "1.\tDisplay list customers use service\n" +
                 "2.\tDisplay list customers get voucher\n" +
                 "0.\tReturn main menu");
-            System.out.print("Choose a function: ");
             try {
+                System.out.print("Your choice: ");
                 chooseMenu = Integer.parseInt(scanner.nextLine());
                 switch (chooseMenu) {
                     case 1:
@@ -229,7 +225,7 @@ public class FuramaController {
                         flag = false;
                         break;
                     default:
-                        System.out.println("Please Enter Exactly Number!!!");
+                        System.out.println(INVALID_INDEX_WARNING);
                         break;
                 }
             } catch (NumberFormatException e) {

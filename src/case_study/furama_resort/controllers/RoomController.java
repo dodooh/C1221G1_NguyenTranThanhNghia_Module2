@@ -1,18 +1,16 @@
-package case_study.furama_resort.controllers.impl;
+package case_study.furama_resort.controllers;
 
 import static case_study.furama_resort.utils.ReadInputFromKeyBoard.inputValidData;
 
-import case_study.furama_resort.controllers.IFacilityController;
 import case_study.furama_resort.models.Room;
 import case_study.furama_resort.services.IFacilityService;
 import case_study.furama_resort.services.impl.RoomServiceImpl;
 import case_study.furama_resort.utils.ValidatorInputLibrary;
 
-public class RoomControllerImpl implements IFacilityController {
+public class RoomController {
 
     IFacilityService roomServices = RoomServiceImpl.getInstance();
 
-    @Override
     public void create() {
         String serviceID = inputValidData("Service ID (SVRO-YYYY)", ValidatorInputLibrary.ROOM_SERVICE_ID);
         String serviceName = inputValidData("Service Name", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
@@ -25,9 +23,8 @@ public class RoomControllerImpl implements IFacilityController {
             numberOfPeopleAllowed, typeRent, freeServices));
     }
 
-    @Override
     public void display() {
-        roomServices.displayList(RoomServiceImpl.roomList);
+        roomServices.displayList();
 
     }
 }

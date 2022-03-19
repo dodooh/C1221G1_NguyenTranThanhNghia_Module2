@@ -6,12 +6,13 @@ import java.util.Objects;
 
 public class Booking implements CSVable, Comparable<Booking> {
 
+    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
     private String bookingID;
     private Date startDate;
     private Date endDate;
     private Customer customer;
     private Facility facilityType;
-    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
     public Booking(String bookingID, Date startDate, Date endDate, Customer customer,
         Facility facilityType) {
         this.bookingID = bookingID;
@@ -75,7 +76,8 @@ public class Booking implements CSVable, Comparable<Booking> {
     // TO CSV
     @Override
     public String toCSVFormat() {
-        return bookingID + "," + simpleDateFormat.format(startDate) + "," + simpleDateFormat.format(endDate) + "," + customer.getCustomerID() + "," + facilityType;
+        return bookingID + "," + simpleDateFormat.format(startDate) + "," + simpleDateFormat.format(endDate) + "," + customer.getCustomerID() + ","
+            + facilityType.getServiceID();
     }
 
     @Override

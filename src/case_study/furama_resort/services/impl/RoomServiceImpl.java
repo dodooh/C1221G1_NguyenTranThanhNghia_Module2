@@ -8,7 +8,14 @@ import java.util.List;
 
 public class RoomServiceImpl implements IFacilityService {
 
+    private static final String ROOM_FILE_PATH = "src/case_study/furama_resort/data/room.csv";
+    public static List<Facility> roomList;
     private static RoomServiceImpl instance;
+
+    static {
+        roomList = new ArrayList<>();
+        roomList = ReadWriteCSVFile.readRoomListFromCSVFile(ROOM_FILE_PATH);
+    }
 
     private RoomServiceImpl() {
     }
@@ -20,25 +27,17 @@ public class RoomServiceImpl implements IFacilityService {
         return instance;
     }
 
-    private static final String ROOM_FILE_PATH = "src/case_study/furama_resort/data/room.csv";
-    public static List<Facility> roomList;
-
-    static {
-        roomList = new ArrayList<>();
-        roomList = ReadWriteCSVFile.readRoomListFromCSVFile(ROOM_FILE_PATH);
-    }
-
     @Override
-    public void displayList(List<Facility> list) {
+    public void displayList() {
         System.out.println("=======ROOM LIST=======");
-        if (list != null && list.size() != 0) {
+        if (roomList != null && roomList.size() != 0) {
             int index = 0;
-            for (Facility item : list) {
+            for (Facility item : roomList) {
                 System.out.printf("[%d] = %s", index++, item);
                 System.out.println();
             }
         } else {
-            System.out.println("!!!Room List not found.");
+            System.out.println("!!!ROOM LIST IS EMPTY!!!");
         }
     }
 

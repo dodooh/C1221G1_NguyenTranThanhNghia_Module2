@@ -39,6 +39,7 @@ public class ReadInputFromKeyBoard {
             }
         } while (true);
     }
+
     public static Date inputValidEndDateTime(Date startDate) {
         Date date;
         String userInput = "";

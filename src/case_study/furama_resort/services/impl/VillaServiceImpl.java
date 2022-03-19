@@ -7,34 +7,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VillaServiceImpl implements IFacilityService {
-    private static VillaServiceImpl instance;
-    private VillaServiceImpl() {
-    }
-    public static VillaServiceImpl getInstance() {
-        if (instance == null) {
-            instance = new VillaServiceImpl();
-        }
-        return instance;
-    }
+
     private static final String VILLA_FILE_PATH = "src/case_study/furama_resort/data/villa.csv";
     public static List<Facility> villaList;
+    private static VillaServiceImpl instance;
 
     static {
         villaList = new ArrayList<>();
         villaList = ReadWriteCSVFile.readVillaListFromCSVFile(VILLA_FILE_PATH);
     }
 
+    private VillaServiceImpl() {
+    }
+
+    public static VillaServiceImpl getInstance() {
+        if (instance == null) {
+            instance = new VillaServiceImpl();
+        }
+        return instance;
+    }
+
     @Override
-    public void displayList(List<Facility> list) {
+    public void displayList() {
         System.out.println("=======VILLA LIST=======");
-        if (list != null && list.size() != 0) {
+        if (villaList != null && villaList.size() != 0) {
             int index = 0;
-            for (Facility item : list) {
+            for (Facility item : villaList) {
                 System.out.printf("[%d] = %s", index++, item);
                 System.out.println();
             }
         } else {
-            System.out.println("!!!Villa List not found.");
+            System.out.println("!!!VILLA LIST IS EMPTY!!!");
         }
     }
 
@@ -45,9 +48,10 @@ public class VillaServiceImpl implements IFacilityService {
         System.out.println(newVilla);
         System.out.println("Add successfully!");
     }
+
     @Override
     public Facility getFacilityByID(String id) {
-        for (Facility villa: villaList) {
+        for (Facility villa : villaList) {
             if (villa.getServiceID().equals(id)) {
                 return villa;
             }

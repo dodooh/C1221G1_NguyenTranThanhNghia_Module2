@@ -81,6 +81,7 @@ public abstract class Facility implements CSVable {
                 ", numberOfPeopleAllowed=" + numberOfPeopleAllowed +
                 ", typeRent='" + typeRent + '\'';
     }
+
     @Override
     public String toCSVFormat() {
         return serviceID + "," + serviceName + "," + netArea + "," + totalCost + "," + numberOfPeopleAllowed + "," + typeRent;

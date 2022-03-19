@@ -7,7 +7,7 @@ import case_study.furama_resort.models.enums.EmployeePosition;
 public class Employee extends Person {
 
     private String employeeID;
-    private EmployeeLevel level; // level.TRUNG_CAP level.CAO_HOC
+    private EmployeeLevel level;
     private EmployeePosition position;
     private double salary;
 
@@ -55,16 +55,16 @@ public class Employee extends Person {
     @Override
     public String toString() {
         return "Employee{" +
+            "employeeID=" + employeeID +
             super.toString() +
-            ", employeeID=" + employeeID +
             ", level=" + level +
             ", position=" + position +
-            ", salary=" + salary +
+            ", salary=" + String.format("%.0f", salary) +
             '}';
     }
 
     @Override
     public String toCSVFormat() {
-        return super.toCSVFormat() + "," + employeeID + "," + level + "," + position + "," + salary;
+        return super.toCSVFormat() + "," + employeeID + "," + level + "," + position + "," + String.format("%.0f", salary);
     }
 }
