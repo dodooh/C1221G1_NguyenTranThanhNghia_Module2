@@ -75,6 +75,25 @@ public class ReadWriteCSVFile {
         }
     }
 
+    public static void writeFacilityMapToCSVFile(Map<Facility, Integer> map, String filePath) {
+        File file = new File(filePath);
+        FileWriter fileWriter;
+        BufferedWriter bufferedWriter;
+        try {
+            fileWriter = new FileWriter(file);
+            bufferedWriter = new BufferedWriter(fileWriter);
+            Set<Facility> facilities = map.keySet();
+            for (Facility facility : facilities) {
+                bufferedWriter.write(facility.getServiceID() + "," + map.get(facility));
+                bufferedWriter.newLine();
+            }
+            bufferedWriter.close();
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static Map<Facility, Integer> readFacilityMapFromCSVFile(String filePath) throws ParseObjectException {
         Map<Facility, Integer> result = new LinkedHashMap<>();
         List<String> stringList = readStringListFromCSVFile(filePath);
@@ -123,25 +142,6 @@ public class ReadWriteCSVFile {
                 customer));
         }
         return contractList;
-    }
-
-    public static void writeFacilityMapToCSVFile(Map<Facility, Integer> map, String filePath) {
-        File file = new File(filePath);
-        FileWriter fileWriter;
-        BufferedWriter bufferedWriter;
-        try {
-            fileWriter = new FileWriter(file);
-            bufferedWriter = new BufferedWriter(fileWriter);
-            Set<Facility> facilities = map.keySet();
-            for (Facility facility : facilities) {
-                bufferedWriter.write(facility.getServiceID() + "," + map.get(facility));
-                bufferedWriter.newLine();
-            }
-            bufferedWriter.close();
-            fileWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public static Set<Booking> readBookingSetFromCSVFile(String filePath) throws ParseException, ParseObjectException {

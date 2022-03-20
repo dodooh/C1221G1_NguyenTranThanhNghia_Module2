@@ -9,7 +9,7 @@ import static oop_review.quan_ly_phuong_tien.controllers.MainController.scanner;
 import case_study.furama_resort.models.Booking;
 import case_study.furama_resort.models.Contract;
 import case_study.furama_resort.models.Customer;
-import case_study.furama_resort.models.enums.CustomerType;
+import case_study.furama_resort.models.Room;
 import case_study.furama_resort.services.impl.BookingServiceImpl;
 import case_study.furama_resort.services.impl.ContractServiceImpl;
 import case_study.furama_resort.utils.ValidatorInputLibrary;
@@ -34,19 +34,18 @@ public class ContractController {
     }
 
     public void create() {
-        Queue<Booking> bookingQueue = new LinkedList<>();
-//        Queue<Booking> bookingQueue = new LinkedList<>(bookingSet);
+        //        Queue<Booking> bookingQueue = new LinkedList<>(bookingSet);
         Set<Booking> bookingSet = bookingService.sendBooking();
-        for (Booking booking : bookingSet) {
-            bookingQueue.add(booking);
-        }
+        Queue<Booking> bookingQueue = new LinkedList<>(bookingSet);
         // Tao moi contract cho moi booking
         Booking booking;
         while (!bookingQueue.isEmpty()) {
             booking = bookingQueue.poll();
+            if (booking.getFacility() instanceof Room) { // Chi tao contract voi Villa va House
+                continue;
+            }
             Customer customer = booking.getCustomer();
             System.out.println("Create Contract For " + booking);
-            System.out.println("And With " + customer);
             int contractNumber = Integer.parseInt(
                 inputValidData("Contract Number ", ValidatorInputLibrary.INTEGER_POSITIVE_NUMBER));
             double deposit = Double.parseDouble(inputValidData("Deposit", ValidatorInputLibrary.REAL_POSITIVE_NUMBER));
@@ -63,28 +62,29 @@ public class ContractController {
     public void edit() {
         System.out.println("----------CONTRACT EDITING MODE-----------");
         display();
-        Contract contract;
+        Contract contractFound;
         do {
             int contractNumber = Integer.parseInt(
                 inputValidData("Contract Number", ValidatorInputLibrary.INTEGER_POSITIVE_NUMBER));
-            contract = contractService.findContractByContractNumber(contractNumber);
-            if (contract == null) {
+            contractFound = contractService.findContractByContractNumber(contractNumber);
+            if (contractFound == null) {
                 System.out.println("!!!CONTRACT NUMBER NOT FOUND!!!");
             } else {
                 break;
             }
         } while (true);
-        int index = ContractServiceImpl.contractList.indexOf(contract);
-        editing(contract);
+        int index = ContractServiceImpl.contractList.indexOf(contractFound);
+        Contract clonedContract = new Contract(contractFound);
+        editingExecution(clonedContract);
         System.out.print("Confirm editing (y/n)? ");
         if (CONFIRM_CASE.equals(scanner.nextLine())) {
-            contractService.edit(index, contract);
+            contractService.edit(index, clonedContract);
         } else {
             System.out.println("Exit editing mode...");
         }
     }
 
-    private void editing(Contract contract) {
+    private void editingExecution(Contract contract) {
         System.out.println(contract);
         String menu = "[1] - Contract Number,\n"
             + "[2] - Deposit,\n"

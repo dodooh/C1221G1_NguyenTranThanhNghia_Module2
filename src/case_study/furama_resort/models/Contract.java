@@ -16,6 +16,14 @@ public class Contract implements CSVable {
         this.customer = customer;
     }
 
+    public Contract(Contract another) {
+        this.contractNumber = another.getContractNumber();
+        this.booking = another.getBooking();
+        this.deposit = another.getDeposit();
+        this.totalCost = another.getTotalCost();
+        this.customer = another.getCustomer();
+    }
+
     public int getContractNumber() {
         return contractNumber;
     }
@@ -58,9 +66,9 @@ public class Contract implements CSVable {
 
     @Override
     public String toString() {
-        return "Contract{" + "contractNumber=" + contractNumber + ", booking='" + booking.getBookingID() + '\''
+        return "Contract{" + "contractNumber=" + contractNumber + ", bookingID='" + booking.getBookingID() + '\''
             + ", deposit=" + String.format("%,.0f", deposit) + ", totalCost=" + String.format("%,.0f", totalCost)
-            + ", customer='" + customer.getCustomerID() + '\'' + '}';
+            + ", customerID='" + customer.getCustomerID() + '\'' + '}';
     }
 
     @Override

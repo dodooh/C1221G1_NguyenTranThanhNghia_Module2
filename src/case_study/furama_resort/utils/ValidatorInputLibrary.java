@@ -18,5 +18,6 @@ public class ValidatorInputLibrary {
     public static final String CUSTOMER_ID_FORMAT = "^C\\d{4}$";
     public static final String EMPLOYEE_ID_FORMAT = "^E\\d{4}$";
     public static final String NATIONAL_ID_FORMAT = "^\\d{10,14}$";
-
+    public static final String YEAR_FORMAT = "^(19\\d{2})|(2[0-2]\\d{2})$";
+    public static final String VOUCHER_NUMBER_FORMAT = "^\\d+ \\d+ \\d+$";
 }

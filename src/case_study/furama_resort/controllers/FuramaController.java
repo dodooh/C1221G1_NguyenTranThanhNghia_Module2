@@ -6,11 +6,12 @@ public class FuramaController {
 
     public static final String INVALID_INDEX_WARNING = "!!!ENTER A VALID INDEX PLEASE!!!";
     private final Scanner scanner = new Scanner(System.in);
-    EmployeeController employeeController = EmployeeController.getInstance();
-    CustomerController customerController = CustomerController.getInstance();
-    FacilityController facilityController = FacilityController.getInstance();
-    BookingController bookingController = BookingController.getInstance();
-    ContractController contractController = ContractController.getInstance();
+    private final EmployeeController employeeController = EmployeeController.getInstance();
+    private final CustomerController customerController = CustomerController.getInstance();
+    private final FacilityController facilityController = FacilityController.getInstance();
+    private final BookingController bookingController = BookingController.getInstance();
+    private final ContractController contractController = ContractController.getInstance();
+    private final PromotionController promotionController = PromotionController.getInstance();
     private int chooseMenu;
 
     public void displayMainMenu() {
@@ -98,7 +99,7 @@ public class FuramaController {
                 "3.\tEdit customer\n" +
                 "0.\tReturn main menu");
             try {
-                System.out.print("Your choice");
+                System.out.print("Your choice: ");
                 chooseMenu = Integer.parseInt(scanner.nextLine());
                 switch (chooseMenu) {
                     case 1:
@@ -213,7 +214,7 @@ public class FuramaController {
 
         do {
             System.out.println("===========Promotion Management===========\n" +
-                "1.\tDisplay list customers use service\n" +
+                "1.\tDisplay list customers use service by year\n" +
                 "2.\tDisplay list customers get voucher\n" +
                 "0.\tReturn main menu");
             try {
@@ -221,8 +222,10 @@ public class FuramaController {
                 chooseMenu = Integer.parseInt(scanner.nextLine());
                 switch (chooseMenu) {
                     case 1:
+                        promotionController.displayCustomerListByYear();
                         break;
                     case 2:
+                        promotionController.giveVoucher();
                         break;
                     case 0:
                         System.out.println("Back To Main Menu");

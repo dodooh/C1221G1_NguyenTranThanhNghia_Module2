@@ -5,7 +5,10 @@ import case_study.furama_resort.services.IBookingService;
 import case_study.furama_resort.utils.ParseObjectException;
 import case_study.furama_resort.utils.ReadWriteCSVFile;
 import java.text.ParseException;
+import java.util.Date;
+import java.util.List;
 import java.util.Set;
+import java.util.Stack;
 import java.util.TreeSet;
 
 public class BookingServiceImpl implements IBookingService {
@@ -72,6 +75,18 @@ public class BookingServiceImpl implements IBookingService {
 
     public Set<Booking> sendBooking() {
         return bookingSet;
+    }
+
+    public Stack<Booking> getAllBookingInCurrentMonth() {
+        Stack<Booking> bookingsOfCurrentMonth = new Stack<>();
+        int currentMonth = new Date().getMonth();
+        int currentYear = new Date().getYear();
+        for (Booking booking : bookingSet) {
+            if (booking.getStartDate().getMonth() == currentMonth && booking.getStartDate().getYear() == currentYear) {
+                bookingsOfCurrentMonth.push(booking);
+            }
+        }
+        return bookingsOfCurrentMonth;
     }
 
 }

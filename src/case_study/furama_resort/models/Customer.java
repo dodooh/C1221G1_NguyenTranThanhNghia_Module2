@@ -1,6 +1,7 @@
 package case_study.furama_resort.models;
 
 import case_study.furama_resort.models.enums.CustomerType;
+import java.util.Objects;
 
 public class Customer extends Person {
 
@@ -66,5 +67,22 @@ public class Customer extends Person {
     @Override
     public String toCSVFormat() {
         return super.toCSVFormat() + "," + customerID + "," + customerType + "," + address;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Customer customer = (Customer) o;
+        return customerID.equals(customer.customerID);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customerID);
     }
 }

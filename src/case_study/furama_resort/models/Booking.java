@@ -68,8 +68,8 @@ public class Booking implements CSVable, Comparable<Booking> {
             "bookingID='" + bookingID + '\'' +
             ", startDate=" + simpleDateFormat.format(startDate) +
             ", endDate=" + simpleDateFormat.format(endDate) +
-            ", customer='" + customer.getCustomerID() + '\'' +
-            ", facility=" + facility.getServiceID() +
+            ", \n\t\t" + customer +
+            ", \n\t\t" + facility +
             '}';
     }
 

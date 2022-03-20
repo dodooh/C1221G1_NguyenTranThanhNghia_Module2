@@ -93,7 +93,7 @@ public class BookingController {
         String userInput;
         customerController.display();
         do {
-            System.out.println("Enter Customer ID");
+            System.out.print("Enter Customer ID: ");
             userInput = scanner.nextLine();
             for (Person customer : CustomerServiceImpl.customerList) {
                 if (userInput.equals(((Customer) customer).getCustomerID())) {
