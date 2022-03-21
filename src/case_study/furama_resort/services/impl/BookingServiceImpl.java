@@ -6,7 +6,6 @@ import case_study.furama_resort.utils.ParseObjectException;
 import case_study.furama_resort.utils.ReadWriteCSVFile;
 import java.text.ParseException;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 import java.util.Stack;
 import java.util.TreeSet;
@@ -87,6 +86,11 @@ public class BookingServiceImpl implements IBookingService {
             }
         }
         return bookingsOfCurrentMonth;
+    }
+
+    public void updateAllBookingsStatus(Booking booking) {
+        booking.setSignedContract(true);
+        ReadWriteCSVFile.writeSetToCSVFile(bookingSet, BOOKING_FILE_PATH);
     }
 
 }

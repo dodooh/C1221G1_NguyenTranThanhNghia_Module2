@@ -12,6 +12,17 @@ public class Booking implements CSVable, Comparable<Booking> {
     private Date endDate;
     private Customer customer;
     private Facility facility;
+    private boolean signedContract;
+
+    public Booking(int bookingID, Date startDate, Date endDate, Customer customer,
+        Facility facilityType, boolean contractStatus) {
+        this.bookingID = bookingID;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.customer = customer;
+        this.facility = facilityType;
+        this.signedContract = contractStatus;
+    }
 
     public Booking(int bookingID, Date startDate, Date endDate, Customer customer,
         Facility facilityType) {
@@ -20,6 +31,15 @@ public class Booking implements CSVable, Comparable<Booking> {
         this.endDate = endDate;
         this.customer = customer;
         this.facility = facilityType;
+        this.signedContract = false;
+    }
+
+    public boolean isSignedContract() {
+        return signedContract;
+    }
+
+    public void setSignedContract(boolean signedContract) {
+        this.signedContract = signedContract;
     }
 
     public int getBookingID() {
@@ -70,6 +90,7 @@ public class Booking implements CSVable, Comparable<Booking> {
             ", endDate=" + simpleDateFormat.format(endDate) +
             ", \n\t\t" + customer +
             ", \n\t\t" + facility +
+            ", \n\t\tisContract=" + signedContract +
             '}';
     }
 
@@ -78,7 +99,7 @@ public class Booking implements CSVable, Comparable<Booking> {
     public String toCSVFormat() {
         return bookingID + "," + simpleDateFormat.format(startDate) + "," + simpleDateFormat.format(endDate) + ","
             + customer.getCustomerID() + ","
-            + facility.getServiceID();
+            + facility.getServiceID() + "," + signedContract;
     }
 
     @Override
@@ -102,7 +123,11 @@ public class Booking implements CSVable, Comparable<Booking> {
     @Override
     public int compareTo(Booking o) {
         if (startDate.compareTo(o.startDate) == 0) {
-            return endDate.compareTo(o.endDate);
+            if (endDate.compareTo(o.endDate) == 0) {
+                return 1;
+            } else {
+                return endDate.compareTo(o.endDate);
+            }
         } else {
             return startDate.compareTo(o.startDate);
         }

@@ -15,7 +15,6 @@ import case_study.furama_resort.services.impl.ContractServiceImpl;
 import case_study.furama_resort.utils.ValidatorInputLibrary;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Set;
 
 public class ContractController {
 
@@ -34,14 +33,14 @@ public class ContractController {
     }
 
     public void create() {
-        //        Queue<Booking> bookingQueue = new LinkedList<>(bookingSet);
-        Set<Booking> bookingSet = bookingService.sendBooking();
-        Queue<Booking> bookingQueue = new LinkedList<>(bookingSet);
+        //  Queue<Booking> bookingQueue = new LinkedList<>(bookingSet);
+        Queue<Booking> bookingQueue = new LinkedList<>(bookingService.sendBooking());
         // Tao moi contract cho moi booking
         Booking booking;
         while (!bookingQueue.isEmpty()) {
             booking = bookingQueue.poll();
-            if (booking.getFacility() instanceof Room) { // Chi tao contract voi Villa va House
+            if (booking.getFacility() instanceof Room
+                || booking.isSignedContract()) { // Chi tao contract voi Villa va House
                 continue;
             }
             Customer customer = booking.getCustomer();
@@ -52,7 +51,9 @@ public class ContractController {
             double totalCost = Double.parseDouble(
                 inputValidData("Total Cost", ValidatorInputLibrary.REAL_POSITIVE_NUMBER));
             contractService.add(new Contract(contractNumber, booking, deposit, totalCost, customer));
+            bookingService.updateAllBookingsStatus(booking);
         }
+        System.out.println("✓All Bookings Has Been Created Contract");
     }
 
     public void display() {

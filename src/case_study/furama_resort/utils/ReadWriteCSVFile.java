@@ -173,7 +173,8 @@ public class ReadWriteCSVFile {
             } else {
                 throw new ParseObjectException("!!!CAN'T FIND FACILITY WITH THIS ID!!!");
             }
-            resultSet.add(new Booking(bookingID, startDate, endDate, customer, facility));
+            boolean contractStatus = "true".equals(field[5]);
+            resultSet.add(new Booking(bookingID, startDate, endDate, customer, facility, contractStatus));
         }
         return resultSet;
     }
