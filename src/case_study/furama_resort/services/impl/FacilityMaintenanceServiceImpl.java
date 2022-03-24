@@ -37,7 +37,7 @@ public class FacilityMaintenanceServiceImpl {
         Set<Facility> set = usingFacility.keySet();
         for (Facility key : set) {
             if (usingFacility.get(key) >= 5) {
-                System.out.println(key + "So lan su dung: " + usingFacility.get(key));
+                System.out.println(key + "Using Time: " + usingFacility.get(key));
             }
         }
     }

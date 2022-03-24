@@ -8,6 +8,7 @@ import case_study.furama_resort.models.Customer;
 import case_study.furama_resort.models.Person;
 import case_study.furama_resort.models.enums.CustomerType;
 import case_study.furama_resort.services.ICustomerService;
+import case_study.furama_resort.services.impl.ContractServiceImpl;
 import case_study.furama_resort.services.impl.CustomerServiceImpl;
 import case_study.furama_resort.utils.EnumUtils;
 import case_study.furama_resort.utils.ValidatorInputLibrary;
@@ -34,7 +35,7 @@ public class CustomerController {
         boolean isMale = 1 == Integer.parseInt(
             inputValidData("Gender (1. Male, 2.Female)", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER));
         String nationalID = inputValidData("National ID (10-14 numbers)", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER);
-        String phoneNumber = inputValidData("Phone Number (0xxxxxxxxx)", ValidatorInputLibrary.PHONE_NUMBER);
+        String phoneNumber = inputValidData("Patient Number (0xxxxxxxxx)", ValidatorInputLibrary.PHONE_NUMBER);
         String email = inputValidData("Email (abczyx@gmail.com)", ValidatorInputLibrary.EMAIL_FORMAT);
         String customerID = inputValidData("Customer ID (Cxxxx)", ValidatorInputLibrary.CUSTOMER_ID_FORMAT);
         CustomerType customerType = getCustomerTypeFromInput();
@@ -57,28 +58,27 @@ public class CustomerController {
     public void edit() {
         System.out.println("----------CUSTOMER EDITING MODE-----------");
         this.display();
+        String customerID;
+        Customer customerFound;
         do {
-            try {
-                System.out.print("\nEnter Index of Customer to Edit: ");
-                int index = Integer.parseInt(scanner.nextLine()); // Chua validator
-                Person objectToEdit = new Customer(
-                    (Customer) CustomerServiceImpl.customerList.get(index)); // Clone object
-                editing(objectToEdit);
-                System.out.println("New Employee:");
-                System.out.println(objectToEdit);
-                System.out.print("Confirm editing (y/n)? ");
-                if (CONFIRM_CASE.equals(scanner.nextLine())) {
-                    customerService.edit(index, objectToEdit);
-                } else {
-                    System.out.println("Exit editing mode...");
-                }
+            customerID = inputValidData("CustomerID to Edit", ValidatorInputLibrary.CUSTOMER_ID_FORMAT);
+            customerFound = customerService.getCustomerByID(customerID);
+            if (customerFound == null) {
+                System.out.println("!!!CONTRACT NUMBER NOT FOUND!!!");
+            } else {
                 break;
-            } catch (IndexOutOfBoundsException e) {
-                System.out.println(INVALID_INDEX_WARNING);
             }
         } while (true);
-
-
+        int index = CustomerServiceImpl.customerList.indexOf(customerFound);
+        Person objectToEdit = new Customer(customerFound); // Clone object
+        editing(objectToEdit);
+        System.out.println("New Employee:");
+        System.out.println(objectToEdit);
+        System.out.print("Confirm editing (y/n)? ");
+        if (CONFIRM_CASE.equals(scanner.nextLine())) {
+            customerService.edit(index, objectToEdit);
+        }
+        System.out.println("Exit editing mode...");
     }
 
     private void editing(Person object) {
@@ -87,7 +87,7 @@ public class CustomerController {
             + "[2] - Day Of Birth,\n"
             + "[3] - Gender,\n"
             + "[4] - National ID,\n"
-            + "[5] - Phone Number,\n"
+            + "[5] - Patient Number,\n"
             + "[6] - Email,\n"
             + "[7] - ID,\n"
             + "[8] - Customer Type,\n"
@@ -117,7 +117,7 @@ public class CustomerController {
                     object.setNationalID(nationalID);
                     break;
                 case 5:
-                    String phoneNumber = inputValidData("New Phone Number (0xxxxxxxxx)",
+                    String phoneNumber = inputValidData("New Patient Number (0xxxxxxxxx)",
                         ValidatorInputLibrary.PHONE_NUMBER);
                     object.setPhoneNumber(phoneNumber);
                     break;

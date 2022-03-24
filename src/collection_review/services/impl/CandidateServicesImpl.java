@@ -148,12 +148,12 @@ public abstract class CandidateServicesImpl implements Services {
     private String getPhoneNumberFromInput() {
         String phoneNumber;
         do {
-            System.out.print("Enter Phone Number:");
+            System.out.print("Enter Patient Number:");
             phoneNumber = scanner.nextLine();
             if (Pattern.matches("\\d{10,20}", phoneNumber)) {
                 break;
             } else {
-                System.err.println("Invalid Phone Number!!!");
+                System.err.println("Invalid Patient Number!!!");
             }
         } while (true);
         return phoneNumber;

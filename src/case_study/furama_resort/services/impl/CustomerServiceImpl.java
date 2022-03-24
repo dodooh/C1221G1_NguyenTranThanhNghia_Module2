@@ -46,7 +46,7 @@ public class CustomerServiceImpl implements ICustomerService {
 
     @Override
     public void displayList() {
-        System.out.println("=========CUSTOMER LIST==========");
+        System.out.println("=========Customer List==========");
         if (customerList != null && customerList.size() != 0) {
             int index = 0;
             for (Person item : customerList) {

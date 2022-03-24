@@ -9,7 +9,7 @@ import java.util.List;
 public class EmployeeServiceImpl implements IEmployeeService {
 
     private static final String EMPLOYEE_FILE_PATH = "src/case_study/furama_resort/data/employee.csv";
-    public static List<Person> employeeList = new LinkedList<>();
+    public static List<Person> employeeList;
     private static EmployeeServiceImpl instance;
 
     static {
@@ -37,7 +37,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     @Override
     public void displayList() {
-        System.out.println("=========EMPLOYEE LIST==========");
+        System.out.println("=========Employee List==========");
         if (employeeList != null && employeeList.size() != 0) {
             int index = 0;
             for (Person item : employeeList) {

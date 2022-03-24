@@ -21,7 +21,7 @@ public class CopyFileText {
         // Từ List gom thành 1 chuối String phân chia bởi dấu xuông dòng
         String collected = getStringLineByLineFromStringList(inputString);
         // Hiển thị
-        System.out.println("\"" +collected+ "\"" );
+        System.out.println("\"" + collected + "\"");
         System.out.println("Số kí tự trong chuỗi là : " + collected.length());
         System.out.println("Writing to file...");
         // Ghi ra file, lấy nội dung từ List<String>
@@ -74,13 +74,13 @@ public class CopyFileText {
     }
 
     private static String getStringLineByLineFromStringList(List<String> stringList) {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < stringList.size(); i++) {
-            result += stringList.get(i);
-            if (i != stringList.size() -1) { // KHÔNG có dấu xuống dòng ở dòng cuối cùng
-                result += "\n";
+            result.append(stringList.get(i));
+            if (i != stringList.size() - 1) { // KHÔNG có dấu xuống dòng ở dòng cuối cùng
+                result.append("\n");
             }
         }
-        return result;
+        return result.toString();
     }
 }

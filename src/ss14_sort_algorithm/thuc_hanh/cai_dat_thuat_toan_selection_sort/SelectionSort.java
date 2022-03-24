@@ -1,11 +1,18 @@
 package ss14_sort_algorithm.thuc_hanh.cai_dat_thuat_toan_selection_sort;
+
+import java.util.Arrays;
+
 public class SelectionSort {
-    static double[] list = {1, 9, 4.5, 6.6, 5.7, -4.5};
+
+    static int[] list = {3, 4, 5, 2, 1};
+
     // codes below here
-    public static void selectionSort(double[] list) {
+    public static void selectionSort(int[] list) {
+        System.out.println(Arrays.toString(list));
+
         for (int i = 0; i < list.length - 1; i++) {
             /* Find the minimum in the list[i..list.length-1] */
-            double currentMin = list[i];
+            int currentMin = list[i];
             int currentMinIndex = i;
             for (int j = i + 1; j < list.length; j++) {
                 if (currentMin > list[j]) {
@@ -18,11 +25,15 @@ public class SelectionSort {
                 list[currentMinIndex] = list[i];
                 list[i] = currentMin;
             }
+            System.out.println(Arrays.toString(list));
+
         }
     }
+
     public static void main(String[] args) {
         selectionSort(list);
-        for (double v : list)
+        for (double v : list) {
             System.out.print(v + " ");
+        }
     }
 }

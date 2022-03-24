@@ -29,7 +29,7 @@ public class RoomServiceImpl implements IFacilityService {
 
     @Override
     public void displayList() {
-        System.out.println("=======ROOM LIST=======");
+        System.out.println("=======Room List=======");
         if (roomList != null && roomList.size() != 0) {
             int index = 0;
             for (Facility item : roomList) {

@@ -22,6 +22,7 @@ import java.util.List;
 
 public class BookingController {
 
+    public static final String LIST_IS_EMPTY = "!!!LIST IS EMPTY!!!";
     private static BookingController instance;
     private final CustomerController customerController = CustomerController.getInstance();
     private final FacilityController facilityController = FacilityController.getInstance();
@@ -62,21 +63,21 @@ public class BookingController {
                         if (HouseServiceImpl.houseList.size() != 0) {
                             return getFacilityFromList(HouseServiceImpl.houseList);
                         } else {
-                            System.out.println("!!!LIST IS EMPTY!!!");
+                            System.out.println(LIST_IS_EMPTY);
                         }
                         break;
                     case 1:
                         if (VillaServiceImpl.villaList.size() != 0) {
                             return getFacilityFromList(VillaServiceImpl.villaList);
                         } else {
-                            System.out.println("!!!LIST IS EMPTY!!!");
+                            System.out.println(LIST_IS_EMPTY);
                         }
                         break;
                     case 2:
                         if (RoomServiceImpl.roomList.size() != 0) {
                             return getFacilityFromList(RoomServiceImpl.roomList);
                         } else {
-                            System.out.println("!!!LIST IS EMPTY!!!");
+                            System.out.println(LIST_IS_EMPTY);
                         }
                         break;
                     default:
@@ -100,7 +101,7 @@ public class BookingController {
                     return ((Customer) customer);
                 }
             }
-            System.out.println("!!!Not Found In List!!! Carefully Review");
+            System.out.println("!!!ID NOT FOUND. CAREFULLY REVIEW!!!");
         } while (true);
     }
 

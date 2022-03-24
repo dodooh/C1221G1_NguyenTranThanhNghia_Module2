@@ -9,7 +9,7 @@ import java.util.List;
 public class VillaServiceImpl implements IFacilityService {
 
     private static final String VILLA_FILE_PATH = "src/case_study/furama_resort/data/villa.csv";
-    public static List<Facility> villaList;
+    public static List<Facility> villaList; // private
     private static VillaServiceImpl instance;
 
     static {
@@ -29,7 +29,7 @@ public class VillaServiceImpl implements IFacilityService {
 
     @Override
     public void displayList() {
-        System.out.println("=======VILLA LIST=======");
+        System.out.println("=======Villa List=======");
         if (villaList != null && villaList.size() != 0) {
             int index = 0;
             for (Facility item : villaList) {

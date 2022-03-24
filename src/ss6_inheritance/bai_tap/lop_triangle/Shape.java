@@ -2,7 +2,7 @@ package ss6_inheritance.bai_tap.lop_triangle;
 
 public class Shape {
 
-    private String color = "red";
+    protected String color = "red";
     private boolean filled = true;
 
     public Shape() {
@@ -24,6 +24,8 @@ public class Shape {
     public boolean isFilled() {
         return filled;
     }
+
+    //trần ngọc luật C0222G2 chào chào anh nghĩa C1221G1
 
     public void setFilled(boolean filled) {
         this.filled = filled;

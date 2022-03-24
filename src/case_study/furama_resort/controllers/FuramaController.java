@@ -126,7 +126,6 @@ public class FuramaController {
         } while (flag);
     }
 
-
     private void showFacilityManagementMenu() {
         boolean flag = true;
         do {

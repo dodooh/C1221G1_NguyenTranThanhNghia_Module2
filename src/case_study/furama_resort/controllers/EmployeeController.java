@@ -65,26 +65,15 @@ public class EmployeeController {
     public void create() {
         String name = inputValidData("Name", ValidatorInputLibrary.STANDARD_NAME);
         String dayOfBirth = inputValidData("Day Of Birth (dd/mm/yyyy)", ValidatorInputLibrary.BIRTHDAY_FORMAT);
-        boolean isMale = 1 == Integer.parseInt(
-            inputValidData("Gender (1. Male, 2.Female)", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER));
+        boolean isMale = 1 == Integer.parseInt(inputValidData("Gender (1. Male, 2.Female)", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER));
         String nationalID = inputValidData("National ID (10-14 numbers)", ValidatorInputLibrary.NATIONAL_ID_FORMAT);
-        String phoneNumber = inputValidData("Phone Number (0XXXXXXXXX)", ValidatorInputLibrary.PHONE_NUMBER);
+        String phoneNumber = inputValidData("Patient Number (0XXXXXXXXX)", ValidatorInputLibrary.PHONE_NUMBER);
         String email = inputValidData("Email (abczyx@gmail.com)", ValidatorInputLibrary.EMAIL_FORMAT);
         String employeeID = inputValidData("Employee ID (Cxxxx)", ValidatorInputLibrary.EMPLOYEE_ID_FORMAT);
         EmployeeLevel level = getEmployeeLevelFromInput();
         EmployeePosition position = getEmployeePositionFromInput();
         double salary = Double.parseDouble(inputValidData("Salary", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER));
-        employeeService.add(new Employee(
-            name,
-            dayOfBirth,
-            isMale,
-            nationalID,
-            phoneNumber,
-            email,
-            employeeID,
-            level,
-            position,
-            salary));
+        employeeService.add(new Employee(name, dayOfBirth, isMale, nationalID, phoneNumber, email, employeeID, level, position, salary));
     }
 
     public void display() {
@@ -105,9 +94,8 @@ public class EmployeeController {
                 System.out.print("Confirm editing (y/n)? ");
                 if (CONFIRM_CASE.equals(scanner.nextLine())) {
                     employeeService.edit(index, objectToEdit);
-                } else {
-                    System.out.println("Exit editing mode...");
                 }
+                System.out.println("Exit editing mode...");
                 break;
             } catch (IndexOutOfBoundsException e) {
                 System.out.println(INVALID_INDEX_WARNING);
@@ -118,16 +106,8 @@ public class EmployeeController {
     private void editing(Person object) {
         System.out.println(object);
         String menu =
-            "[1] - Name,\n"
-                + "[2] - Day Of Birth,\n"
-                + "[3] - Gender,\n"
-                + "[4] - National ID,\n"
-                + "[5] - Phone Number,\n"
-                + "[6] - Email,\n"
-                + "[7] - ID,\n"
-                + "[8] - Level,\n"
-                + "[9] - Position,\n"
-                + "[10]- Salary";
+            "[1] - Name,\n" + "[2] - Day Of Birth,\n" + "[3] - Gender,\n" + "[4] - National ID,\n" + "[5] - Patient Number,\n" + "[6] - Email,\n"
+                + "[7] - ID,\n" + "[8] - Level,\n" + "[9] - Position,\n" + "[10]- Salary";
         do {
             System.out.println(menu);
             System.out.print("Your choice: ");
@@ -138,23 +118,19 @@ public class EmployeeController {
                     object.setName(newName);
                     break;
                 case 2:
-                    String newDOB = inputValidData(" New Day Of Birth (dd/mm/yyyy)",
-                        ValidatorInputLibrary.BIRTHDAY_FORMAT);
+                    String newDOB = inputValidData(" New Day Of Birth (dd/mm/yyyy)", ValidatorInputLibrary.BIRTHDAY_FORMAT);
                     object.setDayOfBirth(newDOB);
                     break;
                 case 3:
-                    boolean newGender = 1 == Integer.parseInt(
-                        inputValidData("New Gender (1. Male, 2.Female)", ValidatorInputLibrary.ONE_NUMBER));
+                    boolean newGender = 1 == Integer.parseInt(inputValidData("New Gender (1. Male, 2.Female)", ValidatorInputLibrary.ONE_NUMBER));
                     object.setMale(newGender);
                     break;
                 case 4:
-                    String nationalID = inputValidData("New National ID (10-14 numbers)",
-                        ValidatorInputLibrary.NATIONAL_ID_FORMAT);
+                    String nationalID = inputValidData("New National ID (10-14 numbers)", ValidatorInputLibrary.NATIONAL_ID_FORMAT);
                     object.setNationalID(nationalID);
                     break;
                 case 5:
-                    String phoneNumber = inputValidData("New Phone Number (0xxxxxxxxx)",
-                        ValidatorInputLibrary.PHONE_NUMBER);
+                    String phoneNumber = inputValidData("New Patient Number (0xxxxxxxxx)", ValidatorInputLibrary.PHONE_NUMBER);
                     object.setPhoneNumber(phoneNumber);
                     break;
                 case 6:
@@ -170,8 +146,7 @@ public class EmployeeController {
                     ((Employee) object).setPosition(position);
                     break;
                 case 9:
-                    double salary = Double.parseDouble(
-                        inputValidData("New Salary", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER));
+                    double salary = Double.parseDouble(inputValidData("New Salary", ValidatorInputLibrary.AT_LEAST_ONE_CHARACTER));
                     ((Employee) object).setSalary(salary);
                     break;
                 default:

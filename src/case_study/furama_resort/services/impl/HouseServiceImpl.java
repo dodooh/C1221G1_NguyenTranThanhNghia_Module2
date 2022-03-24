@@ -28,7 +28,7 @@ public class HouseServiceImpl implements IFacilityService {
 
     @Override
     public void displayList() {
-        System.out.println("=======HOUSE LIST=======");
+        System.out.println("=======House List=======");
         if (houseList != null && houseList.size() != 0) {
             int index = 0;
             for (Facility item : houseList) {
