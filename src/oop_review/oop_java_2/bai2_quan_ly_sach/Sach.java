@@ -1,6 +1,7 @@
 package oop_review.oop_java_2.bai2_quan_ly_sach;
 
-public class Sach extends TaiLieu{
+public class Sach extends TaiLieu {
+
     private String tenTacGia;
     private int soTrang;
 

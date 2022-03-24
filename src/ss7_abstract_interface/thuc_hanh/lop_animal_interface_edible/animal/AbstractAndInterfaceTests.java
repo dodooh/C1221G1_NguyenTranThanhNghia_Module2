@@ -6,6 +6,7 @@ import ss7_abstract_interface.thuc_hanh.lop_animal_interface_edible.fruit.Fruit;
 import ss7_abstract_interface.thuc_hanh.lop_animal_interface_edible.fruit.Orange;
 
 public class AbstractAndInterfaceTests {
+
     public static void main(String[] args) {
         Animal[] animals = new Animal[2];
         animals[0] = new Tiger();

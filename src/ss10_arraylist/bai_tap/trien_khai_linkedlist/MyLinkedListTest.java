@@ -45,8 +45,5 @@ public class MyLinkedListTest {
         accounts2.printList();
 
 
-
-
-
     }
 }

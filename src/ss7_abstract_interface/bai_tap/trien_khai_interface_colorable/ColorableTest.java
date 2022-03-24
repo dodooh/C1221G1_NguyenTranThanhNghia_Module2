@@ -8,7 +8,7 @@ public class ColorableTest {
         Rectangle rectangle = new Rectangle(4, 8);
         Square square = new Square(10);
 
-        Shape[] shapes = new Shape[]{circle,square, rectangle};
+        Shape[] shapes = new Shape[]{circle, square, rectangle};
 
         for (Shape shape : shapes) {
             System.out.println(shape.getArea());

@@ -1,6 +1,7 @@
 package ss12_map_tree.bai_tap.luyen_tap_su_dung_arraylist_linkedlist;
 
 public class Product {
+
     private int productId;
     private String productName;
     private double price;

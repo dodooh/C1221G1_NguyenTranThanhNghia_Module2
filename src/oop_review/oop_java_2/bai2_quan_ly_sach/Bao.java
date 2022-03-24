@@ -3,6 +3,7 @@ package oop_review.oop_java_2.bai2_quan_ly_sach;
 import java.util.Date;
 
 public class Bao extends TaiLieu {
+
     private Date ngayPhatHanh;
 
     public Bao(int maTaiLieu, String tenNhaXuatBan, int soBanPhatHanh, Date ngayPhatHanh) {

@@ -1,6 +1,10 @@
 package ss4_lop_va_doi_tuong.bai_tap.lop_fan;
 
 public class Fan {
+
+    public static final int SLOW = 1;    // Fan speed slow
+    public static final int MEDIUM = 2;  // Fan speed medium
+    public static final int FAST = 3;    // Fan speed fast
     /***********************
      *         Fan          *
      * ---------------------*
@@ -28,9 +32,7 @@ public class Fan {
     private boolean on;
     private double radius;
     private String color;
-    public static final int SLOW = 1;		// Fan speed slow
-    public static final int MEDIUM = 2;	// Fan speed medium
-    public static final int FAST = 3;		// Fan speed fast
+
     Fan() {
         speed = SLOW;
         on = false;
@@ -73,6 +75,7 @@ public class Fan {
     public void turnOff() {
         this.on = false;
     }
+
     public String toString() {
         return on
             ? "Fan is on. Speed: " + this.speed + ".Color: " + this.color + ". Radius: " + this.radius

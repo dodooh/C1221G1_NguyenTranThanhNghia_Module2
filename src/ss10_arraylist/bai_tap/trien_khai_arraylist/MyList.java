@@ -5,8 +5,8 @@ import java.util.Arrays;
 
 public class MyList<E> /*extends ArrayList */ {
 
-    private int size = 0;
     private static final int DEFAULT_CAPACITY = 10;
+    private int size = 0;
     private Object[] elements;
 
     /* hàm khởi tạo mặc định với độ lớn là DEFAULT_CAPACITY
@@ -75,7 +75,7 @@ public class MyList<E> /*extends ArrayList */ {
     }
 
     E get(int index) {
-        if(index < 0 || index > elements.length) {
+        if (index < 0 || index > elements.length) {
             throw new IllegalArgumentException("index " + index);
         } else {
             return (E) elements[index];
@@ -84,7 +84,7 @@ public class MyList<E> /*extends ArrayList */ {
 
     int indexOf(E o) {
         for (int i = 0; i < size; i++) {
-            if(elements[i].equals(o)) {
+            if (elements[i].equals(o)) {
                 return i;
             }
         }
@@ -97,15 +97,16 @@ public class MyList<E> /*extends ArrayList */ {
 
     public MyList<E> clone() {
         MyList<E> newMyList = new MyList<>();
-        newMyList.elements = Arrays.copyOf(this.elements,this.size);
+        newMyList.elements = Arrays.copyOf(this.elements, this.size);
         newMyList.size = this.size;
         return newMyList;
     }
 
     E remove(int index) {
         E removedItem = this.get(index);
-        if (size - 1 - index >= 0)
+        if (size - 1 - index >= 0) {
             System.arraycopy(elements, index + 1, elements, index, size - 1 - index);
+        }
         elements[size - 1] = null;
         size--;
         return removedItem;

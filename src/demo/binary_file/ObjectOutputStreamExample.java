@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 class ObjectOutputStreamExample {
+
     public static void main(String[] args) throws Exception {
         ObjectOutputStream oos = null;
         try {

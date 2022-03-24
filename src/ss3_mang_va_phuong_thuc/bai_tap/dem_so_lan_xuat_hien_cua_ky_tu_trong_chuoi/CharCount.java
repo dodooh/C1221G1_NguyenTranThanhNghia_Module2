@@ -10,7 +10,7 @@ public class CharCount {
         System.out.println("Nhập kí tự muốn đếm: ");
         char c = scanner.next().charAt(0);
         int count = 0;
-        for(char x : str.toCharArray()) {
+        for (char x : str.toCharArray()) {
             if (x == c) {
                 count++;
             }

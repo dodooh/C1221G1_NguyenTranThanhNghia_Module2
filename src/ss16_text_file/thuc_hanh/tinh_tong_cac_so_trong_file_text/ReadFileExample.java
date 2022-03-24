@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.util.Scanner;
 
 public class ReadFileExample {
+
     public static void main(String[] args) {
         System.out.println("Nhập đường dẫn file: ");
         Scanner scanner = new Scanner(System.in);
@@ -15,6 +16,7 @@ public class ReadFileExample {
         ReadFileExample readfileEx = new ReadFileExample();
         readfileEx.readFileText(path);
     }
+
     public void readFileText(String filePath) {
         try {
             // Đọc file theo đường dẫn

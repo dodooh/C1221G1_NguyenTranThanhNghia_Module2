@@ -25,12 +25,12 @@ public class Test {
 //            default:
 //                System.out.println("Error! Invalid grade.");
 //        }
-        int a =9;
-        if(a == 5) {
+        int a = 9;
+        if (a == 5) {
 
             ++a;
 
-            int b = a++*5;
+            int b = a++ * 5;
 
         }
 

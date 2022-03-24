@@ -7,15 +7,18 @@ import java.util.Comparator;
 import java.util.Scanner;
 
 public class ProductManagerUsingArrayList {
-    private Scanner scanner = new Scanner(System.in);
+
     static ArrayList<Product> products = new ArrayList<>();
+
     static {
-        products.add(new Product(1001,"diamond",249.47));
-        products.add(new Product(1002,"beast",526.25));
-        products.add(new Product(1003,"towel",404.41));
-        products.add(new Product(1004,"shield",711.37));
-        products.add(new Product(1005,"shelf",687.72));
+        products.add(new Product(1001, "diamond", 249.47));
+        products.add(new Product(1002, "beast", 526.25));
+        products.add(new Product(1003, "towel", 404.41));
+        products.add(new Product(1004, "shield", 711.37));
+        products.add(new Product(1005, "shelf", 687.72));
     }
+
+    private Scanner scanner = new Scanner(System.in);
 
     void displayMainMenu() {
         int productID;
@@ -146,10 +149,10 @@ public class ProductManagerUsingArrayList {
         return null;
     }
 
-    void findByName(String productName){
+    void findByName(String productName) {
         ArrayList<Product> productsSameName = new ArrayList<>();
-        for (Product product: products ) {
-            if(product.getProductName().toLowerCase().contains(productName.toLowerCase())) {
+        for (Product product : products) {
+            if (product.getProductName().toLowerCase().contains(productName.toLowerCase())) {
                 productsSameName.add(product);
             }
         }
@@ -163,14 +166,14 @@ public class ProductManagerUsingArrayList {
         System.out.print("Nhập lựa chọn: ");
         int choice = Integer.parseInt(scanner.nextLine());
         if (choice == 1) {
-            Collections.sort(products, new Comparator<Product>(){
+            Collections.sort(products, new Comparator<Product>() {
                 @Override
                 public int compare(Product p1, Product p2) {
                     return Double.compare(p1.getPrice(), p2.getPrice());
                 }
             });
         } else {
-            Collections.sort(products, new Comparator<Product>(){
+            Collections.sort(products, new Comparator<Product>() {
                 @Override
                 public int compare(Product p1, Product p2) {
                     return Double.compare(p2.getPrice(), p1.getPrice());

@@ -1,6 +1,6 @@
 package ss12_map_tree.thuc_hanh.sap_xep_voi_comparator_comparable;
 
-public class Student implements Comparable <Student> {
+public class Student implements Comparable<Student> {
 
     private String name;
     private Integer age;

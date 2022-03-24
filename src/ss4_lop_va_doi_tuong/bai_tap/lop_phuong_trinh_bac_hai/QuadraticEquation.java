@@ -17,7 +17,7 @@ public class QuadraticEquation {
      * +getRoot2(): double                                  *
      *******************************************************/
 
-    private double a,b,c;
+    private double a, b, c;
 
     QuadraticEquation(double a, double b, double c) {
         this.a = a;

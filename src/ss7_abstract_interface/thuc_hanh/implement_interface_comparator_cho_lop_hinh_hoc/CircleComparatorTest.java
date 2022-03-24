@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class CircleComparatorTest {
+
     public static void main(String[] args) {
         Circle[] circles = new Circle[3];
         circles[0] = new Circle(3.6);

@@ -27,7 +27,7 @@ public class Main {
 
         // Display the maximum consecutive
         // increasingly ordered substring
-        for (Character ch: max) { // single loop
+        for (Character ch : max) { // single loop
             System.out.print(ch); // Simple statement
         }
         System.out.println();

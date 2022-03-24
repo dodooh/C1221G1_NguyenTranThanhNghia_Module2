@@ -20,8 +20,8 @@ public class InsertElement {
         System.arraycopy(array, index, array, index + 1, array.length - 1 - index);
         array[index] = X;
         System.out.print("Mảng sau khi thêm là: ");
-        for(int item : array) {
-            System.out.printf("%-3d",item);
+        for (int item : array) {
+            System.out.printf("%-3d", item);
         }
     }
 }

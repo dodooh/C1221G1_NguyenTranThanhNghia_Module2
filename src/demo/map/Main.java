@@ -27,7 +27,7 @@ public class Main {
                 wordsMap.put(ele, wordsMap.get(ele) + 1);
             }
         }
-        for (Entry<String,Integer> entry : wordsMap.entrySet()) {
+        for (Entry<String, Integer> entry : wordsMap.entrySet()) {
             System.out.println(entry.getKey() + " xuất hiện " + entry.getValue() + " lần");
         }
 

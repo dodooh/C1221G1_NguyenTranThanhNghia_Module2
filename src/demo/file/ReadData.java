@@ -21,7 +21,7 @@ public class ReadData {
 //        }
 //        // Close the file
 //        input.txt.close();
-        String obj  = "abcdefgh";
+        String obj = "abcdefgh";
         int length = obj.length();
         char c[] = new char[length];
         obj.getChars(0, length, c, 0);
@@ -29,15 +29,11 @@ public class ReadData {
         CharArrayReader input2 = new CharArrayReader(c, 1, 4);
         int i;
         int j;
-        try
-        {
-            while((i = input1.read()) == (j = input2.read()))
-            {
-                System.out.print((char)i);
+        try {
+            while ((i = input1.read()) == (j = input2.read())) {
+                System.out.print((char) i);
             }
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

@@ -4,6 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class AccountExample {
+
     /*Không chứa các ký tự đặc biệt
       Phải dài hơn 6 ký tự
       Không chứa các ký tự viết hoa

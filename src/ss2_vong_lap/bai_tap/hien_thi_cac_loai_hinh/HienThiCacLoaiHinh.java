@@ -8,7 +8,7 @@ public class HienThiCacLoaiHinh {
         int choice = -1;
         final int SIZE = 5;
         Scanner scanner = new Scanner(System.in);
-        while(true) {
+        while (true) {
             System.out.println("Menu");
             System.out.println("1. Draw the rectangle");
             System.out.println("2. Draw the top-left square triangle");
@@ -21,8 +21,8 @@ public class HienThiCacLoaiHinh {
             choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-                    for(int i = 0; i < SIZE; i++) {
-                        for(int j = 0; j < SIZE * 2; j++) {
+                    for (int i = 0; i < SIZE; i++) {
+                        for (int j = 0; j < SIZE * 2; j++) {
                             System.out.print("* ");
                         }
                         System.out.println();

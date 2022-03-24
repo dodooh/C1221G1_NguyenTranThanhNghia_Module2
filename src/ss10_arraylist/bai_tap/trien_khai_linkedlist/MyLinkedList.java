@@ -7,13 +7,13 @@ public class MyLinkedList<E> {
     private Node head;
     private int numNodes;
 
-    public void setNumNodes(int numNodes) {
-        this.numNodes = numNodes;
-    }
-
     MyLinkedList() {
         head = null;
         numNodes = 0;
+    }
+
+    public void setNumNodes(int numNodes) {
+        this.numNodes = numNodes;
     }
 
     public void printList() {
@@ -175,7 +175,7 @@ public class MyLinkedList<E> {
         // Nối đuôi
         Node currentNode = head;
         Node currentNewLinkedListNode = newLinkedList.head;
-        while(currentNode.next != null) {
+        while (currentNode.next != null) {
             currentNewLinkedListNode.next = new Node(currentNode.next.getData());
             newLinkedList.setNumNodes(newLinkedList.numNodes++);
             currentNewLinkedListNode = currentNewLinkedListNode.next;

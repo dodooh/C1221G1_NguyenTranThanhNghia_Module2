@@ -3,6 +3,7 @@ package ss14_sort_algorithm.thuc_hanh.minh_hoa_bubble_sort;
 import java.util.Scanner;
 
 public class BubbleSortByStep {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter list size:");
@@ -19,6 +20,7 @@ public class BubbleSortByStep {
         System.out.println("\nBegin sort processing...");
         bubbleSortByStep(list);
     }
+
     //codes below here
     public static void bubbleSortByStep(int[] list) {
         boolean needNextPass = true;

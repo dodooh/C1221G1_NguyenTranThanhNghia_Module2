@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class QuanLyCanBo {
 
-    Scanner scanner = new Scanner(System.in);
     static CanBo[] canBos = new CanBo[20];
 
     static {
@@ -17,6 +16,8 @@ public class QuanLyCanBo {
         canBos[4] = new NhanVienPhucVu("Nguyễn Thị E", 1996, false, "Đà Nẵng", "Tạp Vụ");
         canBos[5] = new NhanVienPhucVu("Nguyễn Văn F", 1993, true, "Huế", "Đầu bếp");
     }
+
+    Scanner scanner = new Scanner(System.in);
 
     public void showMainMenu() {
         boolean flag = true;
@@ -48,9 +49,10 @@ public class QuanLyCanBo {
             }
         } while (flag);
     }
+
     private void sapXepTheoTen() {
         ComparatorCanBo comparatorCanBo = new ComparatorCanBo();
-        Arrays.sort(canBos,comparatorCanBo);
+        Arrays.sort(canBos, comparatorCanBo);
         hienThiDanhSachCanBo();
     }
 

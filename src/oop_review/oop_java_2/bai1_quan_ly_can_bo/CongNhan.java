@@ -1,6 +1,7 @@
 package oop_review.oop_java_2.bai1_quan_ly_can_bo;
 
-public class CongNhan extends CanBo{
+public class CongNhan extends CanBo {
+
     private int bac;
 
     public CongNhan() {

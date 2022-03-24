@@ -1,6 +1,7 @@
 package oop_review.oop_java_2.bai2_quan_ly_sach;
 
-public class TapChi extends TaiLieu{
+public class TapChi extends TaiLieu {
+
     private int soPhatHanh;
     private int thangPhatHanh;
 
@@ -29,7 +30,7 @@ public class TapChi extends TaiLieu{
 
     @Override
     public String toString() {
-        return "TapChi{ " +super.toString() +
+        return "TapChi{ " + super.toString() +
             ", soPhatHanh=" + soPhatHanh +
             ", thangPhatHanh=" + thangPhatHanh +
             '}';

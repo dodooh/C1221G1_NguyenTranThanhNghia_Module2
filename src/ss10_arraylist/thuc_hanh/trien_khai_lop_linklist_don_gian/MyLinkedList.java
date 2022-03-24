@@ -1,6 +1,7 @@
 package ss10_arraylist.thuc_hanh.trien_khai_lop_linklist_don_gian;
 
 public class MyLinkedList {
+
     private Node head;
     private int numNodes;
 
@@ -45,8 +46,9 @@ public class MyLinkedList {
     }
 
     private class Node {
-        private Node next;
+
         private final Object data;
+        private Node next;
 
         public Node(Object data) {
             this.data = data;

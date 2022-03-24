@@ -11,7 +11,7 @@ class OutputStreamExample {
         OutputStream os = new FileOutputStream("src/demo/binary_file/output.txt");
 
         // Tạo một mảng byte ,ta sẽ ghi các byte này vào file nói trên .
-        byte[] bytes = new byte[] { 'C', 'o', 'd', 'e', 'G', 'y', 'm' };
+        byte[] bytes = new byte[]{'C', 'o', 'd', 'e', 'G', 'y', 'm'};
 
         // Ghi lần lượt các ký tự vào luồng
         for (int i = 0; i < bytes.length; i++) {

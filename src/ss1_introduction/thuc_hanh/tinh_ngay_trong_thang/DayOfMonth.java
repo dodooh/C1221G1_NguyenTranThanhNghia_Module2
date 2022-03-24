@@ -10,8 +10,7 @@ public class DayOfMonth {
         System.out.print("Which month that you want to count days? ");
         int month = scanner.nextInt();
         String daysInMonth;
-        switch(month)
-        {
+        switch (month) {
             case 2:
                 daysInMonth = "28 or 29";
                 break;
@@ -33,7 +32,10 @@ public class DayOfMonth {
             default:
                 daysInMonth = "";
         }
-        if(!daysInMonth.equals(""))System.out.printf("The month '%d' has %s days!",month,daysInMonth);
-        else System.out.print("Invalid input!");
+        if (!daysInMonth.equals("")) {
+            System.out.printf("The month '%d' has %s days!", month, daysInMonth);
+        } else {
+            System.out.print("Invalid input!");
+        }
     }
 }

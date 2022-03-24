@@ -3,6 +3,7 @@ package demo.binary_file;
 import java.io.Serializable;
 
 public class Product implements Serializable {
+
     private static final long serialVersionUID = -266706354210367639L;
 
     private int id;

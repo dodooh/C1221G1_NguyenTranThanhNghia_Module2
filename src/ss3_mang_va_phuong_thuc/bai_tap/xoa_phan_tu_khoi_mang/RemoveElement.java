@@ -25,8 +25,8 @@ public class RemoveElement {
 //            }
             System.arraycopy(array, index + 1, array, index, array.length - 1 - index);
             System.out.print("Mảng sau khi xóa là: ");
-            for(int item : array) {
-                System.out.printf("%-3d",item);
+            for (int item : array) {
+                System.out.printf("%-3d", item);
             }
         }
     }

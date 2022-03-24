@@ -30,7 +30,9 @@ public abstract class Shape {
     }
 
     public abstract double getArea();
+
     public abstract double getPerimeter();
+
     @Override
     public String toString() {
         return "A Shape with color of "

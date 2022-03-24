@@ -21,7 +21,7 @@ public class Main {
             System.out.printf("two roots %.4f and %.4f", quadraticEquation.getRoot1(),
                 quadraticEquation.getRoot2());
         } else {
-            System.out.printf("one root %.4f",quadraticEquation.getRoot1());
+            System.out.printf("one root %.4f", quadraticEquation.getRoot1());
         }
     }
 }

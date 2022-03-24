@@ -4,6 +4,7 @@ public class Oto extends PhuongTien {
 
     private int soChoNgoi;
     private KieuXe kieuXe;
+
     public Oto(String bienKiemSoat, HangSanXuat hangSanXuat, int namSanXuat, String chuSoHuu,
         int soChoNgoi, KieuXe kieuXe) {
         super(bienKiemSoat, hangSanXuat, namSanXuat, chuSoHuu);

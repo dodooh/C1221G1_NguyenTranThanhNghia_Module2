@@ -3,6 +3,7 @@ package ss7_abstract_interface.thuc_hanh.implement_interface_comparable_cho_lop_
 import java.util.Arrays;
 
 public class ComparableCircleTest {
+
     public static void main(String[] args) {
         ComparableCircle[] circles = new ComparableCircle[3];
         circles[0] = new ComparableCircle(3.6);

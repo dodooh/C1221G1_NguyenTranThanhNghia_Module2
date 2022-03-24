@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 
 class ObjectInputStreamExample {
+
     public static void main(String args[]) throws Exception {
         ObjectInputStream ois = null;
         try {

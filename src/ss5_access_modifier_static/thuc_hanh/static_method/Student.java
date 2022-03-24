@@ -1,9 +1,10 @@
 package ss5_access_modifier_static.thuc_hanh.static_method;
 
 public class Student {
+
+    private static String college = "BBDIT";
     private int rollno;
     private String name;
-    private static String college = "BBDIT";
 
     //constructor to initialize the variable
     Student(int r, String n) {

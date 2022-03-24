@@ -1,6 +1,7 @@
 package ss6_inheritance.thuc_hanh.cac_doi_tuong_hinh_hoc;
 
 public class Square extends Rectangle {
+
     public Square() {
     }
 

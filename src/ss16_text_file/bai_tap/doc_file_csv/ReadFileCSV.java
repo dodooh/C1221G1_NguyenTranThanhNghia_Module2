@@ -13,7 +13,7 @@ public class ReadFileCSV {
     public static void main(String[] args) {
         String FILEPATH = "src/ss16_text_file/bai_tap/doc_file_csv/data.csv";
         List<Nation> nationList = getNationListFromFile(FILEPATH);
-        for (Nation nation  : nationList) {
+        for (Nation nation : nationList) {
             System.out.println(nation);
         }
 
@@ -43,7 +43,7 @@ public class ReadFileCSV {
     }
 
     private static Nation getNationFromLine(String line) {
-        String[] properties = line.replaceAll("\"","").split(",");
+        String[] properties = line.replaceAll("\"", "").split(",");
         return new Nation(Integer.parseInt(properties[0]), properties[1], properties[2]);
     }
 }
